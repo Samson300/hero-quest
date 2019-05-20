@@ -42,7 +42,7 @@ function MapRow(props) {
     </div>
 }
 
-export default function Map(props) {
+function Map(props) {
     return(
         <div
         style={{
@@ -61,3 +61,10 @@ export default function Map(props) {
     )
 }
 
+function mapStateToProps(state) {
+    return {
+        tiles: state.map.tiles
+    }
+}
+
+export default connect(mapStateToProps)(Map);

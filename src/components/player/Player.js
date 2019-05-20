@@ -1,6 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import walkSprite from '../../styles/HeroSprites/Characters/player_walk.png';
+import PlayerMovement from './PlayerMovement';
 
-function Player() {
+function Player(props) {
     return (
         <div
         style={{
@@ -15,4 +18,12 @@ function Player() {
     )
 }
 
-export default Player;
+function mapStateToProps(state) {
+    return {
+        ...state.player
+    }
+}
+
+export default connect(mapStateToProps)(PlayerMovement(Player));
+
+// export default Player;
