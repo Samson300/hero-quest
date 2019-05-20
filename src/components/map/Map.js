@@ -52,7 +52,7 @@ function Map(props) {
             left: '0px',
             width: '640px',
             height: '320px',
-            border: '4px solid white',
+            // border: '4px solid white',
         }}
         >
         {
