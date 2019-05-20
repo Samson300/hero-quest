@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
+import Player from './containers/PlayerContainer';
 import './App.css';
 
 function App() {
   return (
     <div>
-      
+      <Player />
     </div>
   );
 }
