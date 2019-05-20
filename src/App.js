@@ -1,11 +1,11 @@
 import React from 'react';
-import Player from './containers/PlayerContainer';
 import './App.css';
+import World from './components/world/World';
 
 function App() {
   return (
     <div>
-      <Player />
+      <World />
     </div>
   );
 }

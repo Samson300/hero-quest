@@ -1,0 +1,21 @@
+.tile {
+    display: inline-flex;
+    background-color: green;
+    /* background-image: url('../../styles/HeroSprites/Parallaxes/AH-Sky.png') */
+}
+
+.grass {
+
+}
+
+.rock {
+    background-image: url('/tiles/rock.png')
+}
+
+.tree {
+    background-image: url('/tiles/tree.png')
+}
+
+.chest {
+    background-image: url('/tiles/chest.png')
+}
