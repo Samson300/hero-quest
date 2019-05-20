@@ -1,6 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import walkSprite from '../../styles/HeroSprites/Characters/player_walk.png'
+import PlayerMovement from './PlayerMovement';
 
-function Player() {
+
+function Player(props) {
     return (
         <div
         style={{
@@ -8,6 +12,7 @@ function Player() {
             top: props.position[1],
             left: props.position[0],
             backgroundImage: `url('${walkSprite}')`,
+            backgroundPosition: props.spriteLocation, // This is what displays the characters; currently, displaying incorrectly initally
             width: '32px',
             height: '32px'
         }}
@@ -15,4 +20,12 @@ function Player() {
     )
 }
 
-export default Player;
+function mapStateToProps(state) {
+    return {
+        ...state.player
+    }
+}
+
+export default connect(mapStateToProps)(PlayerMovement(Player));
+
+// export default Player;
