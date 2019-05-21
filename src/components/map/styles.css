@@ -4,18 +4,29 @@
     /* background-image: url('../../styles/HeroSprites/Parallaxes/AH-Sky.png') */
 }
 
-.grass {
-
+.bed {
+    background-image: url('')
 }
 
-.rock {
-    background-image: url('/tiles/rock.png')
-}
-
-.tree {
-    background-image: url('/tiles/tree.png')
+.door {
+    background-image: url('../../styles/HeroSprites/Characters/Objects.png');
+    background-position: -128px 0px
 }
 
 .chest {
-    background-image: url('/tiles/chest.png')
+    
+    background-image: url('../../styles/HeroSprites/Characters/Objects.png');
+    background-position: left top;
+}
+
+.grass {
+    background-image: url('')
+}
+
+.road {
+    background-image: url('')
+}
+
+.stoneWall {
+    background-image: url('')
 }
