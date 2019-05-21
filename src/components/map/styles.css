@@ -14,13 +14,13 @@
 }
 
 .chest {
-    
     background-image: url('../../styles/HeroSprites/Characters/Objects.png');
     background-position: left top;
 }
 
-.grass {
-    background-image: url('')
+.townExit {
+    background-image: url('../../styles/HeroSprites/Characters/Objects.png');
+    background-position: -128px 0px
 }
 
 .road {

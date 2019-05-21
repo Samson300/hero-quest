@@ -21,7 +21,7 @@ function getTileSprite(type) {
         case 4:
             return 'grass'
         case 5:
-            return 'road'
+            return 'townExit'
         case 21:
             return 'stoneWall'
     }
