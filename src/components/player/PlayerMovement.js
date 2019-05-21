@@ -35,7 +35,7 @@ export default function PlayerMovement(player) {
 
     function getWalkIndex() {
         const walkIndex = store.getState().player.walkIndex
-        return walkIndex >= 3 ? 0 : walkIndex + 1
+        return walkIndex >= 2 ? 0 : walkIndex + 1
     }
 
     function observeBoundaries(oldPos, newPos) {
