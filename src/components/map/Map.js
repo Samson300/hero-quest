@@ -52,7 +52,8 @@ function Map(props) {
             left: '0px',
             width: '640px',
             height: '320px',
-            // border: '4px solid white',
+            outline: '5px solid white'
+            // border: '4px solid white'
         }}
         >
         {
@@ -62,7 +63,6 @@ function Map(props) {
     )
 }
 
-// export default Map;
 function mapStateToProps(state) {
     return {
         tiles: state.map.tiles

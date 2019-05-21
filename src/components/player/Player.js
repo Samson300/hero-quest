@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import walkSprite from '../../styles/HeroSprites/Characters/player_walk1.png'
 import PlayerMovement from './PlayerMovement';
 
-
+//This controlls how the player is styled on the screen
 function Player(props) {
     return (
         <div
@@ -27,5 +27,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(PlayerMovement(Player));
-
-// export default Player;
