@@ -11,6 +11,10 @@ const mapReducer = (state=initialState, action) => {
         return {
             ...action.payload
         }
+        case "ADD_WILDERNESS_TILES":
+        return {
+            ...action.payload
+        }
 
         // case "ADD_TILES_2":
         // return {

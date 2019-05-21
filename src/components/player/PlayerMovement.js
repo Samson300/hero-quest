@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles  } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -79,6 +79,15 @@ export default function PlayerMovement(player) {
         });
     }
 
+    function dispatchMapChange() {
+        store.dispatch({
+            type: 'ADD_WILDERNESS_TILES',
+            payload: {
+                tiles: wildernessTiles
+            }
+        });
+    }
+
 // This tests if the move is possible based on boundaries
 // if the move is valid, calls dispatch move to update the state 
     function attemptMove(direction) {
@@ -87,7 +96,7 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos)
         if (observeCollision(oldPos, newPos) === 5)
-            dispatchMove(direction, oldPos)
+            dispatchMapChange()
     }
 
 // Listens for Up, Down, Left, Right on KEYDOWN events based on keyCode
