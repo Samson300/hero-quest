@@ -79,7 +79,8 @@ export default function PlayerMovement(player) {
         });
     }
 
-    function dispatchMapChange() {
+    function dispatchMapChange(direction, newPos) {
+        const walkIndex = getWalkIndex();
         store.dispatch({
             type: 'ADD_WILDERNESS_TILES',
             payload: {
@@ -94,9 +95,10 @@ export default function PlayerMovement(player) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
-            dispatchMove(direction, newPos)
-        if (observeCollision(oldPos, newPos) === 5)
-            dispatchMapChange()
+            dispatchMove(direction, newPos);
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5)
+            dispatchMapChange(direction, newPos);
+            // dispatchMove(direction, newPos);
     }
 
 // Listens for Up, Down, Left, Right on KEYDOWN events based on keyCode
