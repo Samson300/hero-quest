@@ -52,16 +52,18 @@ export default function PlayerMovement(player) {
         const y = newPos[1] / SPRITE_SIZE
         const x = newPos[0] / SPRITE_SIZE
         const nextTile = tiles[y][x]
-        return nextTile < 20
+        console.log(nextTile);
+        return nextTile < 10
     }
 
-    // function observeCollision(oldPos, newPos) {
-    //     const tiles = store.getstate().map.tiles
-    //     const y = newPos[1] / SPRITE_SIZE
-    //     const x = newPos[0] / SPRITE_SIZE
-    //     const nextTile = tiles[x][y]
-    //     return nextTile = 10  // returns players old position
-    // }
+    function observeCollision(oldPos, newPos) {
+        const tiles = store.getState().map.tiles;
+        const y = newPos[1] / SPRITE_SIZE;
+        const x = newPos[0] / SPRITE_SIZE;
+        const nextTile = tiles[y][x];
+        console.log(nextTile)
+        return nextTile // returns players old position
+    }
 
 // This will update the Player state regaurding movement
     function dispatchMove(direction, newPos) {
@@ -82,8 +84,10 @@ export default function PlayerMovement(player) {
     function attemptMove(direction) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos))
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos)
+        if (observeCollision(oldPos, newPos) === 5)
+            dispatchMove(direction, oldPos)
     }
 
 // Listens for Up, Down, Left, Right on KEYDOWN events based on keyCode
