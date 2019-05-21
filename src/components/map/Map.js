@@ -7,6 +7,8 @@ import './styles.css';
 
 // Gets the tiles sprite based on what number is on the Map grid
 function getTileSprite(type) {
+    // we can walk through 0-20
+    // cant walk through 20+
     switch(type) {
         case 0:
             return 'tile'
@@ -20,7 +22,7 @@ function getTileSprite(type) {
             return 'grass'
         case 5:
             return 'road'
-        case 6:
+        case 21:
             return 'stoneWall'
     }
 }
