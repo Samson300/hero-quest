@@ -20,6 +20,7 @@ function Player(props) {
     )
 }
 
+// maps the state to props(allows us to access the state via props)
 function mapStateToProps(state) {
     return {
         ...state.player
