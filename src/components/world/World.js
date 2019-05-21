@@ -2,12 +2,13 @@ import React from 'react';
 import Player from '../player/Player';
 import Map from '../map/Map';
 
-import { tiles } from '../../config/constants';
+import { townTiles } from '../../config/constants';
 import store from '../../config/store';
 
+// This holds the components Map and Player
 function World(props) {
     store.dispatch({ type: 'ADD_TILES', payload: {
-        tiles,
+        tiles: townTiles //updates maps state.tiles with townTiles
     }})
     return (
         <div 
@@ -15,7 +16,7 @@ function World(props) {
                 position: 'relative',
                 width: '640px',
                 height: '320px',
-                margin: '20 px auto',
+                margin: '20px auto'
             }}
             >
             <Map />
