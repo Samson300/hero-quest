@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import './styles.css';
 
+// Gets the tiles sprite based on what number is on the Map grid
 function getTileSprite(type) {
     switch(type) {
         case 0:
@@ -18,6 +19,7 @@ function getTileSprite(type) {
     }
 }
 
+// Sets the tiles height and width to the Player Sprite size, calls getTileSprite
 function MapTile(props) {
     return <div
     className={`tile ${getTileSprite(props.tile)}`}
@@ -30,6 +32,7 @@ function MapTile(props) {
     </div>
 }
 
+// Sets the rows for map based on the Map grid and Player height, calls MapTile
 function MapRow(props) {
     return <div
     className="row"
@@ -43,6 +46,7 @@ function MapRow(props) {
     </div>
 }
 
+// Controlls how our Map is styled and displayed to the screen, calls MapRow
 function Map(props) {
     return (
         <div 
@@ -63,6 +67,7 @@ function Map(props) {
     )
 }
 
+// maps the state to props(allows us to access the state via props)
 function mapStateToProps(state) {
     return {
         tiles: state.map.tiles
