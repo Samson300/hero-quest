@@ -11,11 +11,17 @@ function getTileSprite(type) {
         case 0:
             return 'tile'
         case 1:
-            return 'tree'
+            return 'bed'
         case 2:
-            return 'rock'
+            return 'door'
         case 3:
             return 'chest'
+        case 4:
+            return 'grass'
+        case 5:
+            return 'road'
+        case 6:
+            return 'stoneWall'
     }
 }
 
