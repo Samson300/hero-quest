@@ -1,8 +1,9 @@
 import store from '../../config/store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../config/constants';
 
-
+// Controlls player movement capabilities
 export default function PlayerMovement(player) {
+// Returns new position on map based on what direction Player is going
     function getNewPosition(oldPos, direction) {
         switch(direction) {
             case 'WEST':
@@ -20,6 +21,7 @@ export default function PlayerMovement(player) {
         }
     }
 
+// Changes area of the sprite sheet that is rendered based on what direction character is going
     function getSpriteLocation(direction, walkIndex) {
         switch(direction) {
             case 'SOUTH':
@@ -33,16 +35,19 @@ export default function PlayerMovement(player) {
         }
     }
 
+// Tracks what index will be used to render sprite
     function getWalkIndex() {
         const walkIndex = store.getState().player.walkIndex
         return walkIndex >= 2 ? 0 : walkIndex + 1
     }
 
+// Sets the boundaries character can move for map
     function observeBoundaries(oldPos, newPos) {
         return (newPos[0] >= 0 && newPos[0] <= MAP_WIDTH - SPRITE_SIZE) &&
                 (newPos[1] >= 0 && newPos[1] <= MAP_HEIGHT - SPRITE_SIZE)
     }
 
+// Sets what tiles Player can not pass through
     function observeImpassable(oldPos, newPos) {
         const tiles = store.getState().map.tiles
         const y = newPos[1] / SPRITE_SIZE
@@ -51,6 +56,7 @@ export default function PlayerMovement(player) {
         return nextTile < 5
     }
 
+// This will update the Player state regaurding movement
     function dispatchMove(direction, newPos) {
         const walkIndex = getWalkIndex()
         store.dispatch({
@@ -64,6 +70,8 @@ export default function PlayerMovement(player) {
         });
     }
 
+// This tests if the move is possible based on boundaries
+// if the move is valid, calls dispatch move to update the state 
     function attemptMove(direction) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
@@ -71,6 +79,7 @@ export default function PlayerMovement(player) {
             dispatchMove(direction, newPos)
     }
 
+// Listens for Up, Down, Left, Right on KEYDOWN events based on keyCode
     function handleKeyDown(e) {
         e.preventDefault()
         
@@ -88,6 +97,7 @@ export default function PlayerMovement(player) {
         }
     }
 
+// This attatches KEYDOWN event listener to window
     window.addEventListener('keydown', (e) => {
         handleKeyDown(e)
     })
