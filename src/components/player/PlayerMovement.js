@@ -53,7 +53,7 @@ export default function PlayerMovement(player) {
         const y = newPos[1] / SPRITE_SIZE
         const x = newPos[0] / SPRITE_SIZE
         const nextTile = tiles[y][x]
-        return nextTile < 5
+        return nextTile < 20
     }
 
 // This will update the Player state regaurding movement
