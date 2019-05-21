@@ -17,7 +17,6 @@ export default function PlayerMovement(player) {
 
             case 'SOUTH':
                 return [  oldPos[0], oldPos[1]+SPRITE_SIZE ]
-
         }
     }
 
@@ -55,6 +54,14 @@ export default function PlayerMovement(player) {
         const nextTile = tiles[y][x]
         return nextTile < 20
     }
+
+    // function observeCollision(oldPos, newPos) {
+    //     const tiles = store.getstate().map.tiles
+    //     const y = newPos[1] / SPRITE_SIZE
+    //     const x = newPos[0] / SPRITE_SIZE
+    //     const nextTile = tiles[x][y]
+    //     return nextTile = 10  // returns players old position
+    // }
 
 // This will update the Player state regaurding movement
     function dispatchMove(direction, newPos) {

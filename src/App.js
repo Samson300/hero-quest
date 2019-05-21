@@ -1,5 +1,5 @@
 import React from 'react';
-import World from './components/world/World';
+import World from './containers/WorldContainer';
 
 
 function App() {
