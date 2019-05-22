@@ -3,7 +3,11 @@ const initialState = {
     spriteLocation: 'center top',
     direction: 'SOUTH',
     walkIndex: 0,
+    hp: 100,
+    attack: 20,
+    monsterAttack: 10
 }
+
 
 // Manages how we are changing the state
 const playerReducer = (state=initialState, action) => {
@@ -13,8 +17,13 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...action.payload
             }
-            default:
-                return state
+        case 'ATTACK':
+            console.log(action.payload)
+            return {
+                ...action.payload
+            }
+        default:
+            return state
     }
 }
 
