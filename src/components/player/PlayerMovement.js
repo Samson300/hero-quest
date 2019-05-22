@@ -53,7 +53,7 @@ export default function PlayerMovement(player) {
         const x = newPos[0] / SPRITE_SIZE
         const nextTile = tiles[y][x]
         console.log(nextTile);
-        return nextTile < 10
+        return nextTile < 20
     }
 
     function observeCollision(oldPos, newPos) {
