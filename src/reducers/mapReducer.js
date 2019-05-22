@@ -1,6 +1,5 @@
 const initialState = {
     tiles: [],
-    location: ''
 }
 
 // Manages how we are changing the state
