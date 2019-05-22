@@ -2,6 +2,7 @@ import React from 'react';
 import Player from '../player/Player';
 import Map from '../map/Map';
 import WorldUpdate from './WorldUpdate';
+import Battle from '../../containers/BattleContainer';
 
 
 import { townTiles, wildernessTiles } from '../../config/constants';
@@ -15,7 +16,7 @@ class World extends React.Component {
         super(props)
     }
     componentDidMount(props) {
-        console.log(props);
+        // console.log(props);
         // mapDispatchToProps(World.props.addTiles)
         this.props.addTiles()
     }
@@ -29,8 +30,9 @@ class World extends React.Component {
                     margin: '20px auto'
                 }}
                 >
-                <Map />
-                <Player />
+                <Battle />
+                {/* <Map />
+                <Player /> */}
             </div>
         )
     }

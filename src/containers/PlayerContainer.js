@@ -1,3 +1,24 @@
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         addTiles: () => {
+//             dispatch({ type: 'ADD_TILES', payload: {
+//                 tiles: townTiles //updates maps state.tiles with townTiles
+//             }})
+//             }
+//         }
+//     } 
+    
+// const makeWorldSmart = connect(null, mapDispatchToProps);
+// const smartWorld = makeWorldSmart(World);
+// export default smartWorld;
+
+
+
+
+
+
+
 // import React from 'react';
 // import { connect } from 'react-redux';
 // import walkSprite from '../styles/HeroSprites/Characters/player_walk.png';
