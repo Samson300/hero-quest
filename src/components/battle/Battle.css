@@ -6,14 +6,28 @@
 
 }
 
+.PlayerHealth {
+    display: flex;
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* align-items: ; */
+    color: black;
+    margin-left: 100px;
+    margin-top: -300px;
+    margin-bottom: 300px;
+}
+
 .CharacterStat {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: flex-end;
+    /* flex-direction: row; */
+    /* justify-content: flex-start; */
+    /* align-items: flex-end; */
     color: white;
-    margin-top: -200px;
+    margin-left: 100px;
+    /* margin-top: -250px; */
 }
+
+
 
 /* style={{
     backgroundImage

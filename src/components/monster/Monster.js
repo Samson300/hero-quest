@@ -4,8 +4,8 @@ class Monster extends React.Component {
     constructor(props) {
         super(props)
         this.state={
-            hp: 40,
-            attack: 10,
+            monsterHP: 40,
+            monsterAttack: 10,
             alive: true
         }
     }

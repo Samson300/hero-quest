@@ -3,15 +3,21 @@ import store from '../config/store';
 import Battle from '../components/battle/Battle';
 
 const playerInfo = store.getState().player;
-console.log(playerInfo.hp);
-console.log(playerInfo.monsterAttack)
+const monsterInfo = store.getState().monster;
+// console.log(playerInfo.hp); undefined
+// console.log(playerInfo.monsterAttack)
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
         monsterAttack: () => {
             dispatch({ type: 'ATTACK', payload: {
-                hp: playerInfo.hp - playerInfo.monsterAttack
+                playerHP: playerInfo.playerHP - playerInfo.monsterAttack
+            }})
+            },
+        playerAttack: () => {
+            dispatch({ type: 'PLAYER_ATTACK', payload: {
+                monsterHP: monsterInfo.monsterHP - playerInfo.playerAttack
             }})
             }
         }
