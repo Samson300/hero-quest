@@ -25,7 +25,7 @@ class World extends React.Component {
                 style={{
                     position: 'relative',
                     width: '640px',
-                    height: '320px',
+                    height: '640px',
                     margin: '20px auto'
                 }}
                 >

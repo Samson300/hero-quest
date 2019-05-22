@@ -30,3 +30,33 @@
 .stoneWall {
     background-image: url('')
 }
+
+.grass {
+    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
+    background-position: 0px 0px
+}
+
+.moreGrass1 {
+    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
+    background-position: -64px -32px
+}
+
+.moreGrass2 {
+    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
+    background-position: -96px -32px
+}
+
+.moreGrass3 {
+    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
+    background-position: -64px -64px
+}
+
+.moreGrass4 {
+    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
+    background-position: -96px -64px
+}
+
+.moreGrass5 {
+    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
+    background-position: -96px 0px
+}
