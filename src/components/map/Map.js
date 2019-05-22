@@ -22,6 +22,16 @@ function getTileSprite(type) {
             return 'grass'
         case 5:
             return 'townExit'
+        case 6:
+            return 'moreGrass1'
+        case 7:
+            return 'moreGrass2'
+        case 8:
+            return 'moreGrass3'
+        case 9:
+            return 'moreGrass4'
+        case 10:
+            return 'moreGrass5'
         case 21:
             return 'stoneWall'
     }
@@ -63,7 +73,7 @@ function Map(props) {
             top: '0px',
             left: '0px',
             width: '640px',
-            height: '320px',
+            height: '640px',
             outline: '5px solid white'
             // border: '4px solid white'
         }}

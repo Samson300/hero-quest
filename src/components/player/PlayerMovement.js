@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles  } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -52,16 +52,24 @@ export default function PlayerMovement(player) {
         const y = newPos[1] / SPRITE_SIZE
         const x = newPos[0] / SPRITE_SIZE
         const nextTile = tiles[y][x]
+        // console.log(nextTile);
         return nextTile < 20
     }
-
-    // function observeCollision(oldPos, newPos) {
-    //     const tiles = store.getstate().map.tiles
-    //     const y = newPos[1] / SPRITE_SIZE
-    //     const x = newPos[0] / SPRITE_SIZE
-    //     const nextTile = tiles[x][y]
-    //     return nextTile = 10  // returns players old position
-    // }
+    // make this actually do something again and remove the === and !== in attempt move 
+    // so an if statement if nextTile === 5 return nextTile === 5 if nextTile === 6 return nextTile === 6
+    // for battle make it turn `like` world.state.battle true which changes map, stops key listen arrows, adds battle event listeners etc
+    // also combine this with observeImpassable if math isnt bad. Collision is either passable or impassable so put that part and think it 
+    // through above not here.
+    // all this does is gets the map's state for tiles, puts the x,y for what your newPos would  be if moving occurred
+    // returns the number associated with the block type movement or collision in this case, would occur as nextTile
+    function observeCollision(oldPos, newPos) {
+        const tiles = store.getState().map.tiles;
+        const y = newPos[1] / SPRITE_SIZE;
+        const x = newPos[0] / SPRITE_SIZE;
+        const nextTile = tiles[y][x];
+        // console.log(nextTile)
+        return nextTile
+    }
 
 // This will update the Player state regaurding movement
     function dispatchMove(direction, newPos) {
@@ -77,13 +85,37 @@ export default function PlayerMovement(player) {
         });
     }
 
+    function dispatchMapChange(direction, newMapPos) {
+        const walkIndex = getWalkIndex();
+        store.dispatch({
+            type: 'ADD_WILDERNESS_TILES',
+            payload: {
+                tiles: wildernessTiles
+            }
+        });
+        store.dispatch({
+            type: 'MOVE_PLAYER',
+            payload: {
+                position: newMapPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex)
+            }
+        });
+    }
+
 // This tests if the move is possible based on boundaries
 // if the move is valid, calls dispatch move to update the state 
     function attemptMove(direction) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos))
-            dispatchMove(direction, newPos)
+        const newMapPos = [0,192];
+        console.log(`look at me ${newPos}`);
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
+            dispatchMove(direction, newPos);
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
+            dispatchMapChange(direction, newMapPos);
+        }
     }
 
 // Listens for Up, Down, Left, Right on KEYDOWN events based on keyCode
