@@ -27,12 +27,11 @@ class Battle extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        if (props.monsterHP <= 0) {
-            props.killedMonster()
-            if (props.exp >= 50) {
-                props.levelUp()
-            }
-        }
+        if (props.monsterHP <= 0) 
+            props.killedMonster();
+        if (props.exp >= 100) {
+            props.levelUp()
+        };
     }
 
     render() {
