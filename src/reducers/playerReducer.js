@@ -1,12 +1,11 @@
 import store from '../config/store';
-import playerInfo from '../components/battle/Battle';
 
 const initialState = {
     position: [0,0],
     spriteLocation: 'center top',
     direction: 'SOUTH',
     walkIndex: 0,
-    playerHP: 80,
+    playerHP: 100,
     playerAttack: 20,
     monsterAttack: 10,
     playerLevel: 1,
@@ -21,10 +20,13 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...action.payload
             }
-        case 'ATTACK':
-            console.log(action.payload)
+        case 'MONSTER_ATTACK':
+            // console.log(action.payload);
             return {
-                ...action.payload
+                // ...action.payload
+                ...state,
+                playerHP: state.playerHP - action.payload.dmg
+
             }
         default:
             return state

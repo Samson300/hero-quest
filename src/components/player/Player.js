@@ -7,15 +7,15 @@ import PlayerMovement from './PlayerMovement';
 class Player extends React.Component {
     constructor(props) {
         super(props)
-        this.state={
-            hp: 100,
-            attack: 20,
-            level: 1,
-            exp: 0,
-            alive: true,
-            gold: 0,
-            inventory: []
-        }
+        // this.state={
+        //     hp: 100,
+        //     attack: 20,
+        //     level: 1,
+        //     exp: 0,
+        //     alive: true,
+        //     gold: 0,
+        //     inventory: []
+        // }
     }
     render() {
         return (

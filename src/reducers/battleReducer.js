@@ -4,6 +4,7 @@ const initialState = {
     playerAttack: 0,
     monsterHealth: 100,
     monsterAttack: 10
+    
 }
 
 // Manages how we are changing the state
