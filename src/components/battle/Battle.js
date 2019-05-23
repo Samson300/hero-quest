@@ -56,12 +56,15 @@ class Battle extends React.Component {
                     <br/>
                 </div>
                 <div >
-                    <button onClick={this.props.monsterAttack}>GET OWNED</button>
-                    <button onClick={this.props.playerAttack}>ATTACK</button>
-                    <button onClick={this.props.killedMonster}>WIN</button>
+                    <button onClick={this.battleFunctions}>ATTACK</button>
+                    {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                 </div>
             </div>
         )
+    }
+    battleFunctions = () => {
+        this.props.monsterAttack();
+        this.props.playerAttack();
     }
     // _monsterAttack = () => {
     //     this.props.monsterAttack();
