@@ -72,3 +72,7 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
     display: inline-flex;
     background-color: transparent;
 }
+
+.townTile {
+    background-image: url('../../styles/HeroSprites/Characters/Objects.png');
+}
