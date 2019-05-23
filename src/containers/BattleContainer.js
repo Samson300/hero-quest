@@ -6,13 +6,18 @@ const playerInfo = store.getState().player;
 const monsterInfo = store.getState().monster;
 // console.log(playerInfo.hp); undefined
 // console.log(playerInfo.monsterAttack)
-
+const mapStateToProps = (state) => {
+    return {
+        hp: state.player.playerHP
+    }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
         monsterAttack: () => {
-            dispatch({ type: 'ATTACK', payload: {
-                playerHP: playerInfo.playerHP - playerInfo.monsterAttack
+            dispatch({ type: 'MONSTER_ATTACK', payload: {
+                // playerHP: playerInfo.playerHP - playerInfo.monsterAttack
+                dmg: 5
             }})
             },
         playerAttack: () => {
@@ -23,6 +28,6 @@ const mapDispatchToProps = (dispatch) => {
         }
     } 
     
-const makeBattleSmart = connect(null, mapDispatchToProps);
+const makeBattleSmart = connect(mapStateToProps, mapDispatchToProps);
 const smartBattle = makeBattleSmart(Battle);
 export default smartBattle;
