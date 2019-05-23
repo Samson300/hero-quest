@@ -7,7 +7,8 @@ const initialState = {
     playerAttack: 20,
     monsterAttack: 10,
     playerLevel: 1,
-    playerExp: 0
+    playerExp: 0,
+    gold: 0
 }
 
 // Manages how we are changing the state
@@ -25,7 +26,12 @@ const playerReducer = (state=initialState, action) => {
                 // ...action.payload
                 ...state,
                 playerHP: state.playerHP - action.payload.dmg
-
+            }
+        case 'BATTLE_END':
+            return {
+                ...state,
+                playerExp: state.playerExp + action.payload.exp,
+                gold: state.gold + action.payload.gold
             }
         default:
             return state

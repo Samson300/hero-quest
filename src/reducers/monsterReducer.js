@@ -11,6 +11,11 @@ const monsterReducer = (state=initialState, action) => {
                 ...state,
                 monsterHP: state.monsterHP - action.payload.dmg
             };
+        case 'BATTLE_END':
+                return {
+                    ...state,
+                    monsterHP: 100
+                }
         default:
             return state;
     }
