@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles  } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles  } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -104,6 +104,25 @@ export default function PlayerMovement(player) {
         });
     }
 
+    function dispatchCharacterMoveWildernessToTown(direction, newMapPos) {
+        const walkIndex = getWalkIndex();
+        store.dispatch({
+            type: 'ADD_TILES',
+            payload: {
+                tiles: townTiles
+            }
+        });
+        store.dispatch({
+            type: 'MOVE_PLAYER',
+            payload: {
+                position: newMapPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex)
+            }
+        });
+    }
+
     function dispatchToBattleMap(direction, newMapPos) {
         const walkIndex = getWalkIndex();
         store.dispatch({
@@ -130,6 +149,7 @@ export default function PlayerMovement(player) {
         const newPos = getNewPosition(oldPos, direction);
         const newMapPos = [0,192];
         const battlePos = [160 ,288];
+        const backToTownPos = [608, 224]
         console.log(`look at me ${newPos}`);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos);
@@ -138,6 +158,9 @@ export default function PlayerMovement(player) {
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
             dispatchToBattleMap(direction, battlePos);
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
+            dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
         }
     }
 
