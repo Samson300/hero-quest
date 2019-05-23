@@ -33,7 +33,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({ type: 'BATTLE_END', payload: {
                 exp: 100,
                 gold: 10,
-                monsterHP: 100
             }})
         }
     }
