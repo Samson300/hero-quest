@@ -8,7 +8,8 @@ const monsterInfo = store.getState().monster;
 // console.log(playerInfo.monsterAttack)
 const mapStateToProps = (state) => {
     return {
-        hp: state.player.playerHP
+        hp: state.player.playerHP,
+        monsterHP: state.monster.monsterHP
     }
 }
 
@@ -22,7 +23,8 @@ const mapDispatchToProps = (dispatch) => {
             },
         playerAttack: () => {
             dispatch({ type: 'PLAYER_ATTACK', payload: {
-                monsterHP: monsterInfo.monsterHP - playerInfo.playerAttack
+                // monsterHP: monsterInfo.monsterHP - playerInfo.playerAttack
+                dmg: 10
             }})
             }
         }

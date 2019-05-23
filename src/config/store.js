@@ -1,5 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import playerReducer from '../reducers/playerReducer';
+import monsterReducer from '../reducers/monsterReducer';
 import mapReducer from '../reducers/mapReducer';
 import battleReducer from '../reducers/battleReducer';
 
@@ -9,7 +10,8 @@ const LS_KEY = 'hero-quest';
 const rootReducer = combineReducers({
     player: playerReducer,
     map: mapReducer,
-    battle: battleReducer
+    battle: battleReducer,
+    monster: monsterReducer
 });
 
 // const initialState = JSON.parse(localStorage.getItem(LS_KEY)) || {};
