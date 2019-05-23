@@ -32,6 +32,10 @@ function getTileSprite(type) {
             return 'moreGrass4'
         case 10:
             return 'moreGrass5'
+        case 11:
+            return 'battleTrigger'
+        case 12:
+            return 'battleTile'
         case 21:
             return 'stoneWall'
     }

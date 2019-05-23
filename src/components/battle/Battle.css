@@ -1,9 +1,9 @@
 .BattleScreen {
     width: 640px;
-    height: 500px;
-    background-image: url('../../styles/plainsBattleScreen.png');
+    height: 640px;
+    background-image: url('../../styles/plains.png');
     background-position: 0px 0px;
-
+    outline: 5px solid blue;
 }
 
 .PlayerHealth {
@@ -11,7 +11,7 @@
     /* flex-direction: row; */
     /* justify-content: center; */
     /* align-items: ; */
-    color: black;
+    color: white;
     margin-left: 100px;
     margin-top: -300px;
     margin-bottom: 300px;

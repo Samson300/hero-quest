@@ -1,7 +1,6 @@
 .tile {
     display: inline-flex;
     background-color: green;
-    /* background-image: url('../../styles/HeroSprites/Parallaxes/AH-Sky.png') */
 }
 
 .bed {
@@ -62,4 +61,14 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
 .moreGrass5 {
     background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
     background-position: -96px 0px
+}
+
+.battleTrigger {
+    background-image: url('../../styles/HeroSprites/Characters/Objects.png');
+    background-position: left top;
+}
+
+.battleTile {
+    display: inline-flex;
+    background-color: transparent;
 }

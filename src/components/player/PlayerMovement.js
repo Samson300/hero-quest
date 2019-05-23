@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles  } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles  } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -85,12 +85,31 @@ export default function PlayerMovement(player) {
         });
     }
 
-    function dispatchMapChange(direction, newMapPos) {
+    function dispatchCharacterMoveTownToWilderness(direction, newMapPos) {
         const walkIndex = getWalkIndex();
         store.dispatch({
             type: 'ADD_WILDERNESS_TILES',
             payload: {
                 tiles: wildernessTiles
+            }
+        });
+        store.dispatch({
+            type: 'MOVE_PLAYER',
+            payload: {
+                position: newMapPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex)
+            }
+        });
+    }
+
+    function dispatchToBattleMap(direction, newMapPos) {
+        const walkIndex = getWalkIndex();
+        store.dispatch({
+            type: 'ADD_BATTLE_TILES',
+            payload: {
+                tiles: battleTiles
             }
         });
         store.dispatch({
@@ -110,11 +129,15 @@ export default function PlayerMovement(player) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
         const newMapPos = [0,192];
+        const battlePos = [160 ,288];
         console.log(`look at me ${newPos}`);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
-            dispatchMapChange(direction, newMapPos);
+            dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
+            dispatchToBattleMap(direction, battlePos);
         }
     }
 
