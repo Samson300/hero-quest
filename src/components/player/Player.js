@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import walkSprite from '../../styles/HeroSprites/Characters/player_walk1.png'
 import PlayerMovement from './PlayerMovement';
+import PlayerBattle from './PlayerBattle';
 
 //This controlls how the player is styled on the screen
 class Player extends React.Component {
@@ -41,4 +42,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(PlayerMovement(Player));
+export default connect(mapStateToProps)(PlayerMovement(Player), PlayerBattle(Player));

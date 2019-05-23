@@ -2,7 +2,7 @@ import store from '../../config/store';
 import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles  } from '../../config/constants';
 
 // Controlls player movement capabilities
-export default function PlayerMovement(player) {
+function PlayerMovement(player) {
 // Returns new position on map based on what direction Player is going
     function getNewPosition(oldPos, direction) {
         switch(direction) {
@@ -189,3 +189,5 @@ export default function PlayerMovement(player) {
 
     return player
 }
+
+export default PlayerMovement
