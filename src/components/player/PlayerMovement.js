@@ -156,12 +156,12 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
             dispatchCharacterMoveTownToWilderness(direction, newMapPos);
         }
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
-            dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
             dispatchToBattleMap(direction, battlePos);
         }
-    }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
+            dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+        }
     }
 
 // Listens for Up, Down, Left, Right on KEYDOWN events based on keyCode
