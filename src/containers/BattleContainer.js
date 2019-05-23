@@ -11,7 +11,8 @@ const mapStateToProps = (state) => {
         hp: state.player.playerHP,
         monsterHP: state.monster.monsterHP,
         exp: state.player.playerExp,
-        gold: state.player.gold
+        gold: state.player.gold,
+        lvl: state.player.playerLevel
     }
 }
 
@@ -22,18 +23,23 @@ const mapDispatchToProps = (dispatch) => {
                 // playerHP: playerInfo.playerHP - playerInfo.monsterAttack
                 dmg: 5
             }})
-            },
+        },
         playerAttack: () => {
             dispatch({ type: 'PLAYER_ATTACK', payload: {
                 // monsterHP: monsterInfo.monsterHP - playerInfo.playerAttack
                 dmg: 10
             }})
-            },
+        },
         killedMonster: () => {
             dispatch({ type: 'BATTLE_END', payload: {
-                exp: 100,
+                exp: 50,
                 gold: 10,
                 monsterHP: 100
+            }})
+        },
+        levelUp: () => {
+            dispatch({ type: 'LEVEL_UP', payload: {
+                lvl: 1
             }})
         }
     }

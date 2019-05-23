@@ -27,9 +27,11 @@ class Battle extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        if (props.monsterHP <= 0) {
-            props.killedMonster()
-        }
+        if (props.monsterHP <= 0) 
+            props.killedMonster();
+        if (props.exp >= 100) {
+            props.levelUp()
+        };
     }
 
     render() {
@@ -44,6 +46,8 @@ class Battle extends React.Component {
                     Exp: {this.props.exp}
                     <br />
                     Gold: {this.props.gold}
+                    <br />
+                    Level: {this.props.lvl}
                 </div>
                 <div className="CharacterStat">
                     {/* Attack: {this.state.playerAttack} */}

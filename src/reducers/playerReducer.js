@@ -33,6 +33,12 @@ const playerReducer = (state=initialState, action) => {
                 playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold
             }
+        case 'LEVEL_UP':
+            return {
+                ...state,
+                playerExp: 0,
+                playerLevel: state.playerLevel + action.payload.lvl
+            }
         default:
             return state
     }

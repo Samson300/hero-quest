@@ -17,6 +17,8 @@ class Player extends React.Component {
         //     inventory: []
         // }
     }
+
+
     render() {
         return (
             <div
