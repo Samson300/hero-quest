@@ -31,6 +31,8 @@ class Battle extends React.Component {
                 <div className="BattleScreen"></div>
                 <div className="PlayerHealth">
                     HP: {this.props.hp}
+                    <br />
+                    MonsterHP: {this.props.monsterHP}
                 </div>
                 <div className="CharacterStat">
                     {/* Attack: {this.state.playerAttack} */}
@@ -40,8 +42,8 @@ class Battle extends React.Component {
                     {/* Exp: {this.state.playerExp} */}
                 </div>
                 <div >
-                    <button onClick={this.props.monsterAttack
-}>Press Me</button>
+                    <button onClick={this.props.monsterAttack}>Press Me</button>
+                    <button onClick={this.props.playerAttack}>Press Me</button>
                 </div>
             </div>
         )
