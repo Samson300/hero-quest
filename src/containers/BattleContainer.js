@@ -9,7 +9,9 @@ const monsterInfo = store.getState().monster;
 const mapStateToProps = (state) => {
     return {
         hp: state.player.playerHP,
-        monsterHP: state.monster.monsterHP
+        monsterHP: state.monster.monsterHP,
+        exp: state.player.playerExp,
+        gold: state.player.gold
     }
 }
 
@@ -26,10 +28,17 @@ const mapDispatchToProps = (dispatch) => {
                 // monsterHP: monsterInfo.monsterHP - playerInfo.playerAttack
                 dmg: 10
             }})
-            }
+            },
+        killedMonster: () => {
+            dispatch({ type: 'BATTLE_END', payload: {
+                exp: 100,
+                gold: 10,
+                monsterHP: 100
+            }})
         }
-    } 
-    
+    }
+} 
+
 const makeBattleSmart = connect(mapStateToProps, mapDispatchToProps);
 const smartBattle = makeBattleSmart(Battle);
 export default smartBattle;
