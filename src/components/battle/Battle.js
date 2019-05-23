@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import store from '../../config/store';
 // import playerInfo from '../../reducers/playerReducer';
 import '../battle/Battle.css';
-// const playerInfo = store.getState().player
-
 
 
 class Battle extends React.Component {
@@ -21,18 +19,23 @@ class Battle extends React.Component {
             monsterHealth: 0,
             monsterAttack: 0
         }
-    }
-    componentDidMount(props) {
-        // this.props.monsterAttack()
+        
     }
 
+    componentDidMount(props) {
+        this.props.monsterAttack();
+
+        setInterval(this.setState({
+            playerHealth: store.getState().player.playerHP
+        }), 1000)
+    }
     render(props) {
         // console.log(`this is player info ${playerInfo.playerHP}`)
         return (
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 <div className="BattleScreen"></div>
                 <div className="PlayerHealth">
-                    HP: {this.playerHealth}
+                    HP: {this.state.playerHealth}
                 </div>
                 <div className="CharacterStat">
                     Attack: {this.playerAttack}
