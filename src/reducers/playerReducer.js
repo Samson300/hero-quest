@@ -1,5 +1,3 @@
-import store from '../config/store';
-
 const initialState = {
     position: [0,0],
     spriteLocation: 'center top',
@@ -18,6 +16,7 @@ const playerReducer = (state=initialState, action) => {
         // this handles our move player action
         case 'MOVE_PLAYER':
             return {
+                ...state,
                 ...action.payload
             }
         case 'MONSTER_ATTACK':

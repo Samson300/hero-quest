@@ -30,9 +30,11 @@ class World extends React.Component {
                     margin: '20px auto'
                 }}
                 >
-                <Battle />
-                {/* <Map />
-                <Player /> */}
+                <Map />
+                <Player />
+                <div style={{marginTop: '-635px'}}>
+                    <Battle />
+                </div>
             </div>
         )
     }
