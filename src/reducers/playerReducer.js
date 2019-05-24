@@ -58,6 +58,12 @@ const playerReducer = (state=initialState, action) => {
                 playerExp: 0,
                 playerLevel: state.playerLevel + action.payload.lvl
             }
+        case 'HEAL_PLAYER':
+            return {
+                ...state,
+                ...action.payload,
+                maxPlayerHP: state.basePlayerHP + state.addedHP
+            }
         default:
             return state
     }
