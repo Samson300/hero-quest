@@ -15,9 +15,9 @@ class Battle extends React.Component {
         //     playerExp: playerInfo.playerExp,
         //     monsterHealth: 0,
         //     monsterAttack: 0
-        // }
-        
+        // }    
     }
+    
 
     componentDidMount() {
         // setInterval(this.setState({
@@ -31,9 +31,14 @@ class Battle extends React.Component {
         if (props.exp >= 100) {
             props.levelUp()
         };
+        if (props.inBattle) {
+            // props.battleOn()
+        }
     }
 
+
     render() {
+        const inBattle = store.getState().player.inBattle
         return (
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 <div className="BattleScreen" ></div>
@@ -48,13 +53,7 @@ class Battle extends React.Component {
                     <br />
                     Level: {this.props.lvl}
                 </div>
-                <div className="CharacterStat">
-                    {/* Attack: {this.state.playerAttack} */}
-                    <br/>
-                    {/* Level: {this.state.playerLevel} */}
-                    <br/>
-                </div>
-                <div >
+                <div style={{marginTop: '-85px', visibility: this.props.inBattle}} >
                     <button onClick={this.battleFunctions}>ATTACK</button>
                     {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                 </div>
