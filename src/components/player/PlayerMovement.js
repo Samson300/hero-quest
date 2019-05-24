@@ -150,6 +150,7 @@ export default function PlayerMovement(player) {
         const newMapPos = [0,192];
         const battlePos = [160 ,288];
         const backToTownPos = [608, 224]
+
         console.log(`look at me ${newPos}`);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos);
@@ -157,7 +158,12 @@ export default function PlayerMovement(player) {
             dispatchCharacterMoveTownToWilderness(direction, newMapPos);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
+            const number = Math.floor(Math.random() * 10); 
+            if(number <= 2){
             dispatchToBattleMap(direction, battlePos);
+            } else {
+                dispatchMove(direction, newPos);
+            }
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
             dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
