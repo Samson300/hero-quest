@@ -3,6 +3,7 @@ const initialState = {
     spriteLocation: 'center top',
     direction: 'SOUTH',
     walkIndex: 0,
+    inBattle: false,
 
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
@@ -13,6 +14,7 @@ const initialState = {
 
     // maxPlayerHP is the total/max HP of adding basePlayerHP & addedHP.
     maxPlayerHP: 100,
+    playerAttack: 10,
     
     // playerAttack is moved to monsterReducer.js in order to damage the monster
     // and increment as the player levels up.
