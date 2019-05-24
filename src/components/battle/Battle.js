@@ -1,7 +1,6 @@
 import React from 'react';
 import store from '../../config/store';
 import '../battle/Battle.css';
-import { tsIndexSignature } from '@babel/types';
 
 
 class Battle extends React.Component {

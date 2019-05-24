@@ -1,44 +1,63 @@
 import { connect } from 'react-redux';
-import store from '../config/store';
 import Battle from '../components/battle/Battle';
 
-const playerInfo = store.getState().player;
-const monsterInfo = store.getState().monster;
-// console.log(playerInfo.hp); undefined
-// console.log(playerInfo.monsterAttack)
 const mapStateToProps = (state) => {
     return {
-        hp: state.player.playerHP,
+        // hp will display maxPlayerHp
+        hp: state.player.maxPlayerHP,
+
+        addedHP: state.player.addedHP,
         monsterHP: state.monster.monsterHP,
         exp: state.player.playerExp,
         gold: state.player.gold,
-        lvl: state.player.playerLevel
+        lvl: state.player.playerLevel,
+
+        // playerAtk will provide the value of increasing the player's attack power
+        // from BattleContainer to playerReducer.
+        playerAtk: state.player.playerAttack,
+
+        // I thought monsterAtk will be needed to damage the player,
+        // but it is actually unnecessary.
+        // monsterAtk: state.monster.monsterAttack
+
+        // *** PLEASE DELETE MY COMMENTS AFTER REVIEWING, OR YOU CAN LEAVE THEM
+        // TO UNDERSTAND WHAT IS GOING ON. ****
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        // Although monsterAttack has no payload, playerReducer.js will call the dispatch
+        // and damage the player.
         monsterAttack: () => {
             dispatch({ type: 'MONSTER_ATTACK', payload: {
-                // playerHP: playerInfo.playerHP - playerInfo.monsterAttack
-                dmg: 5
+                // monsterAtk: 5
             }})
         },
+        // Although playerAttack has no payload, playerReducer.js will call the dispatch
+        // and damage the player.
         playerAttack: () => {
-            dispatch({ type: 'PLAYER_ATTACK', payload: {
-                // monsterHP: monsterInfo.monsterHP - playerInfo.playerAttack
-                dmg: 10
+            dispatch({ type: 'PLAYER_ATTACK', payload: { 
+                // playerAtk: 10
             }})
         },
         killedMonster: () => {
             dispatch({ type: 'BATTLE_END', payload: {
-                exp: 50,
+                exp: 100,
                 gold: 10,
             }})
         },
         levelUp: () => {
             dispatch({ type: 'LEVEL_UP', payload: {
-                lvl: 1
+                lvl: 1,
+
+                // Player's attack will increase by 10 after leveling up.
+                // See monsterReducer.js to see what's going on.
+                playerAtk: 10,
+
+                // Player will gain 10 hp to their max health after leveling up.
+                // See playerReducer.js to see what's going on.
+                hp: 10
             }})
         }
     }
