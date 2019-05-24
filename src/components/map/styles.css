@@ -76,3 +76,7 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
 .townTile {
     background-image: url('../../styles/HeroSprites/Characters/Objects.png');
 }
+
+.healer {
+    background-image: url('../../styles/Dungeon_Crawl_images/sparkling_fountain.png')
+}

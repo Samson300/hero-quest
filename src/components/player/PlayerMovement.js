@@ -142,6 +142,25 @@ export default function PlayerMovement(player) {
         });
     }
 
+    function dispatchHealer(basePlayerHP, oldPos, direction) {
+        const walkIndex = getWalkIndex();
+        store.dispatch({
+            type: 'HEAL_PLAYER',
+            payload: {
+                maxPlayerHP: basePlayerHP
+            }
+        });
+        store.dispatch({
+            type: 'MOVE_PLAYER',
+            payload: {
+                position: oldPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex)
+            }
+        });
+    }
+
 // This tests if the move is possible based on boundaries
 // if the move is valid, calls dispatch move to update the state 
     function attemptMove(direction) {
@@ -150,6 +169,8 @@ export default function PlayerMovement(player) {
         const newMapPos = [0,192];
         const battlePos = [160 ,288];
         const backToTownPos = [608, 224]
+        const basePlayerHP = store.getState().player.basePlayerHP
+        // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
@@ -167,6 +188,9 @@ export default function PlayerMovement(player) {
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
             dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 6) {
+            dispatchHealer(basePlayerHP, oldPos, direction);
         }
     }
 
