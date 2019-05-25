@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles  } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles  } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -123,6 +123,26 @@ export default function PlayerMovement(player) {
         });
     }
 
+    // Move area function, pass in the tiles you would like to be displayed when calling
+    function dispatchCharacterMoveNewArea(direction, newMapPos, tiles) {
+        const walkIndex = getWalkIndex();
+        store.dispatch({
+            type: 'ADD_TILES',
+            payload: {
+                tiles: tiles
+            }
+        });
+        store.dispatch({
+            type: 'MOVE_PLAYER',
+            payload: {
+                position: newMapPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex)
+            }
+        });
+    }
+
     function dispatchToBattleMap(direction, newMapPos) {
         const walkIndex = getWalkIndex();
         store.dispatch({
@@ -168,29 +188,43 @@ export default function PlayerMovement(player) {
         const newPos = getNewPosition(oldPos, direction);
         const newMapPos = [0,192];
         const battlePos = [160 ,288];
-        const backToTownPos = [608, 224]
+        const backToTownPos = [608, 224];
         const basePlayerHP = store.getState().player.basePlayerHP
+        const dungeonToWild = [608, 288];
         // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
-            dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            console.log("moving back to wilderness")
+            dispatchCharacterMoveNewArea(direction, dungeonToWild, wildernessTiles);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
             const number = Math.floor(Math.random() * 10); 
             if(number <= 2){
-            dispatchToBattleMap(direction, battlePos);
+            // dispatchToBattleMap(direction, battlePos);
+            dispatchCharacterMoveNewArea(direction, battlePos, battleTiles);
             } else {
                 dispatchMove(direction, newPos);
             }
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
-            dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            console.log("moving to town")
+            dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 6) {
             dispatchHealer(basePlayerHP, oldPos, direction);
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
+            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
         }
     }
 

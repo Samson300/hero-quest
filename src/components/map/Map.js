@@ -25,11 +25,11 @@ function getTileSprite(type) {
         case 6:
             return 'healer'
         case 7:
-            return ''
+            return 'dungeonFloor'
         case 8:
-            return 'moreGrass3'
+            return 'bigDoor'
         case 9:
-            return 'moreGrass4'
+            return 'bigDoor'
         case 10:
             return 'moreGrass5'
         case 11:
@@ -46,6 +46,12 @@ function getTileSprite(type) {
             return 'townWall'
         case 24:
             return 'fountain'
+        case 25:
+            return 'dungeonWall'
+        case 26:
+            return 'dungeonFountain'
+        case 27:
+            return 'flame'
         // case 25:
         //     return 'healer'
     }
