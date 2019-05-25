@@ -123,6 +123,26 @@ export default function PlayerMovement(player) {
         });
     }
 
+    // Move area function, pass in the tiles you would like to be displayed when calling
+    function dispatchCharacterMoveNewArea(direction, newMapPos, tiles) {
+        const walkIndex = getWalkIndex();
+        store.dispatch({
+            type: 'ADD_TILES',
+            payload: {
+                tiles: tiles
+            }
+        });
+        store.dispatch({
+            type: 'MOVE_PLAYER',
+            payload: {
+                position: newMapPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex)
+            }
+        });
+    }
+
     function dispatchToBattleMap(direction, newMapPos) {
         const walkIndex = getWalkIndex();
         store.dispatch({
@@ -176,18 +196,22 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos);
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
-            dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
+
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
             const number = Math.floor(Math.random() * 10); 
             if(number <= 2){
-            dispatchToBattleMap(direction, battlePos);
+            // dispatchToBattleMap(direction, battlePos);
+            dispatchCharacterMoveNewArea(direction, battlePos, battleTiles);
             } else {
                 dispatchMove(direction, newPos);
             }
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
-            dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 6) {
             dispatchHealer(basePlayerHP, oldPos, direction);
