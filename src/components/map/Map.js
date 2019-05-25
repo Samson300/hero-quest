@@ -48,6 +48,10 @@ function getTileSprite(type) {
             return 'fountain'
         case 25:
             return 'dungeonWall'
+        case 26:
+            return 'dungeonFountain'
+        case 27:
+            return 'flame'
         // case 25:
         //     return 'healer'
     }
