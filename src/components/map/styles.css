@@ -80,3 +80,11 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
 .healer {
     background-image: url('../../styles/Dungeon_Crawl_images/sparkling_fountain.png')
 }
+
+.dungeonFloor {
+    background-image: url('../../styles/Dungeon_Crawl_images/rect_gray_0_old.png')
+}
+
+.dungeonWall {
+    background-image: url('../../styles/Dungeon_Crawl_images/marble_wall_1.png')
+}
