@@ -188,8 +188,9 @@ export default function PlayerMovement(player) {
         const newPos = getNewPosition(oldPos, direction);
         const newMapPos = [0,192];
         const battlePos = [160 ,288];
-        const backToTownPos = [608, 224]
+        const backToTownPos = [608, 224];
         const basePlayerHP = store.getState().player.basePlayerHP
+        const dungeonToWild = [608, 288];
         // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
@@ -198,7 +199,11 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
-
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            console.log("moving back to wilderness")
+            dispatchCharacterMoveNewArea(direction, dungeonToWild, wildernessTiles);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
             const number = Math.floor(Math.random() * 10); 
@@ -211,6 +216,7 @@ export default function PlayerMovement(player) {
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            console.log("moving to town")
             dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 6) {

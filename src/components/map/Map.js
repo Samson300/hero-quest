@@ -29,7 +29,7 @@ function getTileSprite(type) {
         case 8:
             return 'bigDoor'
         case 9:
-            return 'moreGrass4'
+            return 'bigDoor'
         case 10:
             return 'moreGrass5'
         case 11:
