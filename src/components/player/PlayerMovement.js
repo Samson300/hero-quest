@@ -106,14 +106,24 @@ export default function PlayerMovement(player) {
             }
         });
     }
+    // display battleScreen function, pass in either 'flex' or 'none', will control whether battle screen is actually displayed or not
     function dispatchBattleScreen(display) {
         store.dispatch({
-            type: 'BATTLE_ON',
+            type: 'BATTLE_STATUS',
             payload: {
                 inBattle: display
             }
         });
     }
+
+    // function dispatchBattleScreenOff(displayOff) {
+    //     store.dispatch({
+    //         type: 'BATTLE_END',
+    //         payload: {
+    //             inBattle: displayOff
+    //         }
+    //     });
+    // }
 
 
     function dispatchHealer(basePlayerHP, oldPos, direction) {
@@ -146,6 +156,7 @@ export default function PlayerMovement(player) {
         const basePlayerHP = store.getState().player.basePlayerHP
         const dungeonToWild = [608, 288];
         let displayOn = 'flex';
+        let displayOff = 'none';
         // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
@@ -154,6 +165,8 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
+            dispatchBattleScreen(displayOff)
+
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);

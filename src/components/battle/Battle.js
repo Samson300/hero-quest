@@ -13,15 +13,17 @@ class Battle extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        if (props.monsterHP <= 0) 
+        if (props.monsterHP <= 0) {
             props.killedMonster();
+            props.battleOff();
+        };
         if (props.exp >= 100) {
             props.levelUp();
             props.battleOn();
         };
-        if (props.inBattle) {
-            // props.inBattle()
-        }
+        // if (props.inBattle === 'flex') {
+        //     props.battleOn();
+        // }
     }
 
 
@@ -53,6 +55,7 @@ class Battle extends React.Component {
         this.props.monsterAttack();
         this.props.playerAttack();
         this.props.battleOn();
+        this.props.battleOff();
     }
     // _monsterAttack = () => {
     //     this.props.monsterAttack();

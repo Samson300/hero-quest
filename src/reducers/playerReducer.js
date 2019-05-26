@@ -49,7 +49,7 @@ const playerReducer = (state=initialState, action) => {
                 ...state,
                 playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold,
-                inBattle: 'none'
+                // inBattle: 'none'
             }
         case 'LEVEL_UP':
             return {
@@ -68,6 +68,12 @@ const playerReducer = (state=initialState, action) => {
                 maxPlayerHP: state.basePlayerHP + state.addedHP
             }
         case "BATTLE_ON":
+            return {
+            ...state,
+            // ...action.payload,
+            inBattle: action.payload.inBattle
+        }
+        case "BATTLE_STATUS":
             return {
             ...state,
             // ...action.payload,

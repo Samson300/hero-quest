@@ -26,7 +26,6 @@ const monsterReducer = (state=initialState, action) => {
                     ...state,
                     monsterHP: 100
                 }
-
         // The player's attack will increase as the player levels up.
         case 'LEVEL_UP':
         return {
