@@ -144,6 +144,15 @@ export default function PlayerMovement(player) {
             }
         });
     }
+    function dispatchBattleScreen(display) {
+        const displayNone = 'none'
+        store.dispatch({
+            type: 'BATTLE_ON',
+            payload: {
+                inBattle: display
+            }
+        });
+    }
 
     // can delete probably, refactored into dispatchCharacterMoveNewArea
     // function dispatchToBattleMap(direction, newMapPos) {
@@ -194,7 +203,7 @@ export default function PlayerMovement(player) {
         const backToTownPos = [608, 224];
         const basePlayerHP = store.getState().player.basePlayerHP
         const dungeonToWild = [608, 288];
-        const display = 'none';
+        const display = 'flex';
         // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
@@ -213,7 +222,8 @@ export default function PlayerMovement(player) {
             const number = Math.floor(Math.random() * 10); 
             if(number <= 2){
             // dispatchToBattleMap(direction, battlePos);
-            dispatchCharacterMoveNewArea(direction, battlePos, battleTiles, display);
+            dispatchCharacterMoveNewArea(direction, battlePos, battleTiles);
+            dispatchBattleScreen(display)
             } else {
                 dispatchMove(direction, newPos);
             }

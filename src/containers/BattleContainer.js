@@ -58,7 +58,12 @@ const mapDispatchToProps = (dispatch) => {
                 // See playerReducer.js to see what's going on.
                 hp: 10
             }})
-        }
+        },
+        battleOn: () => {
+            dispatch({ type: 'BATTLE_END', payload: {
+                inBattle: 'flex'
+            }})
+        },
     }
 } 
 

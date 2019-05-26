@@ -26,8 +26,9 @@ class Battle extends React.Component {
 
     render() {
         const inBattle = store.getState().player.inBattle
+        console.log(inBattle);
         return (
-            <div style={{display: 'flex', flexDirection: 'column'}}>
+            <div style={{display: this.props.inBattle, flexDirection: 'column'}}>
                 <div className="BattleScreen" ></div>
                 <div className="PlayerHealth">
                     HP: {this.props.hp}
