@@ -6,23 +6,10 @@ import '../battle/Battle.css';
 class Battle extends React.Component {
     constructor(props){
         super(props);
-        // const playerInfo = store.getState().player;
-        // this.state={
-        //     battleOn: false,
-        //     playerHealth: playerInfo.playerHP,
-        //     playerAttack: playerInfo.playerAttack,
-        //     playerLevel: playerInfo.playerLevel,
-        //     playerExp: playerInfo.playerExp,
-        //     monsterHealth: 0,
-        //     monsterAttack: 0
-        // }    
     }
     
 
     componentDidMount() {
-        // setInterval(this.setState({
-        //     // playerHealth: store.getState().player.playerHP
-        // }), 1000)
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -32,7 +19,7 @@ class Battle extends React.Component {
             props.levelUp()
         };
         if (props.inBattle) {
-            // props.battleOn()
+            // props.inBattle()
         }
     }
 
@@ -53,7 +40,7 @@ class Battle extends React.Component {
                     <br />
                     Level: {this.props.lvl}
                 </div>
-                <div style={{marginTop: '-85px', visibility: this.props.inBattle}} >
+                <div style={{marginTop: '-85px', display: this.props.inBattle}} >
                     <button onClick={this.battleFunctions}>ATTACK</button>
                     {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                 </div>

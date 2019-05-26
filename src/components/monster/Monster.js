@@ -5,11 +5,6 @@ import { connect } from 'react-redux';
 class Monster extends React.Component {
     constructor(props) {
         super(props)
-        // this.state={
-        //     monsterHP: 40,
-        //     monsterAttack: 10,
-        //     alive: true
-        // }
     }
 
     render() {
