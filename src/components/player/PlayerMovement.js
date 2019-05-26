@@ -85,45 +85,7 @@ export default function PlayerMovement(player) {
         });
     }
 
-        // can delete probably, refactored into dispatchCharacterMoveNewArea
-    // function dispatchCharacterMoveTownToWilderness(direction, newMapPos) {
-    //     const walkIndex = getWalkIndex();
-    //     store.dispatch({
-    //         type: 'ADD_WILDERNESS_TILES',
-    //         payload: {
-    //             tiles: wildernessTiles
-    //         }
-    //     });
-    //     store.dispatch({
-    //         type: 'MOVE_PLAYER',
-    //         payload: {
-    //             position: newMapPos,
-    //             direction,
-    //             walkIndex,
-    //             spriteLocation: getSpriteLocation(direction, walkIndex)
-    //         }
-    //     });
-    // }
 
-        // can delete probably, refactored into dispatchCharacterMoveNewArea
-    // function dispatchCharacterMoveWildernessToTown(direction, newMapPos) {
-    //     const walkIndex = getWalkIndex();
-    //     store.dispatch({
-    //         type: 'ADD_TILES',
-    //         payload: {
-    //             tiles: townTiles
-    //         }
-    //     });
-    //     store.dispatch({
-    //         type: 'MOVE_PLAYER',
-    //         payload: {
-    //             position: newMapPos,
-    //             direction,
-    //             walkIndex,
-    //             spriteLocation: getSpriteLocation(direction, walkIndex)
-    //         }
-    //     });
-    // }
 
     // Move area function, pass in the tiles you would like to be displayed when calling
     function dispatchCharacterMoveNewArea(direction, newMapPos, tiles) {
@@ -145,7 +107,6 @@ export default function PlayerMovement(player) {
         });
     }
     function dispatchBattleScreen(display) {
-        const displayNone = 'none'
         store.dispatch({
             type: 'BATTLE_ON',
             payload: {
@@ -154,25 +115,6 @@ export default function PlayerMovement(player) {
         });
     }
 
-    // can delete probably, refactored into dispatchCharacterMoveNewArea
-    // function dispatchToBattleMap(direction, newMapPos) {
-    //     const walkIndex = getWalkIndex();
-    //     store.dispatch({
-    //         type: 'ADD_BATTLE_TILES',
-    //         payload: {
-    //             tiles: battleTiles
-    //         }
-    //     });
-    //     store.dispatch({
-    //         type: 'MOVE_PLAYER',
-    //         payload: {
-    //             position: newMapPos,
-    //             direction,
-    //             walkIndex,
-    //             spriteLocation: getSpriteLocation(direction, walkIndex)
-    //         }
-    //     });
-    // }
 
     function dispatchHealer(basePlayerHP, oldPos, direction) {
         const walkIndex = getWalkIndex();
@@ -203,7 +145,7 @@ export default function PlayerMovement(player) {
         const backToTownPos = [608, 224];
         const basePlayerHP = store.getState().player.basePlayerHP
         const dungeonToWild = [608, 288];
-        const display = 'flex';
+        let displayOn = 'flex';
         // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
@@ -223,7 +165,7 @@ export default function PlayerMovement(player) {
             if(number <= 2){
             // dispatchToBattleMap(direction, battlePos);
             dispatchCharacterMoveNewArea(direction, battlePos, battleTiles);
-            dispatchBattleScreen(display)
+            dispatchBattleScreen(displayOn)
             } else {
                 dispatchMove(direction, newPos);
             }
@@ -267,3 +209,70 @@ export default function PlayerMovement(player) {
 
     return player
 }
+
+
+
+
+
+
+
+        // can delete probably, refactored into dispatchCharacterMoveNewArea
+    // function dispatchCharacterMoveTownToWilderness(direction, newMapPos) {
+    //     const walkIndex = getWalkIndex();
+    //     store.dispatch({
+    //         type: 'ADD_WILDERNESS_TILES',
+    //         payload: {
+    //             tiles: wildernessTiles
+    //         }
+    //     });
+    //     store.dispatch({
+    //         type: 'MOVE_PLAYER',
+    //         payload: {
+    //             position: newMapPos,
+    //             direction,
+    //             walkIndex,
+    //             spriteLocation: getSpriteLocation(direction, walkIndex)
+    //         }
+    //     });
+    // }
+
+        // can delete probably, refactored into dispatchCharacterMoveNewArea
+    // function dispatchCharacterMoveWildernessToTown(direction, newMapPos) {
+    //     const walkIndex = getWalkIndex();
+    //     store.dispatch({
+    //         type: 'ADD_TILES',
+    //         payload: {
+    //             tiles: townTiles
+    //         }
+    //     });
+    //     store.dispatch({
+    //         type: 'MOVE_PLAYER',
+    //         payload: {
+    //             position: newMapPos,
+    //             direction,
+    //             walkIndex,
+    //             spriteLocation: getSpriteLocation(direction, walkIndex)
+    //         }
+    //     });
+    // }
+
+
+        // can delete probably, refactored into dispatchCharacterMoveNewArea
+    // function dispatchToBattleMap(direction, newMapPos) {
+    //     const walkIndex = getWalkIndex();
+    //     store.dispatch({
+    //         type: 'ADD_BATTLE_TILES',
+    //         payload: {
+    //             tiles: battleTiles
+    //         }
+    //     });
+    //     store.dispatch({
+    //         type: 'MOVE_PLAYER',
+    //         payload: {
+    //             position: newMapPos,
+    //             direction,
+    //             walkIndex,
+    //             spriteLocation: getSpriteLocation(direction, walkIndex)
+    //         }
+    //     });
+    // }

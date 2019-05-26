@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch) => {
             }})
         },
         battleOn: () => {
-            dispatch({ type: 'BATTLE_END', payload: {
+            dispatch({ type: 'BATTLE_ON', payload: {
                 inBattle: 'flex'
             }})
         },
