@@ -134,15 +134,6 @@ export default function PlayerMovement(player) {
             }
         });
     }
-    // function dispatchBattleScreenOff(displayOff) {
-    //     store.dispatch({
-    //         type: 'BATTLE_END',
-    //         payload: {
-    //             inBattle: displayOff
-    //         }
-    //     });
-    // }
-
 
     function dispatchHealer(basePlayerHP, oldPos, direction) {
         const walkIndex = getWalkIndex();
@@ -174,7 +165,11 @@ export default function PlayerMovement(player) {
     }
 
 // This tests if the move is possible based on boundaries
-// if the move is valid, calls dispatch move to update the state 
+// if the move is valid, calls dispatch move to update the state
+// however if the move would cause collision with an activation tile
+// that specific tiles actions are called 
+// (example move area, doesnt just dispatch move, dispatches new map and other actions needed)
+
     function attemptMove(direction) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
@@ -189,8 +184,10 @@ export default function PlayerMovement(player) {
         // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
+        // town movement, if it isnt a 5(town exit) then just move character
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos);
+        // town to wilderness
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
@@ -201,7 +198,7 @@ export default function PlayerMovement(player) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             console.log("moving back to wilderness")
             dispatchCharacterMoveNewArea(direction, dungeonToWild, wildernessTiles);
-            dispatchCaveBossDisplay(displayOff)
+            dispatchCaveBossDisplay(displayOff);
         }
         // wilderness to cave 
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 14) {
@@ -216,6 +213,7 @@ export default function PlayerMovement(player) {
             dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, caveSecondLevel);
             dispatchCaveBossDisplay(displayOn);
         }
+        // battle tiles, if attempting move to it, chance of dispatching battle, chance of just movement
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
             const number = Math.floor(Math.random() * 10); 
             if(number <= 2){
@@ -226,19 +224,22 @@ export default function PlayerMovement(player) {
                 dispatchMove(direction, newPos);
             }
         }
+        // wilderness to town
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             console.log("moving to town")
             dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
         }
+        // town movement, if tile 6(healer) is attempted, dispatch healer action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 6) {
             dispatchHealer(basePlayerHP, oldPos, direction);
         }
+        // wilderness to dungeon
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
         }
-        // controls if itemStore tile is called
+        // town movement, if tile 13(store) is attempted, dispatch store action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchStoreScreen(displayOn, oldPos, direction);
