@@ -4,6 +4,7 @@ const initialState = {
     direction: 'SOUTH',
     walkIndex: 0,
     inBattle: 'none',
+    inStore: 'none',
 
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
@@ -78,6 +79,17 @@ const playerReducer = (state=initialState, action) => {
             ...state,
             // ...action.payload,
             inBattle: action.payload.inBattle
+        }
+        case "BUY_SWORD":
+            return {
+            ...state,
+            ...action.payload
+        }
+        case "BUY_ARMOR":
+            return {
+            ...state,
+            ...action.payload,
+            
         }
         default:
             return state

@@ -54,8 +54,8 @@ class Battle extends React.Component {
     battleFunctions = () => {
         this.props.monsterAttack();
         this.props.playerAttack();
-        this.props.battleOn();
-        this.props.battleOff();
+        // this.props.battleOn();
+        // this.props.battleOff();
     }
     // _monsterAttack = () => {
     //     this.props.monsterAttack();

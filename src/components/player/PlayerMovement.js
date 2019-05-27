@@ -116,6 +116,14 @@ export default function PlayerMovement(player) {
         });
     }
 
+    function dispatchStoreScreen(display) {
+        store.dispatch({
+            type: 'STORE_STATUS',
+            payload: {
+                inBattle: display
+            }
+        });
+    }
     // function dispatchBattleScreenOff(displayOff) {
     //     store.dispatch({
     //         type: 'BATTLE_END',
@@ -165,8 +173,7 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
-            dispatchBattleScreen(displayOff)
-
+            dispatchBattleScreen(displayOff);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
