@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles  } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles, caveFirstLevel, caveSecondLevel } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -116,7 +116,7 @@ export default function PlayerMovement(player) {
         });
     }
 
-    function dispatchStoreScreen(display, oldPos, direction) {
+    function dispatchStoreScreenAndMoveNowhere(display, oldPos, direction) {
         const walkIndex = getWalkIndex();
         store.dispatch({
             type: 'STORE_STATUS',
@@ -134,15 +134,15 @@ export default function PlayerMovement(player) {
             }
         });
     }
-    // function dispatchBattleScreenOff(displayOff) {
-    //     store.dispatch({
-    //         type: 'BATTLE_END',
-    //         payload: {
-    //             inBattle: displayOff
-    //         }
-    //     });
-    // }
 
+    function dispatchStoreScreenOnly(display) {
+        store.dispatch({
+            type: 'STORE_STATUS',
+            payload: {
+                inStore: display
+            }
+        });
+    }
 
     function dispatchHealer(basePlayerHP, oldPos, direction) {
         const walkIndex = getWalkIndex();
@@ -162,9 +162,37 @@ export default function PlayerMovement(player) {
             }
         });
     }
+    
+    // this functions calls the display caveboss function so it can be activated via player movement
+    function dispatchCaveBossDisplay(display, position, top, left) {
+        store.dispatch({
+            type: 'DISPLAY_CAVE_BOSS',
+            payload: {
+                bossDisplay: display,
+                backgroundPosition: position,
+                top,
+                left
+            }
+        });
+    }
+
+    // function dispatchCaveBossToBattleScreen() {
+    //     store.dispatch({
+    //         type: 'CAVE_BOSS_BATTLE',
+    //         payload: {
+    //             xPos: 200,
+    //             yPos: 400
+
+    //         }
+    //     })
+    // }
 
 // This tests if the move is possible based on boundaries
-// if the move is valid, calls dispatch move to update the state 
+// if the move is valid, calls dispatch move to update the state
+// however if the move would cause collision with an activation tile
+// that specific tiles actions are called 
+// (example move area, doesnt just dispatch move, dispatches new map and other actions needed)
+
     function attemptMove(direction) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
@@ -173,49 +201,78 @@ export default function PlayerMovement(player) {
         const backToTownPos = [608, 224];
         const basePlayerHP = store.getState().player.basePlayerHP
         const dungeonToWild = [608, 288];
-        let displayOn = 'flex';
+        const caveSecondLevelStart = getNewPosition([0, 576], direction);
+        let displayFlexOn = 'flex';
         let displayOff = 'none';
         // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
+        // town movement, if it isnt a 5(town exit) then just move character
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos);
+        // town to wilderness
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
-            dispatchBattleScreen(displayOff);
+            dispatchStoreScreenOnly(displayOff);
         }
+        // dungeon to wilderness
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             console.log("moving back to wilderness")
             dispatchCharacterMoveNewArea(direction, dungeonToWild, wildernessTiles);
+            dispatchCaveBossDisplay(displayOff);
         }
+        // wilderness to cave 
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 14) {
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            console.log("moving to cave")
+            dispatchCharacterMoveNewArea(direction, newMapPos, caveFirstLevel);
+        }
+        // cave level 1 to cave level 2 
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 15) {
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            console.log("moving cave level 2")
+            dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, caveSecondLevel);
+            dispatchCaveBossDisplay(displayFlexOn, 'left top', 20, 260);
+        }
+        // battle tiles, if attempting move to it, chance of dispatching battle, chance of just movement
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
             const number = Math.floor(Math.random() * 10); 
             if(number <= 2){
             // dispatchToBattleMap(direction, battlePos);
-            dispatchCharacterMoveNewArea(direction, battlePos, battleTiles);
-            dispatchBattleScreen(displayOn)
+            dispatchCharacterMoveNewArea("EAST", battlePos, battleTiles);
+            dispatchBattleScreen(displayFlexOn)
             } else {
                 dispatchMove(direction, newPos);
             }
         }
+        // wilderness to town
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             console.log("moving to town")
             dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
         }
+        // town movement, if tile 6(healer) is attempted, dispatch healer action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 6) {
             dispatchHealer(basePlayerHP, oldPos, direction);
         }
+        // wilderness to dungeon
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
         }
-        // controls if itemStore tile is called
+        // town movement, if tile 13(store) is attempted, dispatch store action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
-            dispatchStoreScreen(displayOn, oldPos, direction);
+            dispatchStoreScreenAndMoveNowhere(displayFlexOn, oldPos, direction);
+        }
+        // cave movement, if tile 26(bossBattle) is attempted, dispatch battle action
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 16) {
+            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
+            dispatchBattleScreen(displayFlexOn);
+            dispatchCaveBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
         }
     }
 
