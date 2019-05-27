@@ -1,12 +1,8 @@
 import React from 'react';
 import Player from '../player/Player';
 import Map from '../map/Map';
-import WorldUpdate from './WorldUpdate';
 import Battle from '../../containers/BattleContainer';
-
-
-import { townTiles, wildernessTiles } from '../../config/constants';
-import store from '../../config/store';
+import ItemStore from '../../containers/ItemStoreContainer';
 
 // This holds the components Map and Player
 // Makes this class
@@ -16,8 +12,6 @@ class World extends React.Component {
         super(props)
     }
     componentDidMount(props) {
-        // console.log(props);
-        // mapDispatchToProps(World.props.addTiles)
         this.props.addTiles()
     }
     render () {
@@ -33,6 +27,7 @@ class World extends React.Component {
                 <Map />
                 <Player />
                 <div style={{marginTop: '-635px'}}>
+                    <ItemStore />
                     <Battle />
                 </div>
             </div>
@@ -40,12 +35,4 @@ class World extends React.Component {
     }
 }
 
-
-// function mapStateToProps(state) {
-//     return {
-//         ...state.player
-//     }
-// }
-
-// export default connect(mapStateToProps)(WorldUpdate(World))
 export default World;

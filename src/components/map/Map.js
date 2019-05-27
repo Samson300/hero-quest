@@ -36,6 +36,8 @@ function getTileSprite(type) {
             return 'battleTrigger'
         case 12:
             return 'battleTile'
+        case 13:
+            return 'itemStore'
         case 19:
             return 'towntile'
         case 21:

@@ -6,41 +6,40 @@ import '../battle/Battle.css';
 class Battle extends React.Component {
     constructor(props){
         super(props);
-        // const playerInfo = store.getState().player;
-        // this.state={
-        //     battleOn: false,
-        //     playerHealth: playerInfo.playerHP,
-        //     playerAttack: playerInfo.playerAttack,
-        //     playerLevel: playerInfo.playerLevel,
-        //     playerExp: playerInfo.playerExp,
-        //     monsterHealth: 0,
-        //     monsterAttack: 0
-        // }    
     }
     
 
     componentDidMount() {
-        // setInterval(this.setState({
-        //     // playerHealth: store.getState().player.playerHP
-        // }), 1000)
     }
 
     static getDerivedStateFromProps(props, state) {
-        if (props.monsterHP <= 0) 
-            props.killedMonster();
+        // we gotta combine these two statements
+        // if we levelUp we reRender battle screen and levelUp
+        // might just need to put the exp if inside monsterHP
+        // if monster is above 0 return same state, but if exp greater 100 level up return other state same
+        // if monster hp ever is 0 or lower or player hp 0 or lower battleOff   
         if (props.exp >= 100) {
-            props.levelUp()
+                props.levelUp();
+                // props.battleOn();
+            }
+        if (props.monsterHP <= 0) {
+            props.killedMonster();
+            props.battleOff();
         };
-        if (props.inBattle) {
-            // props.battleOn()
+
+        if (props.monsterHP <= 0 && props.exp >= 100) {
+            props.killedMonster();
+            props.levelUp();
+            props.battleOff();
         }
     }
 
 
     render() {
         const inBattle = store.getState().player.inBattle
+        console.log(inBattle);
         return (
-            <div style={{display: 'flex', flexDirection: 'column'}}>
+            <div style={{display: this.props.inBattle, flexDirection: 'column'}}>
                 <div className="BattleScreen" ></div>
                 <div className="PlayerHealth">
                     HP: {this.props.hp}
@@ -53,7 +52,7 @@ class Battle extends React.Component {
                     <br />
                     Level: {this.props.lvl}
                 </div>
-                <div style={{marginTop: '-85px', visibility: this.props.inBattle}} >
+                <div style={{marginTop: '-85px', display: this.props.inBattle}} >
                     <button onClick={this.battleFunctions}>ATTACK</button>
                     {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                 </div>
@@ -64,9 +63,7 @@ class Battle extends React.Component {
         this.props.monsterAttack();
         this.props.playerAttack();
     }
-    // _monsterAttack = () => {
-    //     this.props.monsterAttack();
-    // }
+
 }
 
 export default Battle;

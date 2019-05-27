@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Battle from '../components/battle/Battle';
+import { battleTiles, wildernessTiles } from '../config/constants';
 
 const mapStateToProps = (state) => {
     return {
@@ -58,7 +59,19 @@ const mapDispatchToProps = (dispatch) => {
                 // See playerReducer.js to see what's going on.
                 hp: 10
             }})
-        }
+        },
+        battleOn: () => {
+            dispatch({ type: 'BATTLE_STATUS', payload: {
+                inBattle: 'flex',
+                tiles: battleTiles
+            }})
+        },
+        battleOff: () => {
+            dispatch({ type: 'BATTLE_STATUS', payload: {
+                inBattle: 'none',
+                tiles: wildernessTiles
+            }})
+        },
     }
 } 
 

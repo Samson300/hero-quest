@@ -3,7 +3,8 @@ const initialState = {
     spriteLocation: 'center top',
     direction: 'SOUTH',
     walkIndex: 0,
-    inBattle: false,
+    inBattle: 'none',
+    inStore: 'none',
 
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
@@ -48,7 +49,7 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...state,
                 playerExp: state.playerExp + action.payload.exp,
-                gold: state.gold + action.payload.gold
+                gold: state.gold + action.payload.gold,
             }
         case 'LEVEL_UP':
             return {
@@ -65,6 +66,33 @@ const playerReducer = (state=initialState, action) => {
                 ...state,
                 ...action.payload,
                 maxPlayerHP: state.basePlayerHP + state.addedHP
+            }
+        case "BATTLE_ON":
+            return {
+            ...state,
+            // ...action.payload,
+            inBattle: action.payload.inBattle
+        }
+        case "BATTLE_STATUS":
+            return {
+            ...state,
+            // ...action.payload,
+            inBattle: action.payload.inBattle
+        }
+        case "BUY_SWORD":
+            return {
+            ...state,
+            playerAttack: state.playerAttack + action.payload.playerAttack
+        }
+        case "BUY_ARMOR":
+            return {
+            ...state,
+            maxPlayerHP: state.maxPlayerHP + action.payload.hp
+        }
+        case "STORE_STATUS":
+                return {
+                ...state,
+                inStore: action.payload.inStore
             }
         default:
             return state

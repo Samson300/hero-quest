@@ -85,43 +85,7 @@ export default function PlayerMovement(player) {
         });
     }
 
-    function dispatchCharacterMoveTownToWilderness(direction, newMapPos) {
-        const walkIndex = getWalkIndex();
-        store.dispatch({
-            type: 'ADD_WILDERNESS_TILES',
-            payload: {
-                tiles: wildernessTiles
-            }
-        });
-        store.dispatch({
-            type: 'MOVE_PLAYER',
-            payload: {
-                position: newMapPos,
-                direction,
-                walkIndex,
-                spriteLocation: getSpriteLocation(direction, walkIndex)
-            }
-        });
-    }
 
-    function dispatchCharacterMoveWildernessToTown(direction, newMapPos) {
-        const walkIndex = getWalkIndex();
-        store.dispatch({
-            type: 'ADD_TILES',
-            payload: {
-                tiles: townTiles
-            }
-        });
-        store.dispatch({
-            type: 'MOVE_PLAYER',
-            payload: {
-                position: newMapPos,
-                direction,
-                walkIndex,
-                spriteLocation: getSpriteLocation(direction, walkIndex)
-            }
-        });
-    }
 
     // Move area function, pass in the tiles you would like to be displayed when calling
     function dispatchCharacterMoveNewArea(direction, newMapPos, tiles) {
@@ -142,25 +106,43 @@ export default function PlayerMovement(player) {
             }
         });
     }
+    // display battleScreen function, pass in either 'flex' or 'none', will control whether battle screen is actually displayed or not
+    function dispatchBattleScreen(display) {
+        store.dispatch({
+            type: 'BATTLE_STATUS',
+            payload: {
+                inBattle: display
+            }
+        });
+    }
 
-    function dispatchToBattleMap(direction, newMapPos) {
+    function dispatchStoreScreen(display, oldPos, direction) {
         const walkIndex = getWalkIndex();
         store.dispatch({
-            type: 'ADD_BATTLE_TILES',
+            type: 'STORE_STATUS',
             payload: {
-                tiles: battleTiles
+                inStore: display
             }
         });
         store.dispatch({
             type: 'MOVE_PLAYER',
             payload: {
-                position: newMapPos,
+                position: oldPos,
                 direction,
                 walkIndex,
                 spriteLocation: getSpriteLocation(direction, walkIndex)
             }
         });
     }
+    // function dispatchBattleScreenOff(displayOff) {
+    //     store.dispatch({
+    //         type: 'BATTLE_END',
+    //         payload: {
+    //             inBattle: displayOff
+    //         }
+    //     });
+    // }
+
 
     function dispatchHealer(basePlayerHP, oldPos, direction) {
         const walkIndex = getWalkIndex();
@@ -191,6 +173,8 @@ export default function PlayerMovement(player) {
         const backToTownPos = [608, 224];
         const basePlayerHP = store.getState().player.basePlayerHP
         const dungeonToWild = [608, 288];
+        let displayOn = 'flex';
+        let displayOff = 'none';
         // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
@@ -199,6 +183,7 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
+            dispatchBattleScreen(displayOff);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
@@ -210,6 +195,7 @@ export default function PlayerMovement(player) {
             if(number <= 2){
             // dispatchToBattleMap(direction, battlePos);
             dispatchCharacterMoveNewArea(direction, battlePos, battleTiles);
+            dispatchBattleScreen(displayOn)
             } else {
                 dispatchMove(direction, newPos);
             }
@@ -225,6 +211,11 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
+        }
+        // controls if itemStore tile is called
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {
+            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            dispatchStoreScreen(displayOn, oldPos, direction);
         }
     }
 
