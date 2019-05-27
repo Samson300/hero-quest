@@ -10,7 +10,10 @@ const initialState = {
     // See case 'PLAYER_ATTACK' & 'LEVEL_UP'
     
     monsterLevel: 1,
-    bossDisplay: 'none'
+    bossDisplay: 'none',
+    backgroundPosition: 'left top',
+    top: 20,
+    left: 260
 }
 
 const caveBossReducer = (state=initialState, action) => {
@@ -44,6 +47,12 @@ const caveBossReducer = (state=initialState, action) => {
                 ...state,
                 ...action.payload
             }
+        case 'CAVE_BOSS_BATTLE':
+                return {
+                    ...state,
+                    ...action.payload,
+                    backgroundPosition: action.payload.backgroundPosition
+                }
         default:
             return state;
     }

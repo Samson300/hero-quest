@@ -43,7 +43,7 @@ function getTileSprite(type) {
         case 15:
             return 'caveLairEntrance'
         case 16:
-            return 'cave'
+            return 'caveBossFight'
         case 19:
             return 'towntile'
         case 21:
