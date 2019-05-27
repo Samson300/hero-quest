@@ -11,7 +11,7 @@ class CaveBoss extends React.Component {
         return (
             <div
             style={{
-                display: 'absolute',
+                display: this.props.bossDisplay,
                 position: 'absolute',
                 top: 20,
                 left: 260,
@@ -28,7 +28,7 @@ class CaveBoss extends React.Component {
 // maps the state to props(allows us to access the state via props)
 function mapStateToProps(state) {
     return {
-        ...state.monster
+        ...state.caveBoss
     }
 }
 

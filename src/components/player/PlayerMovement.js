@@ -162,6 +162,16 @@ export default function PlayerMovement(player) {
             }
         });
     }
+    
+    // this functions calls the display caveboss function so it can be activated via player movement
+    function dispatchCaveBossDisplay(display) {
+        store.dispatch({
+            type: 'DISPLAY_CAVE_BOSS',
+            payload: {
+                bossDisplay: display
+            }
+        })
+    }
 
 // This tests if the move is possible based on boundaries
 // if the move is valid, calls dispatch move to update the state 
@@ -191,6 +201,7 @@ export default function PlayerMovement(player) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             console.log("moving back to wilderness")
             dispatchCharacterMoveNewArea(direction, dungeonToWild, wildernessTiles);
+            dispatchCaveBossDisplay(displayOff)
         }
         // wilderness to cave 
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 14) {
@@ -203,6 +214,7 @@ export default function PlayerMovement(player) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             console.log("moving cave level 2")
             dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, caveSecondLevel);
+            dispatchCaveBossDisplay(displayOn);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
             const number = Math.floor(Math.random() * 10); 
