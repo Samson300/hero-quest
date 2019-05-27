@@ -3,6 +3,7 @@ import Player from '../player/Player';
 import Map from '../map/Map';
 import Battle from '../../containers/BattleContainer';
 import ItemStore from '../../containers/ItemStoreContainer';
+import CaveBoss from '../monster/CaveBoss';
 
 // This holds the components Map and Player
 // Makes this class
@@ -26,6 +27,7 @@ class World extends React.Component {
                 >
                 <Map />
                 <Player />
+                <CaveBoss />
                 <div style={{marginTop: '-635px'}}>
                     <ItemStore />
                     <Battle />

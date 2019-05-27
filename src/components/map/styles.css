@@ -101,3 +101,18 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
     background-image: url('../../styles/elf_new.png');
     background-position: left top;
 }
+
+.caveEntrance {
+    background-image: url('../../styles/Dungeon_Crawl_images/volcano_exit.png');
+    background-position: left top;
+}
+
+.caveBattleTile {
+    background-image: url('../../styles/Dungeon_Crawl_images/tomb_1.png');
+    background-position: left top;
+}
+
+.caveLairEntrance {
+    background-image: url('../../styles/Dungeon_Crawl_images/enter_lair.png');
+    background-position: left top;
+}

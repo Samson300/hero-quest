@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles  } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles, caveFirstLevel, caveSecondLevel } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -173,6 +173,7 @@ export default function PlayerMovement(player) {
         const backToTownPos = [608, 224];
         const basePlayerHP = store.getState().player.basePlayerHP
         const dungeonToWild = [608, 288];
+        const caveSecondLevelStart = getNewPosition([0, 576], direction);
         let displayOn = 'flex';
         let displayOff = 'none';
         // console.log(basePlayerHP);
@@ -185,10 +186,23 @@ export default function PlayerMovement(player) {
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
             dispatchBattleScreen(displayOff);
         }
+        // dungeon to wilderness
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             console.log("moving back to wilderness")
             dispatchCharacterMoveNewArea(direction, dungeonToWild, wildernessTiles);
+        }
+        // wilderness to cave 
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 14) {
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            console.log("moving to cave")
+            dispatchCharacterMoveNewArea(direction, newMapPos, caveFirstLevel);
+        }
+        // cave level 1 to cave level 2 
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 15) {
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            console.log("moving cave level 2")
+            dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, caveSecondLevel);
         }
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
             const number = Math.floor(Math.random() * 10); 
