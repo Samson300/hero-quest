@@ -9,9 +9,8 @@ const mapStateToProps = (state) => {
         exp: state.player.playerExp,
         gold: state.player.gold,
         lvl: state.player.playerLevel,
-        playerAtk: state.player.playerAttack,
+        playerAttack: state.player.playerAttack,
         inStore: state.player.inStore
-
     }
 }
 

@@ -6,7 +6,7 @@ const initialState = {
 
     // playerAttack is needed to damage the monster and have an incrementing value
     // as the player levels up.
-    playerAttack: 20,
+    playerAttack: 10,
     // See case 'PLAYER_ATTACK' & 'LEVEL_UP'
     
     monsterLevel: 1
@@ -22,16 +22,22 @@ const monsterReducer = (state=initialState, action) => {
                 monsterHP: state.monsterHP - state.playerAttack
             };
         case 'BATTLE_END':
-                return {
-                    ...state,
-                    monsterHP: 100
-                }
+            return {
+                ...state,
+                monsterHP: 100
+            }
         // The player's attack will increase as the player levels up.
         case 'LEVEL_UP':
         return {
             ...state,
             playerAttack: state.playerAttack + action.payload.playerAtk
         }
+        // the player's attack will increase as player buys swords
+        case 'BUY_SWORD':
+            return {
+                ...state,
+                playerAttack: state.playerAttack + action.payload.playerAttack
+            }
         default:
             return state;
     }

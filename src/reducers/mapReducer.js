@@ -18,6 +18,11 @@ const mapReducer = (state=initialState, action) => {
             return {
                 ...action.payload
             }
+        // case "STORE_STATUS":
+        //     return {
+        //         ...state,
+        //         tiles: action.payload.tiles
+        //     }
         default:
             return state
     }
