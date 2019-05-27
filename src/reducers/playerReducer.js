@@ -50,7 +50,6 @@ const playerReducer = (state=initialState, action) => {
                 ...state,
                 playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold,
-                // inBattle: 'none'
             }
         case 'LEVEL_UP':
             return {
@@ -83,14 +82,18 @@ const playerReducer = (state=initialState, action) => {
         case "BUY_SWORD":
             return {
             ...state,
-            ...action.payload
+            playerAttack: state.playerAttack + action.payload.playerAttack
         }
         case "BUY_ARMOR":
             return {
             ...state,
-            ...action.payload,
-            
+            maxPlayerHP: state.maxPlayerHP + action.payload.hp
         }
+        case "STORE_STATUS":
+                return {
+                ...state,
+                inStore: action.payload.inStore
+            }
         default:
             return state
     }

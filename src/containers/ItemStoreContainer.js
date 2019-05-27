@@ -19,12 +19,17 @@ const mapDispatchToProps = (dispatch) => {
     return {
         buySword: () => {
             dispatch({ type: 'BUY_SWORD', payload: {
-                playerAtk: 5
+                playerAttack: 5
             }})
         },
         buyArmor: () => {
             dispatch({ type: 'BUY_ARMOR', payload: { 
                 hp: 10
+            }})
+        },
+        closeStore: () => {
+            dispatch({ type: 'STORE_STATUS', payload: {
+                inStore: 'none'
             }})
         }
     }

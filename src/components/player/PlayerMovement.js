@@ -116,11 +116,21 @@ export default function PlayerMovement(player) {
         });
     }
 
-    function dispatchStoreScreen(display) {
+    function dispatchStoreScreen(display, oldPos, direction) {
+        const walkIndex = getWalkIndex();
         store.dispatch({
             type: 'STORE_STATUS',
             payload: {
-                inBattle: display
+                inStore: display
+            }
+        });
+        store.dispatch({
+            type: 'MOVE_PLAYER',
+            payload: {
+                position: oldPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex)
             }
         });
     }
@@ -201,6 +211,11 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
+        }
+        // controls if itemStore tile is called
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {
+            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            dispatchStoreScreen(displayOn, oldPos, direction);
         }
     }
 

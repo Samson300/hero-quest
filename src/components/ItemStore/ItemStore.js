@@ -1,5 +1,6 @@
 import React from 'react';
 import store from '../../config/store';
+import '../ItemStore/styles.css';
 
 class ItemStore extends React.Component {
     constructor(props){
@@ -11,14 +12,6 @@ class ItemStore extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        if (props.monsterHP <= 0) {
-            props.killedMonster();
-            props.battleOff();
-        };
-        if (props.exp >= 100) {
-            props.levelUp();
-            props.battleOn();
-        };
         // if (props.inBattle === 'flex') {
         //     props.battleOn();
         // }
@@ -27,31 +20,15 @@ class ItemStore extends React.Component {
 
     render() {
         return (
-            <div style={{display: this.props.inBattle, flexDirection: 'column'}}>
-                <div className="BattleScreen" ></div>
-                <div className="PlayerHealth">
-                    HP: {this.props.hp}
-                    <br />
-                    MonsterHP: {this.props.monsterHP}
-                    <br />
-                    Exp: {this.props.exp}
-                    <br />
-                    Gold: {this.props.gold}
-                    <br />
-                    Level: {this.props.lvl}
-                </div>
-                <div style={{marginTop: '-85px', display: this.props.inBattle}} >
-                    <button onClick={this.battleFunctions}>ATTACK</button>
-                    {/* <button onClick={this.props.killedMonster}>WIN</button> */}
+            <div style={{display: this.props.inStore, flexDirection: 'column'}}>
+                <div className="ItemStoreScreen"></div>
+                <div>
+                    <button onClick={this.props.buySword}>Buy Sword (+5 attack)</button>
+                    <button onClick={this.props.buyArmor}>Buy Armor (+10 HP)</button>
+                    <button onClick={this.props.closeStore}>Close Store</button>
                 </div>
             </div>
         )
-    }
-    battleFunctions = () => {
-        this.props.monsterAttack();
-        this.props.playerAttack();
-        this.props.battleOn();
-        this.props.battleOff();
     }
 }
 
