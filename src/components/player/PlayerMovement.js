@@ -116,7 +116,7 @@ export default function PlayerMovement(player) {
         });
     }
 
-    function dispatchStoreScreen(display, oldPos, direction) {
+    function dispatchStoreScreenAndMoveNowhere(display, oldPos, direction) {
         const walkIndex = getWalkIndex();
         store.dispatch({
             type: 'STORE_STATUS',
@@ -131,6 +131,15 @@ export default function PlayerMovement(player) {
                 direction,
                 walkIndex,
                 spriteLocation: getSpriteLocation(direction, walkIndex)
+            }
+        });
+    }
+
+    function dispatchStoreScreenOnly(display) {
+        store.dispatch({
+            type: 'STORE_STATUS',
+            payload: {
+                inStore: display
             }
         });
     }
@@ -191,7 +200,7 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
-            dispatchBattleScreen(displayOff);
+            dispatchStoreScreenOnly(displayOff);
         }
         // dungeon to wilderness
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
@@ -242,7 +251,7 @@ export default function PlayerMovement(player) {
         // town movement, if tile 13(store) is attempted, dispatch store action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
-            dispatchStoreScreen(displayOn, oldPos, direction);
+            dispatchStoreScreenAndMoveNowhere(displayOn, oldPos, direction);
         }
     }
 
