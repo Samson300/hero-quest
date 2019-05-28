@@ -1,6 +1,6 @@
 .tile {
     display: inline-flex;
-    background-color: green;
+    background-color: rgb(2, 71, 2);
 }
 
 .fountain {
@@ -30,13 +30,13 @@
     background-image: url('../../styles/Dungeon_Crawl_images/church_0.png')
 }
 
-.grass {
-    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
+.stoneEntrance {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/cobble_blood_1_old.png');
     background-position: 0px 0px
 }
 
 .bigDoor {
-    background-image: url('../../styles/Dungeon_Crawl_images/runed_door.png');
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/enter_dis.png');
     background-position: -64px -32px
 }
 
@@ -55,17 +55,62 @@
     background-position: -96px -64px
 }
 
+.grassEdgeLeft {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_west_new.png');
+    background-position: 0px 0px
+}
+
+.grassEdgeRight {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_east_new.png');
+    background-position: 0px 0px
+}
+
+.grassMiddle {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_full_new.png');
+    background-position: 0px 0px
+}
+.grassBottom {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_south_new.png');
+    background-position: 0px 0px
+}
+.grassBottomLeft {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_southwest_new.png');
+    background-position: 0px 0px
+}
+.grassBottomRight {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_southeast_new.png');
+    background-position: 0px 0px
+}
+.grassTop {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_north_new.png');
+    background-position: 0px 0px
+}
+.grassTopRight {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_northeast_new.png');
+    background-position: 0px 0px
+}
+.grassTopLeft {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_northwest_new.png');
+    background-position: 0px 0px
+}
+.plainTree {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-tree/mangrove_1.png');
+    background-position: 0px 0px
+}
+
+
+
 /* to get a middle sprite for grass from sprite sheet
 just calculate the x and y px that would grab that from sheet
 you dont have to just move in 32s pick any numbers that view ~middle of the 4 grass boxs */
 .moreGrass5 {
-    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_0_new.png');
     background-position: -96px 0px
 }
 
 .battleTrigger {
     background-image: url('../../styles/HeroSprites/Characters/Objects.png');
-    background-position: left top;
+    background-position: 0px -1px;
 }
 
 .battleTile {
@@ -73,8 +118,14 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
     background-color: transparent;
 }
 
+.townTileLeft {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/gate_closed_left.png');
+}
 .townTile {
-    background-image: url('../../styles/HeroSprites/Characters/Objects.png');
+    background-image: url('../../styles/Dungeon_Crawl_images/town/gate_closed_middle.png');
+}
+.townTileRight {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/gate_closed_right.png');
 }
 
 .healer {
@@ -94,7 +145,8 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
 }
 
 .flame {
-    background-image: url('../../styles/Dungeon_Crawl_images/altar_makhleb_flame_1.png')
+    background-image: url('../../styles/Dungeon_Crawl_images/altar_makhleb_flame_1.png');
+    background-color: rgb(54, 54, 54);
 }
 
 .itemStore {
@@ -115,4 +167,9 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
 .caveLairEntrance {
     background-image: url('../../styles/Dungeon_Crawl_images/enter_lair.png');
     background-position: left top;
+}
+
+.dungeonEntranceWall {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/catacombs_0.png');
+    background-position: 0px 0px;
 }
