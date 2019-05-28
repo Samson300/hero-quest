@@ -27,7 +27,8 @@ const initialState = {
 
     playerLevel: 1,
     playerExp: 0,
-    gold: 0
+    gold: 0,
+    inventory: []
 }
 
 // Manages how we are changing the state
@@ -80,9 +81,11 @@ const playerReducer = (state=initialState, action) => {
             inBattle: action.payload.inBattle
         }
         case "BUY_SWORD":
+            console.log(state.inventory)
             return {
             ...state,
-            playerAttack: state.playerAttack + action.payload.playerAttack
+            playerAttack: state.playerAttack + action.payload.playerAttack,
+            inventory: state.inventory.concat(action.payload.name)
         }
         case "BUY_ARMOR":
             return {
@@ -90,6 +93,11 @@ const playerReducer = (state=initialState, action) => {
             maxPlayerHP: state.maxPlayerHP + action.payload.hp
         }
         case "STORE_STATUS":
+                return {
+                ...state,
+                inStore: action.payload.inStore
+            }
+        case "ADD_ITEM_TO_INVENTORY":
                 return {
                 ...state,
                 inStore: action.payload.inStore
