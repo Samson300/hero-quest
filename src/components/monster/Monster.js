@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import monsterImage from '../../styles/Dungeon_Crawl_images/deep_troll_berserker.png'
 
 
 class Monster extends React.Component {
@@ -10,15 +11,15 @@ class Monster extends React.Component {
     render() {
         return (
             <div
-            // style={{
-            //     position: 'absolute',
-            //     top: this.props.position[1],
-            //     left: this.props.position[0],
-            //     backgroundImage: `url('${walkSprite}')`,
-            //     backgroundPosition: this.props.spriteLocation, // This is what displays the characters; currently, displaying incorrectly initally
-            //     width: '32px',
-            //     height: '32px'
-            // }}
+            style={{
+                position: 'absolute',
+                display: this.props.displayMonster,
+                top: 250,
+                left: 440,
+                backgroundImage: `url('${monsterImage}')`,
+                width: '32px',
+                height: '32px'
+            }}
             ></div>
         )
     }
