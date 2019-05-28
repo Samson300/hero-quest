@@ -14,7 +14,7 @@ class Monster extends React.Component {
             style={{
                 position: 'absolute',
                 display: this.props.displayMonster,
-                top: 250,
+                top: 290,
                 left: 440,
                 backgroundImage: `url('${monsterImage}')`,
                 width: '32px',
