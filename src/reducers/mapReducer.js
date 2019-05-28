@@ -6,6 +6,14 @@ const initialState = {
 const mapReducer = (state=initialState, action) => {
     switch(action.type) {
         // this represents the case for our first map
+        case "BATTLE_STATUS":
+            if(action.payload.tiles) {
+                return {
+                    tiles: action.payload.tiles
+                }
+            } else {
+                return state
+            }
         case "ADD_TILES":
             return {
                 ...action.payload
