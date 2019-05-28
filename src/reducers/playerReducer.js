@@ -80,6 +80,7 @@ const playerReducer = (state=initialState, action) => {
             // ...action.payload,
             inBattle: action.payload.inBattle
         }
+        // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)
             return {
@@ -90,13 +91,15 @@ const playerReducer = (state=initialState, action) => {
         case "BUY_ARMOR":
             return {
             ...state,
-            maxPlayerHP: state.maxPlayerHP + action.payload.hp
+            maxPlayerHP: state.maxPlayerHP + action.payload.hp,
+            inventory: state.inventory.concat(action.payload.name)
         }
         case "STORE_STATUS":
                 return {
                 ...state,
                 inStore: action.payload.inStore
             }
+            // combine all buying functions into this one
         case "ADD_ITEM_TO_INVENTORY":
                 return {
                 ...state,
