@@ -106,6 +106,21 @@ export default function PlayerMovement(player) {
             }
         });
     }
+
+    // Records previous location
+    function dispatchRecordLastLocation(direction, newMapPos) {
+        const walkIndex = getWalkIndex();
+        store.dispatch({
+            type: "LAST_LOCATION",
+            payload: {
+                position: newMapPos,
+                direction,
+                walkIndex,
+                spriteLocation: getSpriteLocation(direction, walkIndex)
+            }
+        });
+    }
+
     // display battleScreen function, pass in either 'flex' or 'none', will control whether battle screen is actually displayed or not
     function dispatchBattleScreen(display) {
         store.dispatch({
@@ -210,6 +225,7 @@ export default function PlayerMovement(player) {
         // town movement, if it isnt a 5(town exit) then just move character
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) !== 5)
             dispatchMove(direction, newPos);
+            dispatchRecordLastLocation(direction, oldPos);
         // to wilderness from battle or town
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
