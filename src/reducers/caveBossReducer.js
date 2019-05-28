@@ -2,6 +2,7 @@ const initialState = {
     caveBossHP: 50,
     caveBossHPInitial: 500,
     caveBossAttack: 50,
+    isListening: true,
     // playerAttack is needed to damage the monster and have an incrementing value
     // as the player levels up.
     playerAttack: 10,
@@ -64,7 +65,8 @@ const caveBossReducer = (state=initialState, action) => {
                 return {
                     ...state,
                     ...action.payload,
-                    backgroundPosition: action.payload.backgroundPosition
+                    backgroundPosition: action.payload.backgroundPosition,
+                    
                 }
         default:
             return state;

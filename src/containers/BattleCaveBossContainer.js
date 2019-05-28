@@ -58,13 +58,15 @@ const mapDispatchToProps = (dispatch) => {
         battleOn: () => {
             dispatch({ type: 'BATTLE_STATUS_CAVE_BOSS', payload: {
                 inBattleCaveBoss: 'flex',
-                tiles: battleTiles
+                tiles: battleTiles,
+                
             }})
         },
         battleOff: () => {
             dispatch({ type: 'BATTLE_STATUS_CAVE_BOSS', payload: {
                 inBattleCaveBoss: 'none',
-                tiles: townTiles
+                tiles: townTiles,
+                isListening: true
             }})
         },
         battleDoneLocation: (position) => {
