@@ -216,6 +216,7 @@ export default function PlayerMovement(player) {
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
             dispatchStoreScreenOnly(displayOff);
             dispatchCaveBossDisplay(displayOff);
+            dispatchBattleScreen(displayOff);
         }
         // dungeon to wilderness
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
@@ -253,8 +254,8 @@ export default function PlayerMovement(player) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             console.log("moving to town")
             dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
-            dispatchStoreScreenOnly(displayOff);
             dispatchCaveBossDisplay(displayOff);
+            dispatchBattleScreen(displayOff);
         }
         // town movement, if tile 6(healer) is attempted, dispatch healer action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 6) {
