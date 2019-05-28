@@ -19,7 +19,7 @@ function getTileSprite(type) {
         case 3:
             return 'chest'
         case 4:
-            return 'grass'
+            return 'stoneEntrance'
         case 5:
             return 'townExit'
         case 6:
@@ -44,8 +44,12 @@ function getTileSprite(type) {
             return 'caveLairEntrance'
         case 16:
             return 'caveBossFight'
+        case 18:
+            return 'townTileLeft'
         case 19:
-            return 'towntile'
+            return 'townTile'
+        case 20:
+            return 'townTileRight'
         case 21:
             return 'stoneWall'
         case 22:
@@ -61,7 +65,28 @@ function getTileSprite(type) {
         case 27:
             return 'flame'
         case 28:
-            return 'battleImpassable'
+            return 'grassEdgeLeft'
+        case 29:
+            return 'grassEdgeRight'
+        case 30:
+            return 'grassMiddle'
+        case 31:
+            return 'grassBottom'
+        case 32:
+            return 'grassBottomLeft'
+        case 33:
+            return 'grassBottomRight'
+        case 34:
+            return 'grassTop'
+        case 35:
+            return 'grassTopRight'
+        case 36:
+            return 'grassTopLeft'
+        case 37:
+            return 'plainTree'
+        case 38:
+            return 'dungeonEntranceWall'
+
         // case 25:
         //     return 'healer'
     }
