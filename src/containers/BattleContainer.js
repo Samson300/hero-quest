@@ -11,17 +11,8 @@ const mapStateToProps = (state) => {
         exp: state.player.playerExp,
         gold: state.player.gold,
         lvl: state.player.playerLevel,
-        // playerAtk will provide the value of increasing the player's attack power
-        // from BattleContainer to playerReducer.
         playerAtk: state.player.playerAttack,
         inBattle: state.player.inBattle
-
-        // I thought monsterAtk will be needed to damage the player,
-        // but it is actually unnecessary.
-        // monsterAtk: state.monster.monsterAttack
-
-        // *** PLEASE DELETE MY COMMENTS AFTER REVIEWING, OR YOU CAN LEAVE THEM
-        // TO UNDERSTAND WHAT IS GOING ON. ****
     }
 }
 
