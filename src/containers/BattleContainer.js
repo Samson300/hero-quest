@@ -64,7 +64,9 @@ const mapDispatchToProps = (dispatch) => {
         battleOff: () => {
             dispatch({ type: 'BATTLE_STATUS', payload: {
                 inBattle: 'none',
-                tiles: wildernessTiles
+                tiles: wildernessTiles,
+                isListening: true,
+                displayMonster: 'none'
             }})
         },
         battleDoneLocation: (position) => {

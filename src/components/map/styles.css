@@ -173,3 +173,7 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
     background-image: url('../../styles/Dungeon_Crawl_images/dungeon/catacombs_0.png');
     background-position: 0px 0px;
 }
+.battleImpassable {
+    display: inline-flex;
+    background-color: transparent;
+}

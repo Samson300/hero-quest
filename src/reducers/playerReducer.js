@@ -1,3 +1,5 @@
+import { statement } from "@babel/template";
+
 const initialState = {
     position: [0,0],
     spriteLocation: 'center top',
@@ -6,6 +8,7 @@ const initialState = {
     inBattle: 'none',
     inBattleCaveBoss: 'none',
     inStore: 'none',
+    isListening: true,
 
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
@@ -28,7 +31,7 @@ const initialState = {
 
     playerLevel: 1,
     playerExp: 0,
-    gold: 0,
+    gold: 10,
     inventory: []
 }
 
@@ -52,12 +55,14 @@ const playerReducer = (state=initialState, action) => {
                 ...state,
                 playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold,
+                isListening: true
             }
         case 'BATTLE_END_CAVE_BOSS':
             return {
                 ...state,
                 playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold,
+                isListening: true
             }
         case 'LEVEL_UP':
             return {
@@ -67,7 +72,8 @@ const playerReducer = (state=initialState, action) => {
                 // maxPlayerHP is the max HP after leveling up.
                 maxPlayerHP: state.basePlayerHP + state.addedHP,
                 playerExp: 0,
-                playerLevel: state.playerLevel + action.payload.lvl
+                playerLevel: state.playerLevel + action.payload.lvl,
+                playerAttack: state.playerAttack + action.payload.playerAtk
             }
         case 'LEVEL_UP_CAVE_BOSS':
             return {
@@ -95,12 +101,15 @@ const playerReducer = (state=initialState, action) => {
             return {
             ...state,
             // ...action.payload,
-            inBattle: action.payload.inBattle
+            inBattle: action.payload.inBattle,
+            isListening: action.payload.isListening
+            
         }
         case "BATTLE_STATUS_CAVE_BOSS":
             return {
                 ...state,
-                inBattleCaveBoss: action.payload.inBattleCaveBoss
+                inBattleCaveBoss: action.payload.inBattleCaveBoss,
+                isListening: action.payload.isListening
             }
         case "CAVE_BOSS_ATTACK":
             return {
@@ -110,11 +119,18 @@ const playerReducer = (state=initialState, action) => {
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)
-            return {
-            ...state,
-            playerAttack: state.playerAttack + action.payload.playerAttack,
-            inventory: state.inventory.concat(action.payload.name)
-        }
+            if (state.gold >= 5) {
+                return {
+                    ...state,
+                    playerAttack: state.playerAttack + action.payload.playerAttack,
+                    inventory: state.inventory.concat(action.payload.name),
+                    gold: state.gold - action.payload.gold
+                }
+            } else {
+                return {
+                    ...state,
+                }
+            }
         case "BUY_ARMOR":
             return {
             ...state,

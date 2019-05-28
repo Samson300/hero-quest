@@ -42,8 +42,8 @@ const mapDispatchToProps = (dispatch) => {
                 gold: 10,
             }})
         },
-        levelUpCaveBoss: () => {
-            dispatch({ type: 'LEVEL_UP_CAVE_BOSS', payload: {
+        levelUp: () => {
+            dispatch({ type: 'LEVEL_UP', payload: {
                 lvl: 1,
 
                 // Player's attack will increase by 10 after leveling up.
@@ -58,13 +58,15 @@ const mapDispatchToProps = (dispatch) => {
         battleOn: () => {
             dispatch({ type: 'BATTLE_STATUS_CAVE_BOSS', payload: {
                 inBattleCaveBoss: 'flex',
-                tiles: battleTiles
+                tiles: battleTiles,
+                
             }})
         },
         battleOff: () => {
             dispatch({ type: 'BATTLE_STATUS_CAVE_BOSS', payload: {
                 inBattleCaveBoss: 'none',
-                tiles: townTiles
+                tiles: townTiles,
+                isListening: true
             }})
         },
         battleDoneLocation: (position) => {
