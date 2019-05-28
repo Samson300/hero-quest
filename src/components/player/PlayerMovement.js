@@ -131,6 +131,15 @@ export default function PlayerMovement(player) {
         });
     }
 
+    function dispatchBattleCaveBossScreen(display) {
+        store.dispatch({
+            type: 'BATTLE_STATUS_CAVE_BOSS',
+            payload: {
+                inBattleCaveBoss: display
+            }
+        });
+    }
+
     function dispatchStoreScreenAndMoveNowhere(display, oldPos, direction) {
         const walkIndex = getWalkIndex();
         store.dispatch({
@@ -291,7 +300,7 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 16) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
-            dispatchBattleScreen(displayFlexOn);
+            dispatchBattleCaveBossScreen(displayFlexOn)
             dispatchCaveBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
         }
     }
