@@ -1,3 +1,5 @@
+import { statement } from "@babel/template";
+
 const initialState = {
     position: [0,0],
     spriteLocation: 'center top',
@@ -70,7 +72,8 @@ const playerReducer = (state=initialState, action) => {
                 // maxPlayerHP is the max HP after leveling up.
                 maxPlayerHP: state.basePlayerHP + state.addedHP,
                 playerExp: 0,
-                playerLevel: state.playerLevel + action.payload.lvl
+                playerLevel: state.playerLevel + action.payload.lvl,
+                playerAttack: state.playerAttack + action.payload.playerAtk
             }
         case 'LEVEL_UP_CAVE_BOSS':
             return {
@@ -116,7 +119,7 @@ const playerReducer = (state=initialState, action) => {
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)
-            if (state.gold >= 10) {
+            if (state.gold >= 5) {
                 return {
                     ...state,
                     playerAttack: state.playerAttack + action.payload.playerAttack,
@@ -124,7 +127,9 @@ const playerReducer = (state=initialState, action) => {
                     gold: state.gold - action.payload.gold
                 }
             } else {
-                return {...state}
+                return {
+                    ...state,
+                }
             }
         case "BUY_ARMOR":
             return {

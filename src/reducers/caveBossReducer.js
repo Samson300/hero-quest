@@ -10,7 +10,8 @@ const initialState = {
     bossDisplay: 'none',
     backgroundPosition: 'left top',
     top: 20,
-    left: 260
+    left: 260,
+    gold: 10
 }
 
 const caveBossReducer = (state=initialState, action) => {
@@ -22,11 +23,19 @@ const caveBossReducer = (state=initialState, action) => {
                 // initialState will provide the value to damage the monster.
                 caveBossHP: state.caveBossHP - state.playerAttack
             };
+        case 'BATTLE_END':
+            return {
+                ...state,
+                gold: state.gold + action.payload.gold
+            }
+        // After beating the Boss, this case will possibly only increment the player's stats in this reducer,
+        // and not in the other reducers (monster, dungeon, player)
         case 'BATTLE_END_CAVE_BOSS':
             return {
                 ...state,
                 caveBossHP: state.caveBossHPInitial,
                 bossDisplay: 'none',
+                gold: state.gold + action.payload.gold
             }
         // The player's attack will increase as the player levels up.
         case 'LEVEL_UP':
@@ -35,10 +44,17 @@ const caveBossReducer = (state=initialState, action) => {
             playerAttack: state.playerAttack + action.payload.playerAtk
         }
         // the player's attack will increase as player buys swords
-        case 'BUY_SWORD':
-            return {
-                ...state,
-                playerAttack: state.playerAttack + action.payload.playerAttack
+        case "BUY_SWORD":
+            if (state.gold >= 5) {
+                return {
+                    ...state,
+                    playerAttack: state.playerAttack + action.payload.playerAttack,
+                    gold: state.gold - action.payload.gold
+                }
+            } else {
+                return {
+                    ...state,
+                }
             }
         case 'DISPLAY_CAVE_BOSS':
             return {
