@@ -1,5 +1,5 @@
 const initialState = {
-    caveBossHP: 500,
+    caveBossHP: 50,
     caveBossHPInitial: 500,
     caveBossAttack: 50,
     // playerAttack is needed to damage the monster and have an incrementing value
@@ -14,20 +14,21 @@ const initialState = {
 
 const caveBossReducer = (state=initialState, action) => {
     switch(action.type) {
-        case 'PLAYER_ATTACK':
+        case 'PLAYER_ATTACK_CAVE_BOSS':
             return {
                 ...state,
                 // Instead of action.payload.dmg, state.playerAttack from the monsterReducer's
                 // initialState will provide the value to damage the monster.
                 caveBossHP: state.caveBossHP - state.playerAttack
             };
-        case 'BATTLE_END':
+        case 'BATTLE_END_CAVE_BOSS':
             return {
                 ...state,
-                caveBossHP: state.caveBossHPInitial
+                caveBossHP: state.caveBossHPInitial,
+                bossDisplay: 'none',
             }
         // The player's attack will increase as the player levels up.
-        case 'LEVEL_UP':
+        case 'LEVEL_UP_CAVE_BOSS':
         return {
             ...state,
             playerAttack: state.playerAttack + action.payload.playerAtk

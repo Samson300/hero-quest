@@ -1,3 +1,5 @@
+import { townTiles } from "../config/constants";
+
 const initialState = {
     tiles: [],
 }
@@ -13,6 +15,10 @@ const mapReducer = (state=initialState, action) => {
                 }
             } else {
                 return state
+            }
+        case "BATTLE_END_CAVE_BOSS":
+            return {
+                tiles: townTiles
             }
         case "ADD_TILES":
             return {

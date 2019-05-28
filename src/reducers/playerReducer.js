@@ -4,6 +4,7 @@ const initialState = {
     direction: 'SOUTH',
     walkIndex: 0,
     inBattle: 'none',
+    inBattleCaveBoss: 'none',
     inStore: 'none',
 
     // basePlayerHP will be constant in order for the HP to increment
@@ -52,7 +53,23 @@ const playerReducer = (state=initialState, action) => {
                 playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold,
             }
+        case 'BATTLE_END_CAVE_BOSS':
+            return {
+                ...state,
+                playerExp: state.playerExp + action.payload.exp,
+                gold: state.gold + action.payload.gold,
+            }
         case 'LEVEL_UP':
+            return {
+                ...state,
+                // addedHP will be added by the hp from BattleContainer's action.payload.hp.
+                addedHP: state.addedHP + action.payload.hp,
+                // maxPlayerHP is the max HP after leveling up.
+                maxPlayerHP: state.basePlayerHP + state.addedHP,
+                playerExp: 0,
+                playerLevel: state.playerLevel + action.payload.lvl
+            }
+        case 'LEVEL_UP_CAVE_BOSS':
             return {
                 ...state,
                 // addedHP will be added by the hp from BattleContainer's action.payload.hp.
@@ -80,6 +97,16 @@ const playerReducer = (state=initialState, action) => {
             // ...action.payload,
             inBattle: action.payload.inBattle
         }
+        case "BATTLE_STATUS_CAVE_BOSS":
+            return {
+                ...state,
+                inBattleCaveBoss: action.payload.inBattleCaveBoss
+            }
+        case "CAVE_BOSS_ATTACK":
+            return {
+                ...state,
+                maxPlayerHP: state.maxPlayerHP - action.payload.caveBossAttack
+            }
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)
