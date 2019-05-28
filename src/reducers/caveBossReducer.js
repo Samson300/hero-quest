@@ -28,7 +28,7 @@ const caveBossReducer = (state=initialState, action) => {
                 bossDisplay: 'none',
             }
         // The player's attack will increase as the player levels up.
-        case 'LEVEL_UP_CAVE_BOSS':
+        case 'LEVEL_UP':
         return {
             ...state,
             playerAttack: state.playerAttack + action.payload.playerAtk

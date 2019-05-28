@@ -42,8 +42,8 @@ const mapDispatchToProps = (dispatch) => {
                 gold: 10,
             }})
         },
-        levelUpCaveBoss: () => {
-            dispatch({ type: 'LEVEL_UP_CAVE_BOSS', payload: {
+        levelUp: () => {
+            dispatch({ type: 'LEVEL_UP', payload: {
                 lvl: 1,
 
                 // Player's attack will increase by 10 after leveling up.

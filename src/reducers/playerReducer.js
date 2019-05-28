@@ -28,7 +28,7 @@ const initialState = {
 
     playerLevel: 1,
     playerExp: 0,
-    gold: 0,
+    gold: 10,
     inventory: []
 }
 
@@ -110,11 +110,16 @@ const playerReducer = (state=initialState, action) => {
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)
-            return {
-            ...state,
-            playerAttack: state.playerAttack + action.payload.playerAttack,
-            inventory: state.inventory.concat(action.payload.name)
-        }
+            if (state.gold >= 10) {
+                return {
+                    ...state,
+                    playerAttack: state.playerAttack + action.payload.playerAttack,
+                    inventory: state.inventory.concat(action.payload.name),
+                    gold: state.gold - action.payload.gold
+                }
+            } else {
+                return {...state}
+            }
         case "BUY_ARMOR":
             return {
             ...state,

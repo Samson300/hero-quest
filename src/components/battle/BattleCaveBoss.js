@@ -19,7 +19,7 @@ class BattleCaveBoss extends React.Component {
         // if monster is above 0 return same state, but if exp greater 100 level up return other state same
         // if monster hp ever is 0 or lower or player hp 0 or lower battleOff   
         if (props.exp >= 100) {
-                props.levelUpCaveBoss();
+                props.levelUp();
                 // props.battleOn();
             }
         if (props.caveBossHP <= 0) {
