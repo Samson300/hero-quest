@@ -60,6 +60,8 @@ function getTileSprite(type) {
             return 'dungeonFountain'
         case 27:
             return 'flame'
+        case 28:
+            return 'battleImpassable'
         // case 25:
         //     return 'healer'
     }

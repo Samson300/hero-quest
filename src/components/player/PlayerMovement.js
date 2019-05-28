@@ -102,7 +102,7 @@ export default function PlayerMovement(player) {
                 position: newMapPos,
                 direction,
                 walkIndex,
-                spriteLocation: getSpriteLocation(direction, walkIndex)
+                spriteLocation: getSpriteLocation(direction, walkIndex),
             }
         });
     }
@@ -228,6 +228,8 @@ export default function PlayerMovement(player) {
         const caveSecondLevelStart = getNewPosition([0, 576], direction);
         let displayFlexOn = 'flex';
         let displayOff = 'none';
+        const isListeningOn = true;
+        const isListeningOff =false;
         // console.log(basePlayerHP);
 
         console.log(`look at me ${newPos}`);
@@ -240,8 +242,10 @@ export default function PlayerMovement(player) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
             dispatchStoreScreenOnly(displayOff);
-            dispatchCaveBossDisplay(displayOff);
-            dispatchBattleScreen(displayOff);
+            // dispatchCaveBossDisplay(displayOff);
+            // dispatchBattleScreen(displayOff);
+
+
         }
         // dungeon to wilderness
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
@@ -306,9 +310,11 @@ export default function PlayerMovement(player) {
     }
 
 // Listens for Up, Down, Left, Right on KEYDOWN events based on keyCode
+    
     function handleKeyDown(e) {
+        const isListening = store.getState().player.isListening
         e.preventDefault()
-        
+        if(isListening) {
         switch(e.keyCode) {
             case 37:
                 return attemptMove('WEST')
@@ -320,6 +326,7 @@ export default function PlayerMovement(player) {
                 return attemptMove('SOUTH')
             default:
                 console.log(e.keyCode)
+            }
         }
     }
 

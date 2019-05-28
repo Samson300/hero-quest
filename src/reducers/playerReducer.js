@@ -6,6 +6,7 @@ const initialState = {
     inBattle: 'none',
     inBattleCaveBoss: 'none',
     inStore: 'none',
+    isListening: true,
 
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
@@ -52,12 +53,14 @@ const playerReducer = (state=initialState, action) => {
                 ...state,
                 playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold,
+                isListening: true
             }
         case 'BATTLE_END_CAVE_BOSS':
             return {
                 ...state,
                 playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold,
+                isListening: true
             }
         case 'LEVEL_UP':
             return {
@@ -95,12 +98,15 @@ const playerReducer = (state=initialState, action) => {
             return {
             ...state,
             // ...action.payload,
-            inBattle: action.payload.inBattle
+            inBattle: action.payload.inBattle,
+            isListening: action.payload.isListening
+            
         }
         case "BATTLE_STATUS_CAVE_BOSS":
             return {
                 ...state,
-                inBattleCaveBoss: action.payload.inBattleCaveBoss
+                inBattleCaveBoss: action.payload.inBattleCaveBoss,
+                isListening: action.payload.isListening
             }
         case "CAVE_BOSS_ATTACK":
             return {
