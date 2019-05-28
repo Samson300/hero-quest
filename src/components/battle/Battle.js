@@ -25,6 +25,7 @@ class Battle extends React.Component {
         if (props.monsterHP <= 0) {
             props.killedMonster();
             props.battleOff();
+            props.battleDoneLocation(props.position);
             // Change Map to previous Map with current position
         };
 

@@ -5,12 +5,14 @@ import mapReducer from '../reducers/mapReducer';
 import battleReducer from '../reducers/battleReducer';
 import caveBossReducer from '../reducers/caveBossReducer';
 import dungeonBossReducer from '../reducers/dungeonBossReducer';
+import lastLocationReducer from '../reducers/lastLocationReducer';
 
 const FREQUENCY = 2000;
 const LS_KEY = 'hero-quest';
 
 const rootReducer = combineReducers({
     player: playerReducer,
+    lastLocation: lastLocationReducer,
     map: mapReducer,
     battle: battleReducer,
     monster: monsterReducer,

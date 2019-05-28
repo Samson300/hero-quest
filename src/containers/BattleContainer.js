@@ -12,7 +12,11 @@ const mapStateToProps = (state) => {
         gold: state.player.gold,
         lvl: state.player.playerLevel,
         playerAtk: state.player.playerAttack,
-        inBattle: state.player.inBattle
+        inBattle: state.player.inBattle,
+        position: state.lastLocation.position,
+        spriteLocation: state.lastLocation.spriteLocation,
+        direction: state.lastLocation.direction,
+        walkIndex: state.lastLocation.walkIndex
     }
 }
 
@@ -63,6 +67,14 @@ const mapDispatchToProps = (dispatch) => {
                 tiles: wildernessTiles
             }})
         },
+        battleDoneLocation: (position) => {
+            dispatch({ type: 'MOVE_PLAYER', payload: {
+                position
+                // spriteLocation: state.lastLocation.spriteLocation,
+                // direction: state.lastLocation.direction,
+                // walkIndex: state.lastLocation.walkIndex
+            }})
+        }
     }
 } 
 
