@@ -59,8 +59,8 @@ class BattleCaveBoss extends React.Component {
         )
     }
     caveBattleFunctions = () => {
-        this.props.caveBossAttack();
-        this.props.playerAttackCaveBoss();
+        this.props.caveBossAttack(this.props.caveBossAtk);
+        this.props.playerAttackCaveBoss(this.props.playerAtk);
     }
 
 }

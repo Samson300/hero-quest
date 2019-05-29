@@ -7,7 +7,7 @@ const initialState = {
 
     // playerAttack is needed to damage the monster and have an incrementing value
     // as the player levels up.
-    playerAttack: 10,
+    // playerAttack: 10,
     monsterAttack: 10,
     monsterAddedHP: 0,
     monsterAddedAttack: 0,
@@ -22,11 +22,13 @@ const initialState = {
 const monsterReducer = (state=initialState, action) => {
     switch(action.type) {
         case 'PLAYER_ATTACK':
+        console.log(state.monsterHP);
+        console.log(action.payload.playerAtk);
             return {
                 ...state,
                 // Instead of action.payload.dmg, state.playerAttack from the monsterReducer's
                 // initialState will provide the value to damage the monster.
-                monsterHP: state.monsterHP - state.playerAttack
+                monsterHP: state.monsterHP - action.payload.playerAtk
             };
         case 'BATTLE_END':
             return {

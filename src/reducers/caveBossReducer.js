@@ -22,7 +22,7 @@ const caveBossReducer = (state=initialState, action) => {
                 ...state,
                 // Instead of action.payload.dmg, state.playerAttack from the monsterReducer's
                 // initialState will provide the value to damage the monster.
-                caveBossHP: state.caveBossHP - state.playerAttack
+                caveBossHP: state.caveBossHP - action.payload.playerAtk
             };
         case 'BATTLE_END':
             return {

@@ -25,7 +25,7 @@ const initialState = {
     // playerAttack: 20,
 
     // monsterAttack is needed to damage in order to damage the player.
-    monsterAttack: 10,
+    // monsterAttack: 10,
     // See case 'MONSTER_ATTACK'
 
     playerLevel: 1,
@@ -47,7 +47,7 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...state,
                 // monsterAttack damages the player
-                maxPlayerHP: state.maxPlayerHP - state.monsterAttack
+                maxPlayerHP: state.maxPlayerHP - action.payload.monsterAtk
             }
         case 'BATTLE_END':
             return {
@@ -113,7 +113,7 @@ const playerReducer = (state=initialState, action) => {
         case "CAVE_BOSS_ATTACK":
             return {
                 ...state,
-                maxPlayerHP: state.maxPlayerHP - action.payload.caveBossAttack
+                maxPlayerHP: state.maxPlayerHP - action.payload.caveBossAtk
             }
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":

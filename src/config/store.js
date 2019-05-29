@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
     map: mapReducer,
     monster: monsterReducer,
     caveBoss: caveBossReducer,
-    dungeonBossReducer
+    dungeonBoss: dungeonBossReducer
 });
 
 // const initialState = JSON.parse(localStorage.getItem(LS_KEY)) || {};
