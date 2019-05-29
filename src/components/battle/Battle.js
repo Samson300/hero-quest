@@ -12,12 +12,7 @@ class Battle extends React.Component {
     componentDidMount() {
     }
 
-    static getDerivedStateFromProps(props, state) {
-        // we gotta combine these two statements
-        // if we levelUp we reRender battle screen and levelUp
-        // might just need to put the exp if inside monsterHP
-        // if monster is above 0 return same state, but if exp greater 100 level up return other state same
-        // if monster hp ever is 0 or lower or player hp 0 or lower battleOff   
+    static getDerivedStateFromProps(props, state) { 
         if (props.exp >= 100) {
                 props.levelUp();
                 // props.battleOn();

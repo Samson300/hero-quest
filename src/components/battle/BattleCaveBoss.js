@@ -24,6 +24,7 @@ class BattleCaveBoss extends React.Component {
             }
         if (props.caveBossHP <= 0) {
             props.killedCaveBoss();
+            props.killedMonster();
             props.battleOff();
             props.battleDoneLocation(props.position);
             props.levelUpAllMonsters();

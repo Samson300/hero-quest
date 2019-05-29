@@ -84,9 +84,14 @@ const mapDispatchToProps = (dispatch) => {
                 monsterLevel: 1,
                 monsterHP: 50,
                 monsterAttack: 25
-
             }})
-        }
+        },
+        killedMonster: () => {
+            dispatch({ type: 'BATTLE_END', payload: {
+                exp: 100,
+                gold: 10
+            }})
+        },
     }
 } 
 
