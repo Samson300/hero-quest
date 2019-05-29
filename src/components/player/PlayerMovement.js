@@ -53,7 +53,7 @@ export default function PlayerMovement(player) {
         const x = newPos[0] / SPRITE_SIZE
         const nextTile = tiles[y][x]
         // console.log(nextTile);
-        return nextTile < 20
+        return nextTile < 40
     }
     // make this actually do something again and remove the === and !== in attempt move 
     // so an if statement if nextTile === 5 return nextTile === 5 if nextTile === 6 return nextTile === 6

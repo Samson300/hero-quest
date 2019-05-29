@@ -1,4 +1,3 @@
-import { statement } from "@babel/template";
 
 const initialState = {
     position: [0,0],

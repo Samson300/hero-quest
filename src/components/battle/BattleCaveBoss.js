@@ -8,10 +8,6 @@ class BattleCaveBoss extends React.Component {
         super(props);
     }
     
-
-    componentDidMount() {
-    }
-
     static getDerivedStateFromProps(props, state) {
         // we gotta combine these two statements
         // if we levelUp we reRender battle screen and levelUp
@@ -26,6 +22,7 @@ class BattleCaveBoss extends React.Component {
             props.killedCaveBoss();
             props.battleOff();
             props.battleDoneLocation(props.position);
+            props.levelUpAllMonsters();
             // Change Map to previous Map with current position
         };
 

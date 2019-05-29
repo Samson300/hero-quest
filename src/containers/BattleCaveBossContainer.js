@@ -16,7 +16,9 @@ const mapStateToProps = (state) => {
         position: state.lastLocation.position,
         spriteLocation: state.lastLocation.spriteLocation,
         direction: state.lastLocation.direction,
-        walkIndex: state.lastLocation.walkIndex
+        walkIndex: state.lastLocation.walkIndex,
+        monsterLevel: state.monster.monsterLevel,
+        monsterHP: state.monster.monsterHP
     }
 }
 
@@ -76,7 +78,26 @@ const mapDispatchToProps = (dispatch) => {
                 // direction: state.lastLocation.direction,
                 // walkIndex: state.lastLocation.walkIndex
             }})
-        }
+        },
+        levelUpAllMonsters: () => {
+            dispatch({ type: 'INCREASE_MONSTER_LEVEL', payload: {
+                monsterLevel: 1,
+                monsterHP: 50,
+                monsterAttack: 25,
+                caveBossLevel: 1,
+                caveBossHP: 50,
+                caveBossAttack: 25,
+                monsterLevel: 1,
+                dungeonBossHP: 50,
+                dungeonBossAttack: 25
+            }})
+        },
+        killedMonster: () => {
+            dispatch({ type: 'BATTLE_END', payload: {
+                exp: 100,
+                gold: 10
+            }})
+        },
     }
 } 
 
