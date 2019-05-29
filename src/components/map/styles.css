@@ -1,10 +1,12 @@
+
 .tile {
     display: inline-flex;
     background-color: rgb(2, 71, 2);
 }
 
-.fountain {
-    background-image: url('../../styles/Dungeon_Crawl_images/sparkling_fountain.png')
+.bigDoor {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/enter_dis.png');
+    background-position: -64px -32px
 }
 
 .door {
@@ -15,6 +17,11 @@
 .chest {
     background-image: url('../../styles/HeroSprites/Characters/Objects.png');
     background-position: left top;
+}
+
+.stoneEntrance {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/cobble_blood_1_old.png');
+    background-position: 0px 0px
 }
 
 .townExit {
@@ -30,30 +37,17 @@
     background-image: url('../../styles/Dungeon_Crawl_images/church_0.png')
 }
 
-.stoneEntrance {
-    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/cobble_blood_1_old.png');
-    background-position: 0px 0px
+
+.fountain {
+    background-image: url('../../styles/Dungeon_Crawl_images/sparkling_fountain.png')
 }
 
-.bigDoor {
-    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/enter_dis.png');
-    background-position: -64px -32px
-}
 
 .tree {
     background-image: url('../../styles/Dungeon_Crawl_images/mangrove_3.png');
     background-position: -96px -32px
 }
 
-.moreGrass3 {
-    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
-    background-position: -64px -64px
-}
-
-.moreGrass4 {
-    background-image: url('../../styles/HeroSprites/Tilesets/AH_A2.png');
-    background-position: -96px -64px
-}
 
 .grassEdgeLeft {
     background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_west_new.png');
