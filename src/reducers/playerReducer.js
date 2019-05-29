@@ -6,6 +6,7 @@ const initialState = {
     walkIndex: 0,
     inBattle: 'none',
     inBattleCaveBoss: 'none',
+    inBattleDungeonBoss: 'none',
     inStore: 'none',
     isListening: true,
 
@@ -63,6 +64,13 @@ const playerReducer = (state=initialState, action) => {
                 gold: state.gold + action.payload.gold,
                 isListening: true
             }
+        case 'BATTLE_END_DUNGEON_BOSS':
+                return {
+                    ...state,
+                    playerLevel: state.playerLevel + action.payload.level,
+                    gold: state.gold + action.payload.gold,
+                    isListening: true
+                }
         case 'LEVEL_UP':
             return {
                 ...state,
@@ -115,6 +123,17 @@ const playerReducer = (state=initialState, action) => {
                 ...state,
                 maxPlayerHP: state.maxPlayerHP - action.payload.caveBossAtk
             }
+        case "BATTLE_STATUS_DUNGEON_BOSS":
+            return {
+                ...state,
+                inBattleDungeonBoss: action.payload.inBattleDungeonBoss,
+                isListening: action.payload.isListening
+            }
+        case "DUNGEON_BOSS_ATTACK":
+                return {
+                    ...state,
+                    maxPlayerHP: state.maxPlayerHP - action.payload.dungeonBossAtk
+                }
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)

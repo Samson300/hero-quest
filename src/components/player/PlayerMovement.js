@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles, caveFirstLevel, caveSecondLevel } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles2, caveFirstLevel, caveSecondLevel } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -53,7 +53,7 @@ export default function PlayerMovement(player) {
         const x = newPos[0] / SPRITE_SIZE
         const nextTile = tiles[y][x]
         // console.log(nextTile);
-        return nextTile < 40
+        return nextTile < 61
     }
     // make this actually do something again and remove the === and !== in attempt move 
     // so an if statement if nextTile === 5 return nextTile === 5 if nextTile === 6 return nextTile === 6
@@ -141,6 +141,15 @@ export default function PlayerMovement(player) {
         });
     }
 
+    function dispatchBattleDungeonBossScreen(display) {
+        store.dispatch({
+            type: 'BATTLE_STATUS_DUNGEON_BOSS',
+            payload: {
+                inBattleDungeonBoss: display
+            }
+        })
+    }
+
     function dispatchStoreScreenAndMoveNowhere(display, oldPos, direction) {
         const walkIndex = getWalkIndex();
         store.dispatch({
@@ -192,6 +201,18 @@ export default function PlayerMovement(player) {
     function dispatchCaveBossDisplay(display, position, top, left) {
         store.dispatch({
             type: 'DISPLAY_CAVE_BOSS',
+            payload: {
+                bossDisplay: display,
+                backgroundPosition: position,
+                top,
+                left
+            }
+        });
+    }
+
+    function dispatchDungeonBossDisplay(display, position, top, left) {
+        store.dispatch({
+            type: 'DISPLAY_DUNGEON_BOSS',
             payload: {
                 bossDisplay: display,
                 backgroundPosition: position,
@@ -288,7 +309,8 @@ export default function PlayerMovement(player) {
         // wilderness to dungeon
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
-            dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
+            dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles2);
+            dispatchDungeonBossDisplay(displayFlexOn, 'left top', 512, 512)
         }
         // town movement, if tile 13(store) is attempted, dispatch store action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {
@@ -301,6 +323,20 @@ export default function PlayerMovement(player) {
             dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
             dispatchBattleCaveBossScreen(displayFlexOn)
             dispatchCaveBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
+        }
+        // fight dungeonBoss
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 60) {
+            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
+            dispatchBattleDungeonBossScreen(displayFlexOn)
+            dispatchDungeonBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
+        }
+        // level 1 dungeon to lvl 2
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 15) {
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            console.log("moving cave level 2")
+            dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, caveSecondLevel);
+            dispatchDungeonBossDisplay(displayFlexOn, 'left top', 20, 260);
         }
     }
 
