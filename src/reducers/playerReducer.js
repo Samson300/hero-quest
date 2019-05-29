@@ -6,6 +6,7 @@ const initialState = {
     walkIndex: 0,
     inBattle: 'none',
     inBattleCaveBoss: 'none',
+    inBattleDungeonBoss: 'none',
     inStore: 'none',
     isListening: true,
 
@@ -108,6 +109,12 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...state,
                 inBattleCaveBoss: action.payload.inBattleCaveBoss,
+                isListening: action.payload.isListening
+            }
+        case "BATTLE_STATUS_DUNGEON_BOSS":
+            return {
+                ...state,
+                inBattleDungeonBoss: action.payload.inBattleCaveBoss,
                 isListening: action.payload.isListening
             }
         case "CAVE_BOSS_ATTACK":

@@ -141,6 +141,15 @@ export default function PlayerMovement(player) {
         });
     }
 
+    function dispatchBattleDungeonBossScreen(display) {
+        store.dispatch({
+            type: 'BATTLE_STATUS_DUNGEON_BOSS',
+            payload: {
+                inBattleCaveBoss: display
+            }
+        });
+    }
+
     function dispatchStoreScreenAndMoveNowhere(display, oldPos, direction) {
         const walkIndex = getWalkIndex();
         store.dispatch({
@@ -201,16 +210,17 @@ export default function PlayerMovement(player) {
         });
     }
 
-    // function dispatchCaveBossToBattleScreen() {
-    //     store.dispatch({
-    //         type: 'CAVE_BOSS_BATTLE',
-    //         payload: {
-    //             xPos: 200,
-    //             yPos: 400
-
-    //         }
-    //     })
-    // }
+    function dispatchDungeonBossDisplay(display, position, top, left) {
+        store.dispatch({
+            type: 'DISPLAY_DUNGEON_BOSS',
+            payload: {
+                bossDisplay: display,
+                backgroundPosition: position,
+                top,
+                left
+            }
+        });
+    }
 
 // This tests if the move is possible based on boundaries
 // if the move is valid, calls dispatch move to update the state
@@ -301,6 +311,19 @@ export default function PlayerMovement(player) {
             dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
             dispatchBattleCaveBossScreen(displayFlexOn)
             dispatchCaveBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 30) {
+            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+            dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
+            dispatchBattleDungeonBossScreen(displayFlexOn)
+            dispatchDungeonBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
+        }
+        // dungeon level 1 to level 2
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 15) { // number for dungeon lvl 1 to lvl 2 tile)
+            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+            console.log("moving dungeon level 2")
+            dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, caveSecondLevel);
+            dispatchCaveBossDisplay(displayFlexOn, 'left top', 20, 260);
         }
     }
 

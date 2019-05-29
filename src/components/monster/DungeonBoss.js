@@ -14,10 +14,10 @@ class DungeonBoss extends React.Component {
         return (
             <div
             style={{
-                display: this.props.bossDisplay,
+                display: 'flex',
                 position: 'absolute',
-                top: 200,
-                left: 200,
+                top: dungeonBoss.top,
+                left: dungeonBoss.left,
                 backgroundImage: `url('${DungeonBossImage}')`,
                 width: '32px',
                 height: '32px'
