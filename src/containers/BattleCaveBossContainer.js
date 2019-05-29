@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
         gold: state.player.gold,
         lvl: state.player.playerLevel,
         playerAtk: state.player.playerAttack,
+        caveBossAtk: state.caveBoss.caveBossAttack,
         inBattleCaveBoss: state.player.inBattleCaveBoss,
         position: state.lastLocation.position,
         spriteLocation: state.lastLocation.spriteLocation,
@@ -26,16 +27,16 @@ const mapDispatchToProps = (dispatch) => {
     return {
         // Although monsterAttack has no payload, playerReducer.js will call the dispatch
         // and damage the player.
-        caveBossAttack: () => {
+        caveBossAttack: (caveBossAtk) => {
             dispatch({ type: 'CAVE_BOSS_ATTACK', payload: {
-                caveBossAttack: 50
+                caveBossAtk
             }})
         },
         // Although playerAttack has no payload, playerReducer.js will call the dispatch
         // and damage the player.
-        playerAttackCaveBoss: () => {
+        playerAttackCaveBoss: (playerAtk) => {
             dispatch({ type: 'PLAYER_ATTACK_CAVE_BOSS', payload: { 
-                // playerAtk: 10
+                playerAtk
             }})
         },
         killedCaveBoss: () => {

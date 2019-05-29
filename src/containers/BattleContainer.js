@@ -7,34 +7,35 @@ const mapStateToProps = (state) => {
         // hp will display maxPlayerHp
         hp: state.player.maxPlayerHP,
         addedHP: state.player.addedHP,
-        // monsterHP: state.monster.monsterHP,
+        monsterHP: state.monster.monsterHP,
         exp: state.player.playerExp,
         gold: state.player.gold,
         lvl: state.player.playerLevel,
         playerAtk: state.player.playerAttack,
+        monsterAtk: state.monster.monsterAttack,
         inBattle: state.player.inBattle,
         position: state.lastLocation.position,
         spriteLocation: state.lastLocation.spriteLocation,
         direction: state.lastLocation.direction,
         walkIndex: state.lastLocation.walkIndex,
-        monsterHP: state.monster.monsterHP
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
+    // console.log(this.props.playerAtk);
     return {
         // Although monsterAttack has no payload, playerReducer.js will call the dispatch
         // and damage the player.
-        monsterAttack: () => {
+        monsterAttack: (monsterAtk) => {
             dispatch({ type: 'MONSTER_ATTACK', payload: {
-                // monsterAtk: 5
+                monsterAtk
             }})
         },
         // Although playerAttack has no payload, playerReducer.js will call the dispatch
         // and damage the player.
         playerAttack: (playerAtk) => {
             dispatch({ type: 'PLAYER_ATTACK', payload: { 
-                playerAtk: playerAtk
+                playerAtk
             }})
         },
         killedMonster: () => {

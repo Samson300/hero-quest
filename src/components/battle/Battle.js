@@ -53,17 +53,17 @@ class Battle extends React.Component {
                     Level: {this.props.lvl}
                 </div>
                 <div style={{marginTop: '-85px', display: this.props.inBattle}} >
-                    <button onClick={this.battleFunctions}>ATTACK</button>
+                    <button onClick={this._battleFunctions}>ATTACK</button>
                     {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                 </div>
             </div>
         )
+        
     }
-    battleFunctions = () => {
-        this.props.monsterAttack();
-        this.props.playerAttack();
+    _battleFunctions = () => {
+        this.props.monsterAttack(this.props.monsterAtk);
+        this.props.playerAttack(this.props.playerAtk);
     }
-
 }
 
 export default Battle;
