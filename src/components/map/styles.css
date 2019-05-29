@@ -124,6 +124,17 @@
     background-position: 0px 0px
 }
 
+.lavaFloor {
+    background-image: url('../../styles/lava-floor.gif');
+}
+
+.caveFloor {
+    background-image: url('../../styles/Dungeon_Crawl_images/cave/snake-c_0.png');
+}
+
+.caveWall {
+    background-image: url('../../styles/Dungeon_Crawl_images/cave/brick_brown-vines_1.png');
+}
 
 
 
@@ -194,7 +205,7 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
 }
 
 .caveLairEntrance {
-    background-image: url('../../styles/Dungeon_Crawl_images/enter_lair.png');
+    background-image: url('../../styles/Dungeon_Crawl_images/cave/rock_stairs_down.png');
     background-position: left top;
 }
 
