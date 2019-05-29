@@ -39,7 +39,7 @@
 
 
 .fountain {
-    background-image: url('../../styles/Dungeon_Crawl_images/sparkling_fountain.png')
+    background-image: url('../../styles/fountain.gif')
 }
 
 
@@ -63,34 +63,69 @@
     background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_full_new.png');
     background-position: 0px 0px
 }
+
 .grassBottom {
     background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_south_new.png');
     background-position: 0px 0px
 }
+
 .grassBottomLeft {
     background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_southwest_new.png');
     background-position: 0px 0px
 }
+
 .grassBottomRight {
     background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_southeast_new.png');
     background-position: 0px 0px
 }
+
 .grassTop {
     background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_north_new.png');
     background-position: 0px 0px
 }
+
 .grassTopRight {
     background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_northeast_new.png');
     background-position: 0px 0px
 }
+
 .grassTopLeft {
     background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_northwest_new.png');
     background-position: 0px 0px
 }
+
 .plainTree {
     background-image: url('../../styles/Dungeon_Crawl_images/plains-tree/mangrove_1.png');
     background-position: 0px 0px
 }
+
+.water {
+    background-image: url('../../styles/water.gif');
+    background-position: 0px 0px
+}
+
+.blueFlowerGrass1 {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_flowers_blue_1_new.png');
+    background-position: 0px 0px
+}
+
+.blueFlowerGrass2 {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_flowers_blue_2_new.png');
+    background-position: 0px 0px
+}
+
+.yellowFlowerGrass1 {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_flowers_yellow_1_new.png');
+    background-position: 0px 0px
+}
+
+.yellowFlowerGrass2 {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass_flowers_yellow_2_new.png');
+    background-position: 0px 0px
+}
+
+
+
 
 
 
@@ -171,3 +206,4 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
     display: inline-flex;
     background-color: transparent;
 }
+

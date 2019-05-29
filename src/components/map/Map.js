@@ -85,11 +85,20 @@ function getTileSprite(type) {
         case 36:
             return 'grassTopLeft'
         ///////////////////////////////
-
         case 37:
             return 'plainTree'
         case 38:
             return 'dungeonEntranceWall'
+        case 39:
+            return 'water'
+        case 40:
+            return 'blueFlowerGrass1'
+        case 41:
+            return 'blueFlowerGrass2'
+        case 42:
+            return 'yellowFlowerGrass1'
+        case 43:
+            return 'yellowFlowerGrass2'
     }
 }
 
