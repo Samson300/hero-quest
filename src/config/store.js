@@ -2,7 +2,6 @@ import { createStore, combineReducers } from 'redux';
 import playerReducer from '../reducers/playerReducer';
 import monsterReducer from '../reducers/monsterReducer';
 import mapReducer from '../reducers/mapReducer';
-import battleReducer from '../reducers/battleReducer';
 import caveBossReducer from '../reducers/caveBossReducer';
 import dungeonBossReducer from '../reducers/dungeonBossReducer';
 import lastLocationReducer from '../reducers/lastLocationReducer';
@@ -14,7 +13,6 @@ const rootReducer = combineReducers({
     player: playerReducer,
     lastLocation: lastLocationReducer,
     map: mapReducer,
-    battle: battleReducer,
     monster: monsterReducer,
     caveBoss: caveBossReducer,
     dungeonBossReducer

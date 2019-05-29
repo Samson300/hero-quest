@@ -3,6 +3,7 @@ const initialState = {
     dungeonBossAttack: 35,
     playerAttack: 10,
     monsterLevel: 1,
+    dungeonBossLevel: 1,
     bossDisplay: 'none',
     top: 20,
     left: 260,

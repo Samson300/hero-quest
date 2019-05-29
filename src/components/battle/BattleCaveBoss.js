@@ -26,6 +26,7 @@ class BattleCaveBoss extends React.Component {
             props.killedCaveBoss();
             props.battleOff();
             props.battleDoneLocation(props.position);
+            props.levelUpAllMonsters();
             // Change Map to previous Map with current position
         };
 

@@ -7,6 +7,7 @@ const initialState = {
     // as the player levels up.
     playerAttack: 10,
     monsterLevel: 1,
+    caveBossLevel: 1,
     bossDisplay: 'none',
     backgroundPosition: 'left top',
     top: 20,
