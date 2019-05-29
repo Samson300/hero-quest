@@ -64,6 +64,8 @@ function getTileSprite(type) {
             return 'dungeonFountain'
         case 27:
             return 'flame'
+
+        ////////// Battle Tiles ////////
         case 28:
             return 'grassEdgeLeft'
         case 29:
@@ -82,13 +84,12 @@ function getTileSprite(type) {
             return 'grassTopRight'
         case 36:
             return 'grassTopLeft'
+        ///////////////////////////////
+
         case 37:
             return 'plainTree'
         case 38:
             return 'dungeonEntranceWall'
-
-        // case 25:
-        //     return 'healer'
     }
 }
 
