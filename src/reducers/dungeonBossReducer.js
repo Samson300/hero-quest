@@ -68,7 +68,7 @@ const dungeonBossReducer = (state=initialState, action) => {
                 return {
                     ...state,
                     ...action.payload,
-                    backgroundPosition: action.payload.backgroundPosition,
+                    backgroundPosition: action.payload.backgroundPosition
                     
                 }
         case 'INCREASE_MONSTER_LEVEL':

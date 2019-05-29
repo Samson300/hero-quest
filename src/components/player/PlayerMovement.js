@@ -312,6 +312,7 @@ export default function PlayerMovement(player) {
             dispatchBattleCaveBossScreen(displayFlexOn)
             dispatchCaveBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
         }
+        // fight dungeon boss
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 30) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
