@@ -29,7 +29,10 @@ class Battle extends React.Component {
             props.levelUp();
             props.battleOff();
         }
+        if (props.caveBossHP <= 0) {
+            props.killedMonster();
     }
+}
 
 
     render() {

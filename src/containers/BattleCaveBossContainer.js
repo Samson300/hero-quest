@@ -83,7 +83,13 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({ type: 'INCREASE_MONSTER_LEVEL', payload: {
                 monsterLevel: 1,
                 monsterHP: 50,
-                monsterAttack: 25
+                monsterAttack: 25,
+                caveBossLevel: 1,
+                caveBossHP: 50,
+                caveBossAttack: 25,
+                monsterLevel: 1,
+                dungeonBossHP: 50,
+                dungeonBossAttack: 25
             }})
         },
         killedMonster: () => {

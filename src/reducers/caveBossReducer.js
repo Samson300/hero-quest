@@ -69,6 +69,13 @@ const caveBossReducer = (state=initialState, action) => {
                     backgroundPosition: action.payload.backgroundPosition,
                     
                 }
+        case 'INCREASE_MONSTER_LEVEL':
+            return {
+                ...state,
+                caveBossHP: state.caveBossHP + action.payload.caveBossHP,
+                caveBossAttack: state.caveBossAttack + action.payload.caveBossAttack,
+                caveBossLevel: state.caveBossLevel + action.payload.caveBossLevel
+            }
         default:
             return state;
     }
