@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import walkSprite from '../../styles/HeroSprites/Characters/player_walk1.png'
+import walkSprite from '../../styles/HeroSprites/Characters/warrior.png'
 import PlayerMovement from './PlayerMovement';
 
 //This controlls how the player is styled on the screen
