@@ -99,6 +99,16 @@ function getTileSprite(type) {
             return 'yellowFlowerGrass1'
         case 43:
             return 'yellowFlowerGrass2'
+        case 44:
+            return 'caveWall'
+        case 45:
+            return 'caveFloor'
+        case 46:
+            return 'lavaFloor'
+        case 47:
+            return 'lavaWall'
+        case 48:
+            return 'lavaBridge'
         case 60:
             return 'battleDungeonBoss'
     }
