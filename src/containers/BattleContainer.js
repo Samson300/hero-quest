@@ -74,9 +74,6 @@ const mapDispatchToProps = (dispatch) => {
         battleDoneLocation: (position) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position
-                // spriteLocation: state.lastLocation.spriteLocation,
-                // direction: state.lastLocation.direction,
-                // walkIndex: state.lastLocation.walkIndex
             }})
         }
     }

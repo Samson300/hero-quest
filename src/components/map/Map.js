@@ -90,6 +90,8 @@ function getTileSprite(type) {
             return 'plainTree'
         case 38:
             return 'dungeonEntranceWall'
+        case 60:
+            return 'battleDungeonBoss'
     }
 }
 
