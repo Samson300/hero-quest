@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles, caveFirstLevel, caveSecondLevel } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles2, caveFirstLevel, caveSecondLevel } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -288,7 +288,7 @@ export default function PlayerMovement(player) {
         // wilderness to dungeon
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
-            dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
+            dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles2);
         }
         // town movement, if tile 13(store) is attempted, dispatch store action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {
