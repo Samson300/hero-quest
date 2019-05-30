@@ -167,12 +167,6 @@ const playerReducer = (state=initialState, action) => {
                 ...state,
                 inStore: action.payload.inStore
             }
-            // combine all buying functions into this one
-        // case "ADD_ITEM_TO_INVENTORY":
-        //         return {
-        //         ...state,
-        //         inStore: action.payload.inStore
-        //     }
         default:
             return state
     }
