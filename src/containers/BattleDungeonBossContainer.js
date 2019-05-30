@@ -88,6 +88,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 } 
 
-const makeBattleDungeonSmart = connect(mapStateToProps, mapDispatchToProps);
-const smartBattleDungeonBoss = makeBattleDungeonSmart(BattleDungeonBoss);
+const makeBattleDungeonBossSmart = connect(mapStateToProps, mapDispatchToProps);
+const smartBattleDungeonBoss = makeBattleDungeonBossSmart(BattleDungeonBoss);
 export default smartBattleDungeonBoss;

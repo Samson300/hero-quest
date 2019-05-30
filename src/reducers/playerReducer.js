@@ -58,6 +58,13 @@ const playerReducer = (state=initialState, action) => {
                     gold: state.gold + action.payload.gold,
                     isListening: true
                 }
+            case 'BATTLE_END_DUNGEON_BOSS_2':
+                    return {
+                        ...state,
+                        playerLevel: state.playerLevel + action.payload.level,
+                        gold: state.gold + action.payload.gold,
+                        isListening: true
+                    }
         case 'LEVEL_UP':
             return {
                 ...state,
@@ -105,28 +112,33 @@ const playerReducer = (state=initialState, action) => {
                 inBattleCaveBoss: action.payload.inBattleCaveBoss,
                 isListening: action.payload.isListening
             }
-        case "CAVE_BOSS_ATTACK":
-            return {
-                ...state,
-                maxPlayerHP: state.maxPlayerHP - action.payload.caveBossAtk
-            }
         case "BATTLE_STATUS_DUNGEON_BOSS":
             return {
                 ...state,
                 inBattleDungeonBoss: action.payload.inBattleDungeonBoss,
                 isListening: action.payload.isListening
             }
-            case "BATTLE_STATUS_DUNGEON_BOSS_2":
-                return {
-                    ...state,
-                    inBattleDungeonBoss2: action.payload.inBattleDungeonBoss2,
-                    isListening: action.payload.isListening
-                }
+        case "BATTLE_STATUS_DUNGEON_BOSS_2":
+            return {
+                ...state,
+                inBattleDungeonBoss2: action.payload.inBattleDungeonBoss2,
+                isListening: action.payload.isListening
+            }
+        case "CAVE_BOSS_ATTACK":
+            return {
+                ...state,
+                maxPlayerHP: state.maxPlayerHP - action.payload.caveBossAtk
+            }
         case "DUNGEON_BOSS_ATTACK":
                 return {
                     ...state,
                     maxPlayerHP: state.maxPlayerHP - action.payload.dungeonBossAtk
                 }
+        case "DUNGEON_BOSS_2_ATTACK":
+            return {
+                ...state,
+                maxPlayerHP: state.maxPlayerHP - action.payload.dungeonBoss2Atk
+            }
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)

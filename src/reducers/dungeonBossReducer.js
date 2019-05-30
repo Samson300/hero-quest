@@ -27,25 +27,8 @@ const dungeonBossReducer = (state=initialState, action) => {
                 bossDisplay: 'none',
                 gold: state.gold + action.payload.gold
             }
-        // The player's attack will increase as the player levels up.
-        case 'LEVEL_UP':
-        return {
-            ...state,
-            playerAttack: state.playerAttack + action.payload.playerAtk
-        }
+
         // the player's attack will increase as player buys swords
-        case "BUY_SWORD":
-            if (state.gold >= 5) {
-                return {
-                    ...state,
-                    playerAttack: state.playerAttack + action.payload.playerAttack,
-                    gold: state.gold - action.payload.gold
-                }
-            } else {
-                return {
-                    ...state,
-                }
-            }
         case 'DISPLAY_DUNGEON_BOSS':
             return {
                 ...state,

@@ -148,7 +148,8 @@ export default function PlayerMovement(player) {
         store.dispatch({
             type: 'BATTLE_STATUS_DUNGEON_BOSS_2',
             payload: {
-                inBattleDungeonBoss2: display
+                inBattleDungeonBoss2: display,
+                // isListening: false
             }
         });
     }
@@ -224,7 +225,7 @@ export default function PlayerMovement(player) {
             }
         });
     }
-
+// dispatches action that will display DungeonBoss2 to screen when needed
     function dispatchDungeonBoss2Display(display, position, top, left) {
         store.dispatch({
             type: 'DISPLAY_DUNGEON_BOSS_2',
@@ -237,16 +238,6 @@ export default function PlayerMovement(player) {
         });
     }
 
-    // function dispatchCaveBossToBattleScreen() {
-    //     store.dispatch({
-    //         type: 'CAVE_BOSS_BATTLE',
-    //         payload: {
-    //             xPos: 200,
-    //             yPos: 400
-
-    //         }
-    //     })
-    // }
 
 // This tests if the move is possible based on boundaries
 // if the move is valid, calls dispatch move to update the state
@@ -361,7 +352,7 @@ export default function PlayerMovement(player) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
             dispatchBattleDungeonBoss2Screen(displayFlexOn)
-            dispatchDungeonBoss2Display(displayFlexOn, '-96px -96px', 230, 400)
+            dispatchDungeonBoss2Display(displayFlexOn, '-96px -96px', 200, 500)
         }
     }
 

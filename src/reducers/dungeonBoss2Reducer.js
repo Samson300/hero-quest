@@ -1,8 +1,7 @@
 const initialState = {
     dungeonBoss2HP: 50,
     dungeonBoss2InitialHP: 500,
-    dungeonBoss2Attack: 50,
-    isListening: true,
+    dungeonBoss2Atk: 50,
     // playerAttack is needed to damage the monster and have an incrementing value
     // as the player levels up.
     playerAttack: 10,
@@ -43,7 +42,7 @@ const dungeonBoss2Reducer = (state=initialState, action) => {
                 return {
                     ...state,
                     dungeonBoss2HP: state.dungeonBoss2HP + action.payload.dungeonBoss2HP,
-                    dungeonBoss2Attack: state.dungeonBoss2Atk + action.payload.dungeonBoss2Attack,
+                    dungeonBoss2Atk: state.dungeonBoss2Atk + action.payload.dungeonBoss2Attack,
                     dungeonBoss2Level: state.dungeonBoss2Level + action.payload.dungeonBoss2Level
                 }
         default:
