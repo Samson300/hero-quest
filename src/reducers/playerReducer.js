@@ -103,9 +103,12 @@ const playerReducer = (state=initialState, action) => {
         case "BATTLE_STATUS":
             return {
             ...state,
-            // ...action.payload,
+            ...action.payload,
             inBattle: action.payload.inBattle,
-            isListening: action.payload.isListening
+            isListening: action.payload.isListening,
+            inBattleCaveBoss: action.payload.inBattle,
+            inBattleDungeonBoss: action.payload.inBattle,
+            inBattleDungeonBossTwo: action.payload.inBattle
             
         }
         case "BATTLE_STATUS_CAVE_BOSS":

@@ -93,14 +93,20 @@ const mapDispatchToProps = (dispatch) => {
             }});
             dispatch({ type: 'HEAL_PLAYER', payload: {
                 maxPlayerHP: basePlayerHP
+            }});
+            dispatch({ type: 'BATTLE_STATUS', payload: {
+                inBattle: 'none',
+                tiles: townTiles,
+                isListening: true,
+                displayMonster: 'none'
             }})
         },
-        killedPlayer: () => {
-            dispatch({ type: 'BATTLE_END', payload: {
-                exp: 0,
-                gold: 0
-            }})
-        },
+        // killedPlayer: () => {
+        //     dispatch({ type: 'BATTLE_END', payload: {
+        //         exp: 0,
+        //         gold: 0
+        //     }})
+        // },
     }
 } 
 

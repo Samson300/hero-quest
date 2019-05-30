@@ -25,8 +25,8 @@ class Battle extends React.Component {
         };
 
         if (props.hp <= 0 && props.monsterHP > 0) {
-            props.killedPlayer();
-            props.battleOffToTown();
+            // props.killedPlayer();
+            // props.battleOffToTown();
             props.playerDied(props.position);
         }
 }

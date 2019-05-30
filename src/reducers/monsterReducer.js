@@ -14,9 +14,7 @@ const initialState = {
     // See case 'PLAYER_ATTACK' & 'LEVEL_UP'
     monsterLevel: 1,
     gold: 10,
-    displayMonster: 'none',
-    
-
+    displayMonster: 'none'
 }
 
 const monsterReducer = (state=initialState, action) => {
