@@ -15,6 +15,11 @@ class inBattleDungeonBossTwo extends React.Component {
             props.battleDoneLocation(props.position);
         };
 
+        if (props.hp <= 0 && props.dungeonBossTwoHP > 0) {
+            // props.killedPlayer();
+            props.battleOff();
+            props.playerDied(props.position);
+        }
     }
 
 

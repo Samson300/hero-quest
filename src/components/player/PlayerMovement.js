@@ -24,6 +24,7 @@ export default function PlayerMovement(player) {
     function getSpriteLocation(direction, walkIndex) {
         switch(direction) {
             case 'SOUTH':
+                console.log(`${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*0}px`)
                 return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*0}px`
             case 'NORTH':
                 return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*1}px`
@@ -53,7 +54,7 @@ export default function PlayerMovement(player) {
         const x = newPos[0] / SPRITE_SIZE
         const nextTile = tiles[y][x]
         // console.log(nextTile);
-        return nextTile < 61
+        return nextTile < 100
     }
 
     function observeCollision(oldPos, newPos) {
@@ -309,7 +310,7 @@ export default function PlayerMovement(player) {
             dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
         }
         // town movement, if tile 6(healer) is attempted, dispatch healer action
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 6) {
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 63) {
             dispatchHealer(basePlayerHP, oldPos, direction);
         }
         // wilderness to dungeon, turn on dungeon boss 1 and first dungeon map

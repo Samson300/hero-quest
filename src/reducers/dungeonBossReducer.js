@@ -25,7 +25,10 @@ const dungeonBossReducer = (state=initialState, action) => {
                 bossDisplay: 'none',
                 gold: state.gold + action.payload.gold
             }
-
+        case 'BATTLE_STATUS':
+            return {
+                ...state,
+            }
         // the player's attack will increase as player buys swords
         case 'DISPLAY_DUNGEON_BOSS':
             return {

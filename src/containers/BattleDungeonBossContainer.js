@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import BattleDungeonBoss from '../components/battle/BattleDungeonBoss';
 import { battleTiles, townTiles, dungeonTiles } from '../config/constants';
+import store from '../config/store';
 
 const mapStateToProps = (state) => {
     return {
@@ -18,7 +19,8 @@ const mapStateToProps = (state) => {
         spriteLocation: state.lastLocation.spriteLocation,
         direction: state.lastLocation.direction,
         walkIndex: state.lastLocation.walkIndex,
-        monsterLevel: state.monster.monsterLevel
+        monsterLevel: state.monster.monsterLevel,
+        // bossDisplay: store.dungeonBoss.bossDisplay
     }
 }
 
@@ -54,6 +56,7 @@ const mapDispatchToProps = (dispatch) => {
         battleOff: () => {
             dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
                 inBattleDungeonBoss: 'none',
+                bossDisplay: 'none',
                 tiles: dungeonTiles,
                 isListening: true
             }})
