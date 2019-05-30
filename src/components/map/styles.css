@@ -313,3 +313,32 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
     background-image: url('../../styles/Dungeon_Crawl_images/town/town-sign.gif');
     background-color: rgb(2, 71, 2);
 }
+
+.dungeonBoss1Tiles {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/abyss_cyan_0.png');
+}
+
+.dun1ToDun2Path {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/enter_abyss.png');
+
+}
+.dun2ToDun1Path {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/enter_abyss.png');
+}
+
+.dungeonBoss2Tiles {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/abyss_lightblue_7.png');
+
+}
+
+.dun2ToCavePath {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/enter_tartarus.png');
+}
+
+.caveToDun2Path {
+    background-image: url('../../styles/Dungeon_Crawl_images/dungeon/enter_tartarus.png');
+}
+
+.caveToWilderness {
+    background-image: url('../../styles/Dungeon_Crawl_images/volcano_exit.png');
+}

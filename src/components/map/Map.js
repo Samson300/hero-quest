@@ -110,7 +110,6 @@ function getTileSprite(type) {
         case 48:
             return 'lavaBridge'
         case 49:
-
             return 'lavaStairs'
         case 50:
             return 'lavaFlame'
@@ -152,6 +151,20 @@ function getTileSprite(type) {
             return 'storeSign'
         case 70:
             return 'townSign'
+        case 71:
+            return 'dungeonBoss1Tiles'
+        case 72:
+            return 'dun1ToDun2Path'
+        case 73:
+            return 'dun2ToDun1Path'
+        case 74:
+            return 'dungeonBoss2Tiles'
+        case 75:
+            return 'dun2ToCavePath'
+        case 76:
+            return 'caveToDun2Path'
+        case 77:
+            return 'caveToWilderness'
         case 60:
             return 'battleDungeonBoss'
     }

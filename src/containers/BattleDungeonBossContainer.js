@@ -50,13 +50,12 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
                 inBattleDungeonBoss: 'flex',
                 tiles: battleTiles,
-                
             }})
         },
         battleOff: () => {
             dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
                 inBattleDungeonBoss: 'none',
-                bossDisplay: 'none',
+                // bossDisplay: 'none',
                 tiles: dungeonTiles,
                 isListening: true
             }})
@@ -86,6 +85,21 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({ type: 'BATTLE_END', payload: {
                 exp: 100,
                 gold: 10
+            }})
+        },
+        playerDied: (direction, basePlayerHP) => {
+            dispatch({ type: 'MOVE_PLAYER', payload: {
+                position: [224,448],
+                direction
+            }});
+            dispatch({ type: 'HEAL_PLAYER', payload: {
+                maxPlayerHP: basePlayerHP
+            }});
+            dispatch({ type: 'BATTLE_STATUS', payload: {
+                inBattleDungeonBoss: 'none',
+                bossDisplay: 'none',
+                tiles: townTiles,
+                // isListening: true
             }})
         },
     }

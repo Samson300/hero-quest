@@ -17,14 +17,13 @@ const mapStateToProps = (state) => {
         inBattle: state.player.inBattle,
         position: state.lastLocation.position,
         spriteLocation: state.lastLocation.spriteLocation,
-        // direction: state.lastLocation.direction,
         walkIndex: state.player.walkIndex,
-        direction: state.player.diedDirection
+        direction: state.player.direction,
+        displayMonster: state.monster.displayMonster
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    // console.log(this.props.playerAtk);
     return {
         // Although monsterAttack has no payload, playerReducer.js will call the dispatch
         // and damage the player.
@@ -87,9 +86,10 @@ const mapDispatchToProps = (dispatch) => {
             }})
         },
         // when the player dies they are sent back to town at this position
-        playerDied: (position, basePlayerHP) => {
+        playerDied: (direction, basePlayerHP) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
-                position
+                position: [224,448],
+                direction
             }});
             dispatch({ type: 'HEAL_PLAYER', payload: {
                 maxPlayerHP: basePlayerHP
@@ -101,12 +101,6 @@ const mapDispatchToProps = (dispatch) => {
                 displayMonster: 'none'
             }})
         },
-        // killedPlayer: () => {
-        //     dispatch({ type: 'BATTLE_END', payload: {
-        //         exp: 0,
-        //         gold: 0
-        //     }})
-        // },
     }
 } 
 
