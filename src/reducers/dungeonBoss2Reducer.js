@@ -1,12 +1,12 @@
 const initialState = {
-    dungeonBoss2HP: 50,
-    dungeonBoss2InitialHP: 500,
-    dungeonBoss2Atk: 50,
+    dungeonBossTwoHP: 50,
+    dungeonBossTwoInitialHP: 500,
+    dungeonBossTwoAtk: 50,
     // playerAttack is needed to damage the monster and have an incrementing value
     // as the player levels up.
     playerAttack: 10,
     monsterLevel: 1,
-    dungeonBossLevel: 1,
+    dungeonBossTwoLevel: 1,
     bossDisplay: 'none',
     // backgroundPosition: 'left top',
     top: '200px',
@@ -19,12 +19,12 @@ const dungeonBoss2Reducer = (state=initialState, action) => {
         case 'PLAYER_ATTACK_DUNGEON_BOSS_2':
             return {
                 ...state,
-                dungeonBoss2HP: state.dungeonBoss2HP - action.payload.playerAtk
+                dungeonBossTwoHP: state.dungeonBossTwoHP - action.payload.playerAtk
             };
         case 'BATTLE_END_DUNGEON_BOSS_2':
             return {
                 ...state,
-                dungeonBoss2HP: 350,
+                dungeonBossTwoHP: 350,
                 bossDisplay: 'none',
                 gold: state.gold + action.payload.gold
             }
@@ -41,9 +41,9 @@ const dungeonBoss2Reducer = (state=initialState, action) => {
         case 'INCREASE_MONSTER_LEVEL':
                 return {
                     ...state,
-                    dungeonBoss2HP: state.dungeonBoss2HP + action.payload.dungeonBoss2HP,
-                    dungeonBoss2Atk: state.dungeonBoss2Atk + action.payload.dungeonBoss2Attack,
-                    dungeonBoss2Level: state.dungeonBoss2Level + action.payload.dungeonBoss2Level
+                    dungeonBossTwoHP: state.dungeonBossTwoHP + action.payload.dungeonBossTwoHP,
+                    dungeonBossTwoAtk: state.dungeonBossTwoAtk + action.payload.dungeonBossTwoAttack,
+                    dungeonBossTwoLevel: state.dungeonBossTwoLevel + action.payload.dungeonBossTwoLevel
                 }
         default:
             return state;

@@ -7,7 +7,7 @@ const initialState = {
     inBattle: 'none',
     inBattleCaveBoss: 'none',
     inBattleDungeonBoss: 'none',
-    inBattleDungeonBoss2: 'none',
+    inBattleDungeonBossTwo: 'none',
     inStore: 'none',
     isListening: true,
     // basePlayerHP will be constant in order for the HP to increment
@@ -121,7 +121,7 @@ const playerReducer = (state=initialState, action) => {
         case "BATTLE_STATUS_DUNGEON_BOSS_2":
             return {
                 ...state,
-                inBattleDungeonBoss2: action.payload.inBattleDungeonBoss2,
+                inBattleDungeonBossTwo: action.payload.inBattleDungeonBossTwo,
                 isListening: action.payload.isListening
             }
         case "CAVE_BOSS_ATTACK":
@@ -137,7 +137,7 @@ const playerReducer = (state=initialState, action) => {
         case "DUNGEON_BOSS_2_ATTACK":
             return {
                 ...state,
-                maxPlayerHP: state.maxPlayerHP - action.payload.dungeonBoss2Atk
+                maxPlayerHP: state.maxPlayerHP - action.payload.dungeonBossTwoAtk
             }
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
