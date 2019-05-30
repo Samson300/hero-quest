@@ -20,6 +20,11 @@ class BattleCaveBoss extends React.Component {
             props.levelUpAllMonsters();
             // Change Map to previous Map with current position
         };
+        if (props.hp <= 0 && props.caveBossHP > 0) {
+            // props.killedPlayer();
+            props.battleOff();
+            props.playerDied(props.position);
+        }
     }
 
 

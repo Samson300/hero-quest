@@ -24,6 +24,7 @@ export default function PlayerMovement(player) {
     function getSpriteLocation(direction, walkIndex) {
         switch(direction) {
             case 'SOUTH':
+                console.log(`${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*0}px`)
                 return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*0}px`
             case 'NORTH':
                 return `${SPRITE_SIZE*walkIndex}px ${SPRITE_SIZE*1}px`

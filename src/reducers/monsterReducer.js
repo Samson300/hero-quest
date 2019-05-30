@@ -1,6 +1,6 @@
 const initialState = {
-    monsterHP: 100,
-    monsterHPBase: 100,
+    monsterHP: 200,
+    monsterHPBase: 200,
 
     // monsterAttack is moved to playerReducer.js in order to damage player.
     // monsterAttack: 10,
@@ -14,9 +14,7 @@ const initialState = {
     // See case 'PLAYER_ATTACK' & 'LEVEL_UP'
     monsterLevel: 1,
     gold: 10,
-    displayMonster: 'none',
-    
-
+    displayMonster: 'none'
 }
 
 const monsterReducer = (state=initialState, action) => {

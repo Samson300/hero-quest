@@ -1,6 +1,6 @@
 
 const initialState = {
-    position: [0,0],
+    position: [288,320],
     spriteLocation: 'center top',
     direction: 'SOUTH',
     walkIndex: 0,
@@ -19,7 +19,8 @@ const initialState = {
     playerLevel: 1,
     playerExp: 0,
     gold: 10,
-    inventory: []
+    inventory: [],
+    diedDirection: 'SOUTH'
 }
 
 // Manages how we are changing the state
@@ -27,6 +28,7 @@ const playerReducer = (state=initialState, action) => {
     switch(action.type) {
         // this handles our move player action
         case 'MOVE_PLAYER':
+            console.log(action.payload)
             return {
                 ...state,
                 ...action.payload
@@ -101,9 +103,12 @@ const playerReducer = (state=initialState, action) => {
         case "BATTLE_STATUS":
             return {
             ...state,
-            // ...action.payload,
+            ...action.payload,
             inBattle: action.payload.inBattle,
-            isListening: action.payload.isListening
+            isListening: action.payload.isListening,
+            inBattleCaveBoss: action.payload.inBattle,
+            inBattleDungeonBoss: action.payload.inBattle,
+            inBattleDungeonBossTwo: action.payload.inBattle
             
         }
         case "BATTLE_STATUS_CAVE_BOSS":
@@ -165,12 +170,6 @@ const playerReducer = (state=initialState, action) => {
                 ...state,
                 inStore: action.payload.inStore
             }
-            // combine all buying functions into this one
-        // case "ADD_ITEM_TO_INVENTORY":
-        //         return {
-        //         ...state,
-        //         inStore: action.payload.inStore
-        //     }
         default:
             return state
     }

@@ -24,14 +24,11 @@ class Battle extends React.Component {
             // Change Map to previous Map with current position
         };
 
-        if (props.monsterHP <= 0 && props.exp >= 100) {
-            props.killedMonster();
-            props.levelUp();
-            props.battleOff();
+        if (props.hp <= 0 && props.monsterHP > 0) {
+            // props.killedPlayer();
+            // props.battleOffToTown();
+            props.playerDied(props.position);
         }
-        if (props.caveBossHP <= 0) {
-            props.killedMonster();
-    }
 }
 
 
