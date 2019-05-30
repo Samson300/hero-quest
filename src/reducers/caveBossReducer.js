@@ -24,11 +24,6 @@ const caveBossReducer = (state=initialState, action) => {
                 // initialState will provide the value to damage the monster.
                 caveBossHP: state.caveBossHP - action.payload.playerAtk
             };
-        case 'BATTLE_END':
-            return {
-                ...state,
-                gold: state.gold + action.payload.gold
-            }
         // After beating the Boss, this case will possibly only increment the player's stats in this reducer,
         // and not in the other reducers (monster, dungeon, player)
         case 'BATTLE_END_CAVE_BOSS':

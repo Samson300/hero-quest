@@ -229,7 +229,7 @@ export default function PlayerMovement(player) {
         store.dispatch({
             type: 'DISPLAY_DUNGEON_BOSS_2',
             payload: {
-                dungeonBoss2Display: display,
+                bossDisplay: display,
                 backgroundPosition: position,
                 top,
                 left
@@ -360,7 +360,7 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 60) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
-            dispatchBattleDungeonBossScreen(displayFlexOn)
+            dispatchBattleDungeonBoss2Screen(displayFlexOn)
             dispatchDungeonBoss2Display(displayFlexOn, '-96px -96px', 230, 400)
         }
     }

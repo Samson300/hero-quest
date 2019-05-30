@@ -25,7 +25,7 @@ class BattleDungeonBoss extends React.Component {
         return (
             <div style={{display: this.props.inBattleDungeonBoss, flexDirection: 'column'}}>
                 <div className="BattleScreen" ></div>
-                <div className="PlayerHealth">
+                <div className="DungeonBoss_Stats">
                     HP: {this.props.hp}
                     <br />
                     dungeonBossHP: {this.props.dungeonBossHP}

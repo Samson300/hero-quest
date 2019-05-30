@@ -1,12 +1,18 @@
 const initialState = {
     dungeonBoss2HP: 50,
-    dungeonBoss2Atk: 35,
-    dungeonBoss2Level: 1,
-    dungeon2BossDisplay: 'none',
+    dungeonBoss2InitialHP: 500,
+    dungeonBoss2Attack: 50,
+    isListening: true,
+    // playerAttack is needed to damage the monster and have an incrementing value
+    // as the player levels up.
+    playerAttack: 10,
+    monsterLevel: 1,
+    dungeonBossLevel: 1,
+    bossDisplay: 'none',
+    backgroundPosition: 'left top',
     top: 20,
     left: 260,
-    gold: 10,
-    display: 'none',
+    gold: 10
 }
 
 const dungeonBoss2Reducer = (state=initialState, action) => {
@@ -20,22 +26,9 @@ const dungeonBoss2Reducer = (state=initialState, action) => {
             return {
                 ...state,
                 dungeonBoss2HP: 350,
-                dungeon2BossDisplay: 'none',
+                bossDisplay: 'none',
                 gold: state.gold + action.payload.gold
             }
-        // the player's attack will increase as player buys swords
-        // case "BUY_SWORD":
-        //     if (state.gold >= 5) {
-        //         return {
-        //             ...state,
-        //             playerAttack: state.playerAttack + action.payload.playerAttack,
-        //             gold: state.gold - action.payload.gold
-        //         }
-        //     } else {
-        //         return {
-        //             ...state,
-        //         }
-        //     }
         case 'DISPLAY_DUNGEON_BOSS_2':
             return {
                 ...state,

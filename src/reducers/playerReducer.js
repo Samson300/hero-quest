@@ -10,26 +10,12 @@ const initialState = {
     inBattleDungeonBoss2: 'none',
     inStore: 'none',
     isListening: true,
-
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
     basePlayerHP: 100,
-
-    // addedHP will be added to the basePlayerHP.
     addedHP: 10,
-
-    // maxPlayerHP is the total/max HP of adding basePlayerHP & addedHP.
     maxPlayerHP: 100,
     playerAttack: 10,
-    
-    // playerAttack is moved to monsterReducer.js in order to damage the monster
-    // and increment as the player levels up.
-    // playerAttack: 20,
-
-    // monsterAttack is needed to damage in order to damage the player.
-    // monsterAttack: 10,
-    // See case 'MONSTER_ATTACK'
-
     playerLevel: 1,
     playerExp: 0,
     gold: 10,
@@ -130,6 +116,12 @@ const playerReducer = (state=initialState, action) => {
                 inBattleDungeonBoss: action.payload.inBattleDungeonBoss,
                 isListening: action.payload.isListening
             }
+            case "BATTLE_STATUS_DUNGEON_BOSS_2":
+                return {
+                    ...state,
+                    inBattleDungeonBoss2: action.payload.inBattleDungeonBoss2,
+                    isListening: action.payload.isListening
+                }
         case "DUNGEON_BOSS_ATTACK":
                 return {
                     ...state,
