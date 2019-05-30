@@ -218,3 +218,20 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
     background-color: transparent;
 }
 
+.lavaStairs {
+    background-image: url('../../styles/Dungeon_Crawl_images/cave/rock_stairs_up.png');
+    background-color: rgba(60, 10, 13, 0.639);
+}
+
+.lavaBridge {
+    background-image: url('../../styles/Dungeon_Crawl_images/cave/volcanic_floor_0.png')
+}
+
+.lavaBridge2 {
+    background-image: url('../../styles/Dungeon_Crawl_images/cave/rough_red_0.png')
+}
+
+.lavaFlame {
+    background-image: url('../../styles/fire.gif');
+    background-color: rgba(60, 10, 13, 0.639);
+}
