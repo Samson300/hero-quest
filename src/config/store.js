@@ -5,6 +5,7 @@ import mapReducer from '../reducers/mapReducer';
 import caveBossReducer from '../reducers/caveBossReducer';
 import dungeonBossReducer from '../reducers/dungeonBossReducer';
 import lastLocationReducer from '../reducers/lastLocationReducer';
+import dungeonBossTwoReducer from '../reducers/dungeonBoss2Reducer';
 
 const FREQUENCY = 2000;
 const LS_KEY = 'hero-quest';
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     map: mapReducer,
     monster: monsterReducer,
     caveBoss: caveBossReducer,
-    dungeonBoss: dungeonBossReducer
+    dungeonBoss: dungeonBossReducer,
+    dungeonBossTwo: dungeonBossTwoReducer
 });
 
 // const initialState = JSON.parse(localStorage.getItem(LS_KEY)) || {};

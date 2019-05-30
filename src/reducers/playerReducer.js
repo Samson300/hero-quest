@@ -7,28 +7,15 @@ const initialState = {
     inBattle: 'none',
     inBattleCaveBoss: 'none',
     inBattleDungeonBoss: 'none',
+    inBattleDungeonBossTwo: 'none',
     inStore: 'none',
     isListening: true,
-
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
     basePlayerHP: 100,
-
-    // addedHP will be added to the basePlayerHP.
     addedHP: 10,
-
-    // maxPlayerHP is the total/max HP of adding basePlayerHP & addedHP.
     maxPlayerHP: 100,
     playerAttack: 10,
-    
-    // playerAttack is moved to monsterReducer.js in order to damage the monster
-    // and increment as the player levels up.
-    // playerAttack: 20,
-
-    // monsterAttack is needed to damage in order to damage the player.
-    // monsterAttack: 10,
-    // See case 'MONSTER_ATTACK'
-
     playerLevel: 1,
     playerExp: 0,
     gold: 10,
@@ -71,6 +58,13 @@ const playerReducer = (state=initialState, action) => {
                     gold: state.gold + action.payload.gold,
                     isListening: true
                 }
+            case 'BATTLE_END_DUNGEON_BOSS_2':
+                    return {
+                        ...state,
+                        playerLevel: state.playerLevel + action.payload.level,
+                        gold: state.gold + action.payload.gold,
+                        isListening: true
+                    }
         case 'LEVEL_UP':
             return {
                 ...state,
@@ -118,22 +112,33 @@ const playerReducer = (state=initialState, action) => {
                 inBattleCaveBoss: action.payload.inBattleCaveBoss,
                 isListening: action.payload.isListening
             }
-        case "CAVE_BOSS_ATTACK":
-            return {
-                ...state,
-                maxPlayerHP: state.maxPlayerHP - action.payload.caveBossAtk
-            }
         case "BATTLE_STATUS_DUNGEON_BOSS":
             return {
                 ...state,
                 inBattleDungeonBoss: action.payload.inBattleDungeonBoss,
                 isListening: action.payload.isListening
             }
+        case "BATTLE_STATUS_DUNGEON_BOSS_2":
+            return {
+                ...state,
+                inBattleDungeonBossTwo: action.payload.inBattleDungeonBossTwo,
+                isListening: action.payload.isListening
+            }
+        case "CAVE_BOSS_ATTACK":
+            return {
+                ...state,
+                maxPlayerHP: state.maxPlayerHP - action.payload.caveBossAtk
+            }
         case "DUNGEON_BOSS_ATTACK":
                 return {
                     ...state,
                     maxPlayerHP: state.maxPlayerHP - action.payload.dungeonBossAtk
                 }
+        case "DUNGEON_BOSS_2_ATTACK":
+            return {
+                ...state,
+                maxPlayerHP: state.maxPlayerHP - action.payload.dungeonBossTwoAtk
+            }
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)

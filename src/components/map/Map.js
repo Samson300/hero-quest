@@ -109,6 +109,13 @@ function getTileSprite(type) {
             return 'lavaWall'
         case 48:
             return 'lavaBridge'
+        case 49:
+
+            return 'lavaStairs'
+        case 50:
+            return 'lavaFlame'
+        case 51:
+            return 'lavaBridge2'
         case 60:
             return 'battleDungeonBoss'
     }
