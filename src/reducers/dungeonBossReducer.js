@@ -16,8 +16,6 @@ const dungeonBossReducer = (state=initialState, action) => {
         case 'PLAYER_ATTACK_DUNGEON_BOSS':
             return {
                 ...state,
-                // Instead of action.payload.dmg, state.playerAttack from the monsterReducer's
-                // initialState will provide the value to damage the monster.
                 dungeonBossHP: state.dungeonBossHP - action.payload.playerAtk
             };
         case 'BATTLE_END_DUNGEON_BOSS':

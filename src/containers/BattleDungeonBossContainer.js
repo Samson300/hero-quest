@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import BattleDungeonBoss from '../components/battle/BattleDungeonBoss';
-import { battleTiles, townTiles, dungeonTiles2 } from '../config/constants';
+import { battleTiles, townTiles, dungeonTiles } from '../config/constants';
 
 const mapStateToProps = (state) => {
     return {
@@ -54,7 +54,7 @@ const mapDispatchToProps = (dispatch) => {
         battleOff: () => {
             dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
                 inBattleDungeonBoss: 'none',
-                tiles: dungeonTiles2,
+                tiles: dungeonTiles,
                 isListening: true
             }})
         },

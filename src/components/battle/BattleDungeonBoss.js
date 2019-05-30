@@ -20,8 +20,6 @@ class BattleDungeonBoss extends React.Component {
 
 
     render() {
-        // const inBattleDungeonBoss = store.getState().player.inBattleDungeonBoss
-        // console.log(inBattleDungeoBoss);
         return (
             <div style={{display: this.props.inBattleDungeonBoss, flexDirection: 'column'}}>
                 <div className="BattleScreen" ></div>

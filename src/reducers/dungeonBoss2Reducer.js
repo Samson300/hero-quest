@@ -2,9 +2,6 @@ const initialState = {
     dungeonBossTwoHP: 50,
     dungeonBossTwoInitialHP: 500,
     dungeonBossTwoAtk: 50,
-    // playerAttack is needed to damage the monster and have an incrementing value
-    // as the player levels up.
-    playerAttack: 10,
     monsterLevel: 1,
     dungeonBossTwoLevel: 1,
     bossDisplay: 'none',

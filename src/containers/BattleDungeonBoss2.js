@@ -6,8 +6,9 @@ const mapStateToProps = (state) => {
     return {
         hp: state.player.maxPlayerHP,
         addedHP: state.player.addedHP,
-        dungeonBossTwoHP: state.dungeonBossTwo.dungeonBossHP,
+        dungeonBossTwoHP: state.dungeonBossTwo.dungeonBossTwoHP,
         exp: state.player.playerExp,
+        gold: state.player.gold,
         lvl: state.player.playerLevel,
         playerAtk: state.player.playerAttack,
         dungeonBossTwoAtk: state.dungeonBossTwo.dungeonBossTwoAtk,
@@ -32,7 +33,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         // Although playerAttack has no payload, playerReducer.js will call the dispatch
         // and damage the player.
-        playerAttackDungeonBoss2: (playerAtk) => {
+        playerAttackDungeonBossTwo: (playerAtk) => {
             dispatch({ type: 'PLAYER_ATTACK_DUNGEON_BOSS_2', payload: { 
                 playerAtk
             }})
@@ -45,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         battleOn: () => {
             dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS_2', payload: {
-                inBattleDungeonBoss: 'flex',
+                inBattleDungeonBossTwo: 'flex',
                 tiles: battleTiles,
                 
             }})
