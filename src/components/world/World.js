@@ -33,8 +33,8 @@ class World extends React.Component {
                 <Map />
                 <Player />
                 <CaveBoss />
-                <DungeonBoss />
                 <DungeonBoss2 />
+                <DungeonBoss />
                 <Monster />
                 <div style={{marginTop: '-635px'}}>
                     <ItemStore />

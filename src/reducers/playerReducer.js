@@ -7,6 +7,7 @@ const initialState = {
     inBattle: 'none',
     inBattleCaveBoss: 'none',
     inBattleDungeonBoss: 'none',
+    inBattleDungeonBoss2: 'none',
     inStore: 'none',
     isListening: true,
 

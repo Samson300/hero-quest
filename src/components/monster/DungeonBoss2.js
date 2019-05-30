@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DungeonBossImage from '../../styles/Dungeon_Crawl_images/death_knight.png';
+import DungeonBoss2Image from '../../styles/Dungeon_Crawl_images/enchantress_human.png';
 import store from '../../config/store';
 
-class DungeonBoss extends React.Component {
+class DungeonBoss2 extends React.Component {
     constructor(props) {
         super(props)
     }
 
     render() {
-        const dungeonBoss = store.getState().dungeonBoss
+        const dungeonBoss2 = store.getState().dungeonBoss2
         return (
             <div
             style={{
-                display: this.props.dungeonBoss1Display,
+                display: this.props.dungeonBoss2Display,
                 position: 'absolute',
-                top: dungeonBoss.top,
-                left: dungeonBoss.left,
-                backgroundImage: `url('${DungeonBossImage}')`,
+                top: dungeonBoss2.top,
+                left: dungeonBoss2.left,
+                backgroundImage: `url('${DungeonBoss2Image}')`,
                 width: '32px',
                 height: '32px'
             }}
@@ -29,8 +29,8 @@ class DungeonBoss extends React.Component {
 // maps the state to props(allows us to access the state via props)
 function mapStateToProps(state) {
     return {
-        ...state.dungeonBoss
+        ...state.dungeonBoss2
     }
 }
 
-export default connect(mapStateToProps)(DungeonBoss);
+export default connect(mapStateToProps)(DungeonBoss2);
