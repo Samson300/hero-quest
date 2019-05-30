@@ -110,6 +110,7 @@ function getTileSprite(type) {
         case 48:
             return 'lavaBridge'
         case 49:
+
             return 'lavaStairs'
         case 50:
             return 'lavaFlame'

@@ -1,4 +1,4 @@
-import { townTiles, dungeonTiles2 } from "../config/constants";
+import { townTiles, dungeonTiles2, dungeonTiles } from "../config/constants";
 
 const initialState = {
     tiles: [],
@@ -22,8 +22,16 @@ const mapReducer = (state=initialState, action) => {
             }
         case "BATTLE_END_DUNGEON_BOSS":
                 return {
-                    tiles: dungeonTiles2
+                    tiles: dungeonTiles
                 }
+        case "BATTLE_END_DUNGEON_BOSS_2":
+            return {
+                tiles: dungeonTiles2
+            }
+        // case "BATTLE_STATUS_DUNGEON_BOSS_2":
+        //     return {
+        //         tiles: 
+        //     }
         case "ADD_TILES":
             return {
                 ...action.payload

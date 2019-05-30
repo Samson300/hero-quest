@@ -1,24 +1,23 @@
 import { connect } from 'react-redux';
-import BattleDungeonBoss from '../components/battle/BattleDungeonBoss';
-import { battleTiles, townTiles, dungeonTiles } from '../config/constants';
+import { battleTiles, townTiles, dungeonTiles2 } from '../config/constants';
+import BattleDungeonBossTwo from '../components/battle/BattleDungeonBoss2';
 
 const mapStateToProps = (state) => {
     return {
-        // hp will display maxPlayerHp
         hp: state.player.maxPlayerHP,
         addedHP: state.player.addedHP,
-        dungeonBossHP: state.dungeonBoss.dungeonBossHP,
+        dungeonBossTwoHP: state.dungeonBossTwo.dungeonBossTwoHP,
         exp: state.player.playerExp,
         gold: state.player.gold,
         lvl: state.player.playerLevel,
         playerAtk: state.player.playerAttack,
-        dungeonBossAtk: state.dungeonBoss.dungeonBossAtk,
-        inBattleDungeonBoss: state.player.inBattleDungeonBoss,
+        dungeonBossTwoAtk: state.dungeonBossTwo.dungeonBossTwoAtk,
+        inBattleDungeonBossTwo: state.player.inBattleDungeonBossTwo,
         position: state.lastLocation.position,
         spriteLocation: state.lastLocation.spriteLocation,
         direction: state.lastLocation.direction,
         walkIndex: state.lastLocation.walkIndex,
-        monsterLevel: state.monster.monsterLevel
+        dungeonBossTwoLevel: state.dungeonBossTwo.dungeonBossTwoLevel
     }
 }
 
@@ -26,44 +25,43 @@ const mapDispatchToProps = (dispatch) => {
     return {
         // Although monsterAttack has no payload, playerReducer.js will call the dispatch
         // and damage the player.
-        dungeonBossAttack: (dungeonBossAtk) => {
-            dispatch({ type: 'DUNGEON_BOSS_ATTACK', payload: {
-                dungeonBossAtk
+        dungeonBossTwoAttack: (dungeonBossTwoAtk) => {
+            console.log(dungeonBossTwoAtk);
+            dispatch({ type: 'DUNGEON_BOSS_2_ATTACK', payload: {
+                dungeonBossTwoAtk
             }})
         },
         // Although playerAttack has no payload, playerReducer.js will call the dispatch
         // and damage the player.
-        playerAttackDungeonBoss: (playerAtk) => {
-            dispatch({ type: 'PLAYER_ATTACK_DUNGEON_BOSS', payload: { 
+        playerAttackDungeonBossTwo: (playerAtk) => {
+            dispatch({ type: 'PLAYER_ATTACK_DUNGEON_BOSS_2', payload: { 
                 playerAtk
             }})
         },
-        killedDungeonBoss: () => {
-            dispatch({ type: 'BATTLE_END_DUNGEON_BOSS', payload: {
+        killedDungeonBossTwo: () => {
+            dispatch({ type: 'BATTLE_END_DUNGEON_BOSS_2', payload: {
                 level: 1,
                 gold: 100,
             }})
         },
         battleOn: () => {
-            dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
-                inBattleDungeonBoss: 'flex',
+            dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS_2', payload: {
+                inBattleDungeonBossTwo: 'flex',
                 tiles: battleTiles,
                 
             }})
         },
         battleOff: () => {
-            dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
-                inBattleDungeonBoss: 'none',
-                tiles: dungeonTiles,
+            dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS_2', payload: {
+                inBattleDungeonBossTwo: 'none',
+                tiles: dungeonTiles2,
                 isListening: true
             }})
         },
+        // can we add
         battleDoneLocation: (position) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position
-                // spriteLocation: state.lastLocation.spriteLocation,
-                // direction: state.lastLocation.direction,
-                // walkIndex: state.lastLocation.walkIndex
             }})
         },
         levelUpAllMonsters: () => {
@@ -74,9 +72,9 @@ const mapDispatchToProps = (dispatch) => {
                 caveBossLevel: 1,
                 caveBossHP: 50,
                 caveBossAttack: 25,
-                monsterLevel: 1,
-                dungeonBossHP: 50,
-                dungeonBossAttack: 25
+                dungeonBossTwoLevel: 1,
+                dungeonBossTwoHP: 50,
+                dungeonBossTwoAttack: 25
             }})
         },
         killedMonster: () => {
@@ -88,6 +86,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 } 
 
-const makeBattleDungeonBossSmart = connect(mapStateToProps, mapDispatchToProps);
-const smartBattleDungeonBoss = makeBattleDungeonBossSmart(BattleDungeonBoss);
-export default smartBattleDungeonBoss;
+const makeBattleDungeonTwoSmart = connect(mapStateToProps, mapDispatchToProps);
+const smartBattleDungeonBossTwo = makeBattleDungeonTwoSmart(BattleDungeonBossTwo);
+export default smartBattleDungeonBossTwo;
