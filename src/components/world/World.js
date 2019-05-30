@@ -10,6 +10,9 @@ import DungeonBoss from '../monster/DungeonBoss';
 import BattleDungeonBoss from '../../containers/BattleDungeonBossContainer';
 import DungeonBoss2 from '../monster/DungeonBoss2';
 import BattleDungeonBoss2 from '../../containers/BattleDungeonBoss2';
+import GameMenu from '../gameMenu/GameMenu';
+import CreateUser from '../CreateUser';
+import UserLogin from '../UserLogin';
 
 // This holds the components Map and Player
 // Makes this class
@@ -31,6 +34,9 @@ class World extends React.Component {
                     margin: '20px auto'
                 }}
                 >
+                {/* <UserLogin /> */}
+                <CreateUser />
+                {/* <GameMenu/> */}
                 <Map />
                 <Player />
                 <CaveBoss />

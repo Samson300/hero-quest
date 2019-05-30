@@ -13,9 +13,14 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({ type: 'START_NEW_GAME', payload: {
                 listenForKeys: true,
             }})
+        },
+        userLogin: () => {
+            dispatch({ type: 'USER_LOGIN_FORM', payload: {
+                listenForKeys: true,
+            }})
         }
     }
-} 
+}
 
 const makeGameMenuSmart = connect(mapStateToProps, mapDispatchToProps);
 const smartGameMenu = makeGameMenuSmart(GameMenu);

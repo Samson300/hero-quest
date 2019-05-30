@@ -10,7 +10,7 @@
     "react-scripts": "3.0.1",
     "redux": "^4.0.1"
   },
-  "proxy": "http://localhost4000",
+  "proxy": "http://localhost:4000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

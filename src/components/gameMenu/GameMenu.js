@@ -13,7 +13,7 @@ class GameMenu extends React.Component {
         }
     }
 
-    async componentDidMount() {
+    async componentDidMount(response) {
         response = axios.get("http://localhost4000/api");
         this.setState({
             character: response.data
@@ -29,17 +29,21 @@ class GameMenu extends React.Component {
             <div className='GameMenu' style={{display: this.props.menuDisplay, flexDirection: 'column'}}>
                 <div className='GameMenuButtons'>
                     <button onClick={this.props.newGame}>New Game</button>
-                    <button onClick={this.props.loadGame}>Load Game</button>
+                    <button onClick={this.props.login}>Login</button>
                 </div>
             </div>
         )
+    }
+
+    login = () => {
+        this.props.userLogin();
     }
 
     newGame = () => {
         this.props.startNewGame();
     }
 
-    sendState = async () => {
+    sendState = async (qs) => {
         console.log('GameMenu sendState got called')
         await axios({
             method: 'post',
