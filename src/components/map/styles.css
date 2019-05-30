@@ -1,7 +1,7 @@
 
 .tile {
     display: inline-flex;
-    background-color: rgb(2, 71, 2);
+    background-color: rgb(29, 29, 29);
 }
 
 .bigDoor {
@@ -25,8 +25,7 @@
 }
 
 .townExit {
-    background-image: url('../../styles/HeroSprites/Characters/Objects.png');
-    background-position: -128px 0px
+    background-image: url('../../styles/Dungeon_Crawl_images/town/gate_closed_middle.png');
 }
 
 .road {
@@ -34,12 +33,12 @@
 }
 
 .townWall {
-    background-image: url('../../styles/Dungeon_Crawl_images/church_0.png')
+    background-image: url('../../styles/Dungeon_Crawl_images/town/stone_brick_1.png')
 }
 
-
 .fountain {
-    background-image: url('../../styles/fountain.gif')
+    background-image: url('../../styles/fountain.gif');
+    background-color: rgb(2, 71, 2);
 }
 
 
@@ -96,7 +95,8 @@
 
 .plainTree {
     background-image: url('../../styles/Dungeon_Crawl_images/plains-tree/mangrove_1.png');
-    background-position: 0px 0px
+    background-position: 0px 0px;
+    background-color: rgb(2, 71, 2);
 }
 
 .water {
@@ -192,11 +192,12 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
 .itemStore {
     background-image: url('../../styles/elf_new.png');
     background-position: left top;
+    background-color: rgb(186, 178, 136);
 }
 
 .caveEntrance {
     background-image: url('../../styles/Dungeon_Crawl_images/volcano_exit.png');
-    background-position: left top;
+    background-color: rgb(2, 71, 2);
 }
 
 .caveBossFight {
@@ -234,4 +235,81 @@ you dont have to just move in 32s pick any numbers that view ~middle of the 4 gr
 .lavaFlame {
     background-image: url('../../styles/fire.gif');
     background-color: rgba(60, 10, 13, 0.639);
+}
+
+.townExitLeft {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/gate_closed_left.png');
+}
+
+.townExitRight {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/gate_closed_right.png');
+}
+
+.townFloor {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/floor_vines_0_new.png')
+}
+
+.townGrassTopLeftCorner {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass-top-left-edge.png')
+}
+
+.townGrassTopRightCorner {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass-top-right-edge.png')
+}
+
+.townGrassBottomLeftCorner {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass-bottom-left-edge.png')
+}
+
+.townGrassBottomRightCorner {
+    background-image: url('../../styles/Dungeon_Crawl_images/plains-grass/grass-bottom-right-edge.png')
+}
+
+.churchWall {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/church_0.png');
+}
+
+.churchFloor {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/ice_0_old.png');
+}
+
+.churchDoor {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/runed_door.png')
+}
+
+.churchHealer {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/killer_klown_green.png');
+    background-color: rgb(191, 188, 188);
+}
+
+.churchRevive {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/churchrevive.gif');
+    background-color: rgb(191, 188, 188);
+}
+
+.storeChest {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/store-chest.gif');
+    background-color: rgb(186, 178, 136);
+}
+
+.storeWall {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/stone_2_brown_0.png');
+}
+
+.storeFloor {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/floor_sand_stone_0.png');
+}
+
+.storeDoor {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/closed_door.png');
+}
+
+.storeSign {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/shop_gadgets.png');
+    background-color: rgb(84, 58, 5)
+}
+
+.townSign {
+    background-image: url('../../styles/Dungeon_Crawl_images/town/town-sign.gif');
+    background-color: rgb(2, 71, 2);
 }
