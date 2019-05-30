@@ -21,7 +21,8 @@ class CaveBoss extends React.Component {
                 backgroundImage: `url('${CaveBossImage}')`,
                 backgroundPosition: caveBoss.backgroundPosition, // This is what displays the characters; currently, displaying incorrectly initally
                 width: '96px',
-                height: '96px'
+                height: '96px',
+                marginTop: '30px'
             }}
             ></div>
         )
