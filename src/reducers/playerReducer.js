@@ -19,7 +19,8 @@ const initialState = {
     playerLevel: 1,
     playerExp: 0,
     gold: 10,
-    inventory: []
+    inventory: [],
+    diedDirection: 'SOUTH'
 }
 
 // Manages how we are changing the state
@@ -27,6 +28,7 @@ const playerReducer = (state=initialState, action) => {
     switch(action.type) {
         // this handles our move player action
         case 'MOVE_PLAYER':
+            console.log(action.payload)
             return {
                 ...state,
                 ...action.payload

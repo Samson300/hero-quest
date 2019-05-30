@@ -15,7 +15,7 @@ class GameMenu extends React.Component {
             <div className='GameMenu' style={{display: this.props.menuDisplay, flexDirection: 'column'}}>
                 <div className='GameMenuButtons'>
                     <button onClick={this.props.newGame()}>New Game</button>
-                    <button onClick={this.props.loadGame()}>Load Game</button>
+                    <button onClick={this.props.userLogIn()}>Load Game</button>
                 </div>
             </div>
         )

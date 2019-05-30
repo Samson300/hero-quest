@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import Battle from '../components/battle/Battle';
-import { battleTiles, wildernessTiles } from '../config/constants';
+import { battleTiles, wildernessTiles, townTiles } from '../config/constants';
 
 const mapStateToProps = (state) => {
     return {
         // hp will display maxPlayerHp
         hp: state.player.maxPlayerHP,
         addedHP: state.player.addedHP,
+        basePlayerHP: state.player.basePlayerHP,
         monsterHP: state.monster.monsterHP,
         exp: state.player.playerExp,
         gold: state.player.gold,
@@ -16,8 +17,9 @@ const mapStateToProps = (state) => {
         inBattle: state.player.inBattle,
         position: state.lastLocation.position,
         spriteLocation: state.lastLocation.spriteLocation,
-        direction: state.lastLocation.direction,
-        walkIndex: state.lastLocation.walkIndex,
+        // direction: state.lastLocation.direction,
+        walkIndex: state.player.walkIndex,
+        direction: state.player.diedDirection
     }
 }
 
@@ -71,11 +73,34 @@ const mapDispatchToProps = (dispatch) => {
                 displayMonster: 'none'
             }})
         },
+        battleOffToTown: () => {
+            dispatch({ type: 'BATTLE_STATUS', payload: {
+                inBattle: 'none',
+                tiles: townTiles,
+                isListening: true,
+                displayMonster: 'none'
+            }})
+        },
         battleDoneLocation: (position) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position
             }})
-        }
+        },
+        // when the player dies they are sent back to town at this position
+        playerDied: (position, basePlayerHP) => {
+            dispatch({ type: 'MOVE_PLAYER', payload: {
+                position
+            }});
+            dispatch({ type: 'HEAL_PLAYER', payload: {
+                maxPlayerHP: basePlayerHP
+            }})
+        },
+        killedPlayer: () => {
+            dispatch({ type: 'BATTLE_END', payload: {
+                exp: 0,
+                gold: 0
+            }})
+        },
     }
 } 
 
