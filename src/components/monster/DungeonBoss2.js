@@ -13,7 +13,7 @@ class DungeonBoss2 extends React.Component {
         return (
             <div
             style={{
-                display: this.props.dungeonBoss2Display,
+                display: this.props.bossDisplay,
                 position: 'absolute',
                 top: dungeonBoss2.top,
                 left: dungeonBoss2.left,

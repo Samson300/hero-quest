@@ -11,8 +11,7 @@ const initialState = {
     bossDisplay: 'none',
     backgroundPosition: 'left top',
     top: 20,
-    left: 260,
-    gold: 10
+    left: 260
 }
 
 const caveBossReducer = (state=initialState, action) => {
@@ -34,24 +33,6 @@ const caveBossReducer = (state=initialState, action) => {
                 gold: state.gold + action.payload.gold
             }
         // The player's attack will increase as the player levels up.
-        case 'LEVEL_UP':
-        return {
-            ...state,
-            playerAttack: state.playerAttack + action.payload.playerAtk
-        }
-        // the player's attack will increase as player buys swords
-        case "BUY_SWORD":
-            if (state.gold >= 5) {
-                return {
-                    ...state,
-                    playerAttack: state.playerAttack + action.payload.playerAttack,
-                    gold: state.gold - action.payload.gold
-                }
-            } else {
-                return {
-                    ...state,
-                }
-            }
         case 'DISPLAY_CAVE_BOSS':
             return {
                 ...state,

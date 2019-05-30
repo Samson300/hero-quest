@@ -325,7 +325,7 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
-            dispatchDungeonBossDisplay(displayFlexOn, 'left top', 512, 512);
+            dispatchDungeonBossDisplay(displayFlexOn, 'left top', 288, 512);
         }
         // town movement, if tile 13(store) is attempted, dispatch store action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {

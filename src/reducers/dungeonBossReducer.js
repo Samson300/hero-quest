@@ -4,9 +4,10 @@ const initialState = {
     playerAttack: 10,
     monsterLevel: 1,
     dungeonBossLevel: 1,
-    dungeonBoss1Display: 'none',
-    top: 20,
-    left: 260,
+    bossDisplay: 'none',
+    // backgroundPosition: 'left top',
+    top: 512,
+    left: 480,
     gold: 10,
 }
 
@@ -23,7 +24,7 @@ const dungeonBossReducer = (state=initialState, action) => {
             return {
                 ...state,
                 dungeonBossHP: 350,
-                dungeonBoss1Display: 'none',
+                bossDisplay: 'none',
                 gold: state.gold + action.payload.gold
             }
         // The player's attack will increase as the player levels up.

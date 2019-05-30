@@ -9,9 +9,9 @@ const initialState = {
     monsterLevel: 1,
     dungeonBossLevel: 1,
     bossDisplay: 'none',
-    backgroundPosition: 'left top',
-    top: 20,
-    left: 260,
+    // backgroundPosition: 'left top',
+    top: '200px',
+    left: '200px',
     gold: 10
 }
 
