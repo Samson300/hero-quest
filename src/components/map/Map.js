@@ -116,42 +116,6 @@ function getTileSprite(type) {
             return 'lavaFlame'
         case 51:
             return 'lavaBridge2'
-        case 52:
-            return 'townExitLeft'
-        case 53:
-            return 'townExitRight'
-        case 54:
-            return 'townFloor'
-        case 55:
-            return 'townGrassTopLeftCorner'
-        case 56:
-            return 'townGrassTopRightCorner'
-        case 57:
-            return 'townGrassBottomLeftCorner'
-        case 58:
-            return 'townGrassBottomRightCorner'
-        case 59:
-            return 'churchWall'
-        case 61:
-            return 'churchFloor'
-        case 62:
-            return 'churchDoor'
-        case 63:
-            return 'churchHealer'
-        case 64:
-            return 'churchRevive'
-        case 65:
-            return 'storeChest'
-        case 66:
-            return 'storeWall'
-        case 67:
-            return 'storeFloor'
-        case 68:
-            return 'storeDoor'
-        case 69:
-            return 'storeSign'
-        case 70:
-            return 'townSign'
         case 60:
             return 'battleDungeonBoss'
     }
