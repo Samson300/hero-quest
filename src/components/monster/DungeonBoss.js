@@ -10,7 +10,6 @@ class DungeonBoss extends React.Component {
 
     render() {
         const dungeonBoss = store.getState().dungeonBoss
-        console.log(dungeonBoss)
         return (
             <div
             style={{

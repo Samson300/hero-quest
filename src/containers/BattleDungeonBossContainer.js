@@ -44,19 +44,6 @@ const mapDispatchToProps = (dispatch) => {
                 gold: 100,
             }})
         },
-        // levelUp: () => {
-        //     dispatch({ type: 'LEVEL_UP', payload: {
-        //         lvl: 1,
-
-        //         // Player's attack will increase by 10 after leveling up.
-        //         // See monsterReducer.js to see what's going on.
-        //         playerAtk: 10,
-
-        //         // Player will gain 10 hp to their max health after leveling up.
-        //         // See playerReducer.js to see what's going on.
-        //         hp: 10
-        //     }})
-        // },
         battleOn: () => {
             dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
                 inBattleDungeonBoss: 'flex',

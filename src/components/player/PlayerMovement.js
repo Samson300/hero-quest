@@ -1,5 +1,5 @@
 import store from '../../config/store';
-import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles, caveFirstLevel, caveSecondLevel } from '../../config/constants';
+import { SPRITE_SIZE, MAP_WIDTH, MAP_HEIGHT, wildernessTiles, battleTiles, townTiles, dungeonTiles, caveFirstLevel, caveSecondLevel, dungeonTiles2 } from '../../config/constants';
 
 // Controlls player movement capabilities
 export default function PlayerMovement(player) {
@@ -310,7 +310,7 @@ export default function PlayerMovement(player) {
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
             // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
-            dispatchDungeonBossDisplay(displayFlexOn, 'left top', 512, 512)
+            dispatchDungeonBossDisplay(displayFlexOn, 'left top', 480, 512)
         }
         // town movement, if tile 13(store) is attempted, dispatch store action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {
@@ -332,11 +332,11 @@ export default function PlayerMovement(player) {
             dispatchDungeonBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
         }
         // level 1 dungeon to lvl 2
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 15) {
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 49) {
             // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             console.log("moving cave level 2")
-            dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, caveSecondLevel);
-            dispatchDungeonBossDisplay(displayFlexOn, 'left top', 20, 260);
+            dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, dungeonTiles2);
+            dispatchDungeonBossDisplay(displayFlexOn, 'left top', 512, 512);
         }
     }
 
