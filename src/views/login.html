@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Login Page</title>
+</head>
+
+<body> 
+
+    <style>
+        body {
+            background-color: #232528;
+            margin: 100px;
+            /* justify-content: center;
+            text-align: center; */
+        }
+        
+        h1 {
+            font-family: 'Avenir';
+            color: #FF7700;
+        }
+        .form-group {
+            color: white;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            color: white;
+            background-color: #FF7700;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        img {
+            width: 150px; 
+            height: 50px;
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #232528;
+            color: white;
+            text-align:right;
+            margin: 0px 150px 20px 0px;
+        }
+        
+        
+        </style>
+
+        
+        
+                <h1>${message}</h1>      
+            
+                
+                    <form action="/login" method="POST">
+                        <div class="form-group">
+                        <label for="email">Email</label>
+                        <input value="${email}" name="email" type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                        <label for="password">Password</label>
+                        <input value=""
+                        name="password" type="password" class="form-control" id="password" placeholder="Enter password">
+                        </div>
+                    
+                        </div>
+                        <button type="submit" class="btn">Log In</button>
+                    </form>
+                    <form action="/createUser" method="GET">
+                        <button type="submit" class="btn">Create Account</button>
+                    </form>
+
+                    <!-- <a class="btn btn-primary" href="/createUser" role="button">Create An Account</a> -->
+
+                    <div class="footer">
+                        <img src="/static/images/ticket-icon.png">
+                        </div>
+
+    <script>
+    
+    </script>
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
