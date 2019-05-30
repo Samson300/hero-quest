@@ -249,12 +249,12 @@ export default function PlayerMovement(player) {
     function attemptMove(direction) {
         const oldPos = store.getState().player.position;
         const newPos = getNewPosition(oldPos, direction);
-        const newMapPos = [0,192];
+        const newMapPos = [288,32];
         const battlePos = [160 ,288];
-        const backToTownPos = [608, 224];
+        const backToTownPos = [288, 576];
         const basePlayerHP = store.getState().player.basePlayerHP
-        const dungeonToWild = [608, 288];
-        const caveSecondLevelStart = getNewPosition([0, 576], direction);
+        const dungeonToWild = [480, 32];
+        const caveSecondLevelStart = getNewPosition([0, 544], direction);
         let displayFlexOn = 'flex';
         let displayOff = 'none';
         const isListeningOn = true;
@@ -268,29 +268,39 @@ export default function PlayerMovement(player) {
             dispatchRecordLastLocation(direction, oldPos);
         // to wilderness from battle or town
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 5) {
-            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
             dispatchStoreScreenOnly(displayOff);
+            dispatchDungeonBossDisplay(displayOff);
         }
-        // dungeon to wilderness
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 52) {
+            dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
+            dispatchStoreScreenOnly(displayOff);
+            dispatchDungeonBossDisplay(displayOff);
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 53) {
+            dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
+            dispatchStoreScreenOnly(displayOff);
+            dispatchDungeonBossDisplay(displayOff);
+        }
+        // dungeon 1 to wilderness
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 9) {
-            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             console.log("moving back to wilderness")
-            dispatchCharacterMoveNewArea(direction, dungeonToWild, wildernessTiles);
+            dispatchCharacterMoveNewArea("SOUTH", dungeonToWild, wildernessTiles);
             dispatchCaveBossDisplay(displayOff);
+            dispatchDungeonBossDisplay(displayOff);
         }
         // wilderness to cave 
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 14) {
-            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             console.log("moving to cave")
-            dispatchCharacterMoveNewArea(direction, newMapPos, caveFirstLevel);
+            dispatchCharacterMoveNewArea('SOUTH', newMapPos, caveFirstLevel);
+            dispatchDungeonBossDisplay(displayOff);
         }
         // cave level 1 to cave level 2 
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 15) {
-            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
             console.log("moving cave level 2")
             dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, caveSecondLevel);
             dispatchCaveBossDisplay(displayFlexOn, 'left top', 20, 260);
+            dispatchDungeonBossDisplay(displayOff);
         }
         // battle tiles, if attempting move to it, chance of dispatching battle, chance of just movement
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 11) {
@@ -304,10 +314,20 @@ export default function PlayerMovement(player) {
             }
         }
         // wilderness to town
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
-            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 18) {
             console.log("moving to town")
             dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
+            dispatchDungeonBossDisplay(displayOff);
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 19) {
+            console.log("moving to town")
+            dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
+            dispatchDungeonBossDisplay(displayOff);
+        }
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 20) {
+            console.log("moving to town")
+            dispatchCharacterMoveNewArea(direction, backToTownPos, townTiles);
+            dispatchDungeonBossDisplay(displayOff);
         }
         // town movement, if tile 6(healer) is attempted, dispatch healer action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 63) {
@@ -315,45 +335,69 @@ export default function PlayerMovement(player) {
         }
         // wilderness to dungeon, turn on dungeon boss 1 and first dungeon map
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 8) {
-            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
-            dispatchCharacterMoveNewArea(direction, newMapPos, dungeonTiles);
+            dispatchCharacterMoveNewArea("SOUTH", [0,320], dungeonTiles);
             dispatchDungeonBossDisplay(displayFlexOn, 'left top', 288, 512);
         }
         // town movement, if tile 13(store) is attempted, dispatch store action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 13) {
-            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchStoreScreenAndMoveNowhere(displayFlexOn, oldPos, direction);
         }
         // cave movement, if tile 26(bossBattle) is attempted, dispatch battle action
         if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 16) {
-            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
             dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
-            dispatchBattleCaveBossScreen(displayFlexOn)
-            dispatchCaveBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
+            dispatchBattleCaveBossScreen(displayFlexOn);
+            dispatchCaveBossDisplay(displayFlexOn, '-96px -96px', 230, 400);
+            dispatchDungeonBossDisplay(displayOff);
         }
         // fight dungeonBoss, dungeon level 1
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 59) {
-            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 71) {
             dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
-            dispatchBattleDungeonBossScreen(displayFlexOn)
-            dispatchDungeonBossDisplay(displayFlexOn, '-96px -96px', 230, 400)
+            dispatchBattleDungeonBossScreen(displayFlexOn);
+            dispatchDungeonBossDisplay(displayFlexOn, '-96px -96px', 230, 400);
         }
         // move level 1 dungeon to lvl 2, turn off dungeon 1 boss, turn on dungeon 2 boss
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 49) {
-            // dispatchCharacterMoveTownToWilderness(direction, newMapPos);
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 72) {
             console.log("moving cave level 2")
-            dispatchCharacterMoveNewArea('EAST', caveSecondLevelStart, dungeonTiles2);
+            dispatchCharacterMoveNewArea('SOUTH', [544,32], dungeonTiles2);
             dispatchDungeonBossDisplay(displayOff);
             dispatchDungeonBoss2Display(displayFlexOn, 'left top', 512, 512);
-
         }
-
+        // move level 2 dungeon to level 1
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 73) {
+            dispatchCharacterMoveNewArea('NORTH', [64,96], dungeonTiles);
+            dispatchDungeonBossDisplay(displayFlexOn, 'left top', 288, 512);
+            dispatchDungeonBoss2Display(displayOff);
+        }
+        // move dungeon level 2 to cave/wilderness path
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 75) {
+            dispatchCharacterMoveNewArea('NORTH', [64,576], wildernessTiles);
+            dispatchDungeonBossDisplay(displayOff);
+            dispatchDungeonBoss2Display(displayOff);
+        }
+        // move cave/wilderness path to dungeon level 2
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 76) {
+            dispatchCharacterMoveNewArea('NORTH', [32,576], dungeonTiles2);
+            dispatchDungeonBossDisplay(displayOff);
+            dispatchDungeonBoss2Display(displayFlexOn, 'left top', 512, 512);
+        }
+        // move cave to cave/wilderness path
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 77) {
+            dispatchCharacterMoveNewArea('SOUTH', [64,512], wildernessTiles);
+            dispatchDungeonBossDisplay(displayOff);
+        }
+        // caveLevel2 to caveLevel1
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 49) {
+            dispatchCharacterMoveNewArea('WEST', [544,544], caveFirstLevel);
+            dispatchCaveBossDisplay(displayOff);
+            dispatchDungeonBossDisplay(displayOff);
+        }
         // fight dungeonBoss2, dungeon level 2, move dungeonBoss2 to battle pos
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 60) {
-            // dispatchCharacterMoveWildernessToTown(direction, backToTownPos);
+        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 74) {
             dispatchCharacterMoveNewArea('EAST', battlePos, battleTiles);
-            dispatchBattleDungeonBoss2Screen(displayFlexOn)
-            dispatchDungeonBoss2Display(displayFlexOn, '-96px -96px', 200, 500)
+            dispatchBattleDungeonBoss2Screen(displayFlexOn);
+            dispatchDungeonBoss2Display(displayFlexOn, '-96px -96px', 200, 500);
+            dispatchDungeonBossDisplay(displayOff);
+            dispatchCaveBossDisplay(displayOff);
         }
     }
 

@@ -9,10 +9,9 @@ class BattleCaveBoss extends React.Component {
     }
     
     static getDerivedStateFromProps(props, state) {
-        if (props.exp >= 100) {
-                props.levelUp();
-                // props.battleOn();
-            }
+        // if (props.exp >= 100) {
+        //         props.levelUp();
+        //     }
         if (props.caveBossHP <= 0) {
             props.killedCaveBoss();
             props.battleOff();
@@ -23,7 +22,7 @@ class BattleCaveBoss extends React.Component {
         if (props.hp <= 0 && props.caveBossHP > 0) {
             // props.killedPlayer();
             props.battleOff();
-            props.playerDied(props.position);
+            props.playerDied(props.direction);
         }
     }
 

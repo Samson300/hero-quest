@@ -18,7 +18,7 @@ class BattleDungeonBoss extends React.Component {
         if (props.hp <= 0 && props.dungeonBossHP > 0) {
             // props.killedPlayer();
             props.battleOff();
-            props.playerDied(props.position);
+            props.playerDied(props.direction);
         }
     }
 

@@ -20,7 +20,6 @@ const initialState = {
     playerExp: 0,
     gold: 10,
     inventory: [],
-    diedDirection: 'SOUTH'
 }
 
 // Manages how we are changing the state
@@ -28,7 +27,6 @@ const playerReducer = (state=initialState, action) => {
     switch(action.type) {
         // this handles our move player action
         case 'MOVE_PLAYER':
-            console.log(action.payload)
             return {
                 ...state,
                 ...action.payload
@@ -106,10 +104,6 @@ const playerReducer = (state=initialState, action) => {
             ...action.payload,
             inBattle: action.payload.inBattle,
             isListening: action.payload.isListening,
-            inBattleCaveBoss: action.payload.inBattle,
-            inBattleDungeonBoss: action.payload.inBattle,
-            inBattleDungeonBossTwo: action.payload.inBattle
-            
         }
         case "BATTLE_STATUS_CAVE_BOSS":
             return {

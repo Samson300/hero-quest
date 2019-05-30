@@ -3,14 +3,10 @@
     height: 640px;
     background-image: url('../../styles/plains.png');
     background-position: 0px 0px;
-    outline: 5px solid blue;
+    outline: 5px solid white;
 }
 
 .PlayerHealth {
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: center; */
-    /* align-items: ; */
     color: white;
     margin-left: 100px;
     margin-top: -300px;
@@ -18,10 +14,6 @@
 }
 
 .PlayerHealth2 {
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: center; */
-    /* align-items: ; */
     color: white;
     margin-left: 100px;
     margin-top: -300px;
@@ -29,24 +21,9 @@
 }
 
 .CharacterStat {
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: flex-start; */
-    /* align-items: flex-end; */
     color: white;
     margin-left: 100px;
-    /* margin-top: -250px; */
 }
 
 
 
-/* style={{
-    backgroundImage
-// position: 'relative',
-// top: '0px',
-// left: '0px',
-width: '640px',
-height: '640px',
-outline: '5px solid white'
-// border: '4px solid white'
-}} */
