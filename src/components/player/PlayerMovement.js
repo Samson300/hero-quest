@@ -272,12 +272,12 @@ export default function PlayerMovement(player) {
             dispatchStoreScreenOnly(displayOff);
             dispatchDungeonBossDisplay(displayOff);
         }
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 52) {
+        if (observeBoundaries(oldPos, newPos) && observeCollision(oldPos, newPos) === 52) {
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
             dispatchStoreScreenOnly(displayOff);
             dispatchDungeonBossDisplay(displayOff);
         }
-        if (observeBoundaries(oldPos, newPos) && observeImpassable(oldPos, newPos) && observeCollision(oldPos, newPos) === 53) {
+        if (observeBoundaries(oldPos, newPos) && observeCollision(oldPos, newPos) === 53) {
             dispatchCharacterMoveNewArea(direction, newMapPos, wildernessTiles);
             dispatchStoreScreenOnly(displayOff);
             dispatchDungeonBossDisplay(displayOff);
@@ -401,6 +401,16 @@ export default function PlayerMovement(player) {
                 dispatchMove(direction, newPos);
             }
         }
+        // if (observeBoundaries(oldPos, newPos) && observeCollision(oldPos, newPos) === 7) {
+        //     const number = Math.floor(Math.random() * 10); 
+        //     if(number <= 0){
+        //     // dispatchToBattleMap(direction, battlePos);
+        //     dispatchCharacterMoveNewArea("EAST", battlePos, battleTiles);
+        //     dispatchBattleScreen(displayFlexOn)
+        //     } else {
+        //         dispatchMove(direction, newPos);
+        //     }
+        // }
         // wilderness to town
         if (observeBoundaries(oldPos, newPos) && observeCollision(oldPos, newPos) === 18) {
             console.log("moving to town")
