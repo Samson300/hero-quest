@@ -2,7 +2,7 @@
     display: flex;
     width: 640px;
     height: 640px;
-    background-image: url('../../styles/cave-boss-map.png');
+    background-image: url('../../styles/cave-map-true.png');
     background-position: 0px 0px;
     background-size: cover;
     outline: 5px solid white;
