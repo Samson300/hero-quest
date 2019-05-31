@@ -45,7 +45,7 @@ Our first MVP iteration included:
 ##Stretch Goals
   * Extra mini bosses
   * Gambling Chests
-  * Multipul Characters
+  * Multiple Characters
   * Spells/Multiple attacks
   * Save Game
   * Interactions with more objects
