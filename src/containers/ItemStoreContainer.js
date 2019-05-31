@@ -19,13 +19,14 @@ const mapDispatchToProps = (dispatch) => {
         buySword: () => {
             dispatch({ type: 'BUY_SWORD', payload: {
                 playerAttack: 5,
-                gold: 5,
+                gold: 10,
                 name: ["Sword"],
             }})
         },
         buyArmor: () => {
             dispatch({ type: 'BUY_ARMOR', payload: { 
                 hp: 10,
+                gold: 10,
                 name: ["Armor"]
             }})
         },

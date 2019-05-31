@@ -1,6 +1,6 @@
 const initialState = {
-    caveBossHP: 50,
-    caveBossHPInitial: 500,
+    caveBossHP: 750,
+    caveBossHPInitial: 750,
     caveBossAttack: 50,
     isListening: true,
     // playerAttack is needed to damage the monster and have an incrementing value

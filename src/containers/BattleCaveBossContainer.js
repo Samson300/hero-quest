@@ -41,8 +41,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         killedCaveBoss: () => {
             dispatch({ type: 'BATTLE_END_CAVE_BOSS', payload: {
-                exp: 100,
-                gold: 10,
+                gold: 300,
             }})
         },
         levelUp: () => {

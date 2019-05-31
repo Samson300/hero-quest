@@ -47,7 +47,6 @@ const playerReducer = (state=initialState, action) => {
         case 'BATTLE_END_CAVE_BOSS':
             return {
                 ...state,
-                playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold,
                 isListening: true
             }
@@ -71,7 +70,7 @@ const playerReducer = (state=initialState, action) => {
                 // addedHP will be added by the hp from BattleContainer's action.payload.hp.
                 addedHP: state.addedHP + action.payload.hp,
                 // maxPlayerHP is the max HP after leveling up.
-                maxPlayerHP: state.basePlayerHP + state.addedHP,
+                basePlayerHP: state.basePlayerHP + state.addedHP,
                 playerExp: 0,
                 playerLevel: state.playerLevel + action.payload.lvl,
                 playerAttack: state.playerAttack + action.payload.playerAtk
@@ -82,7 +81,7 @@ const playerReducer = (state=initialState, action) => {
                 // addedHP will be added by the hp from BattleContainer's action.payload.hp.
                 addedHP: state.addedHP + action.payload.hp,
                 // maxPlayerHP is the max HP after leveling up.
-                maxPlayerHP: state.basePlayerHP + state.addedHP,
+                maxPlayerHP: state.maxPlayerHP + state.addedHP,
                 playerExp: 0,
                 playerLevel: state.playerLevel + action.payload.lvl
             }
@@ -90,7 +89,7 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...state,
                 ...action.payload,
-                maxPlayerHP: state.basePlayerHP + state.addedHP
+                maxPlayerHP: state.basePlayerHP
             }
         case 'PLAYER_LOOTS_CHEST_GAIN_HP':
             return {
@@ -151,7 +150,7 @@ const playerReducer = (state=initialState, action) => {
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)
-            if (state.gold >= 5) {
+            if (state.gold >= 10) {
                 return {
                     ...state,
                     playerAttack: state.playerAttack + action.payload.playerAttack,
@@ -164,10 +163,16 @@ const playerReducer = (state=initialState, action) => {
                 }
             }
         case "BUY_ARMOR":
+            if (state.gold >= 10) {
             return {
             ...state,
-            maxPlayerHP: state.maxPlayerHP + action.payload.hp,
-            inventory: state.inventory.concat(action.payload.name)
+            basePlayerHP: state.basePlayerHP + action.payload.hp,
+            inventory: state.inventory.concat(action.payload.name),
+            gold: state.gold - action.payload.gold
+        } } else {
+            return {
+                ...state,
+            }
         }
         case "STORE_STATUS":
                 return {
@@ -177,7 +182,8 @@ const playerReducer = (state=initialState, action) => {
         case "PLAYER_DIED_PENALTY":
             return {
                 ...state,
-                ...action.payload
+                ...action.payload,
+                basePlayerHP: 100
             }
         default:
             return state
