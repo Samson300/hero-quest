@@ -47,7 +47,6 @@ const playerReducer = (state=initialState, action) => {
         case 'BATTLE_END_CAVE_BOSS':
             return {
                 ...state,
-                playerExp: state.playerExp + action.payload.exp,
                 gold: state.gold + action.payload.gold,
                 isListening: true
             }
@@ -151,7 +150,7 @@ const playerReducer = (state=initialState, action) => {
         // combine this and buy armor into buy_item case
         case "BUY_SWORD":
             console.log(state.inventory)
-            if (state.gold >= 5) {
+            if (state.gold >= 10) {
                 return {
                     ...state,
                     playerAttack: state.playerAttack + action.payload.playerAttack,
@@ -164,7 +163,7 @@ const playerReducer = (state=initialState, action) => {
                 }
             }
         case "BUY_ARMOR":
-            if (state.gold >= 5) {
+            if (state.gold >= 10) {
             return {
             ...state,
             basePlayerHP: state.basePlayerHP + action.payload.hp,
