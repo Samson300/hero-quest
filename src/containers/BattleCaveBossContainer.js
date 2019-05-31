@@ -47,9 +47,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         levelUp: () => {
             dispatch({ type: 'LEVEL_UP', payload: {
-                lvl: 1,
-                playerAtk: 10,
-                hp: 10
+                lvl: 5,
+                playerAtk: 50,
+                hp: 50
             }})
         },
         battleOn: () => {
