@@ -82,7 +82,7 @@ const playerReducer = (state=initialState, action) => {
                 // addedHP will be added by the hp from BattleContainer's action.payload.hp.
                 addedHP: state.addedHP + action.payload.hp,
                 // maxPlayerHP is the max HP after leveling up.
-                maxPlayerHP: state.basePlayerHP + state.addedHP,
+                maxPlayerHP: state.maxPlayerHP + state.addedHP,
                 playerExp: 0,
                 playerLevel: state.playerLevel + action.payload.lvl
             }
@@ -90,7 +90,7 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...state,
                 ...action.payload,
-                maxPlayerHP: state.basePlayerHP + state.addedHP
+                maxPlayerHP: state.maxPlayerHP + state.addedHP
             }
         case 'PLAYER_LOOTS_CHEST_GAIN_HP':
             return {
@@ -164,10 +164,16 @@ const playerReducer = (state=initialState, action) => {
                 }
             }
         case "BUY_ARMOR":
+            if (state.gold >= 5) {
             return {
             ...state,
             maxPlayerHP: state.maxPlayerHP + action.payload.hp,
-            inventory: state.inventory.concat(action.payload.name)
+            inventory: state.inventory.concat(action.payload.name),
+            gold: state.gold - action.payload.gold
+        } } else {
+            return {
+                ...state,
+            }
         }
         case "STORE_STATUS":
                 return {
