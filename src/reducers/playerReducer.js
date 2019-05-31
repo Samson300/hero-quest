@@ -92,6 +92,21 @@ const playerReducer = (state=initialState, action) => {
                 ...action.payload,
                 maxPlayerHP: state.basePlayerHP + state.addedHP
             }
+        case 'PLAYER_LOOTS_CHEST_GAIN_HP':
+            return {
+                ...state,
+                maxPlayerHP: state.maxPlayerHP + action.payload.maxPlayerHP
+        }
+        case 'PLAYER_LOOTS_CHEST_GAIN_ATTACK':
+            return {
+                ...state,
+                playerAttack: state.playerAttack + action.payload.playerAttack
+        }
+        // case 'PLAYER_LOOTS_CHEST_LOSE_ATTACK':
+        //     return {
+        //         ...state,
+        //         playerAttack: state.playerAttack + action.payload.playerAttack
+        // }
         case "BATTLE_ON":
             return {
             ...state,

@@ -45,6 +45,13 @@ const mapDispatchToProps = (dispatch) => {
                 gold: 10,
             }})
         },
+        levelUp: () => {
+            dispatch({ type: 'LEVEL_UP', payload: {
+                lvl: 1,
+                playerAtk: 10,
+                hp: 10
+            }})
+        },
         battleOn: () => {
             dispatch({ type: 'BATTLE_STATUS_CAVE_BOSS', payload: {
                 inBattleCaveBoss: 'flex',
