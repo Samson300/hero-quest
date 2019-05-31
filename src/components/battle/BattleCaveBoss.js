@@ -36,6 +36,8 @@ class BattleCaveBoss extends React.Component {
                     <div className="PlayerStat">
                         <div className="PlayerHP">
                             Player HP: {this.props.hp}
+                            <br />
+                            Player Atk: {this.props.playerAtk}
                         </div>
                             <div className="CharacterStat">
                             Level: {this.props.lvl}
@@ -47,6 +49,8 @@ class BattleCaveBoss extends React.Component {
                     </div>
                     <div className="CaveBossHp">
                         Cave Boss HP: {this.props.caveBossHP}
+                        <br />
+                        Cave Boss Atk: {this.props.caveBossAtk}
                     </div>
                     <div style={{marginTop: '-250px', marginLeft: '400px', display: this.props.inBattleCaveBoss}} >
                         <button className="CaveBossAttack" onClick={this.caveBattleFunctions}>ATTACK CAVE BOSS</button>
