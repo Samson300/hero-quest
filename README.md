@@ -55,6 +55,7 @@ Our first MVP iteration included:
 <img src="/screenshots/Screen Shot 2019-05-31 at 2.06.56 PM.png">
 <img src="/screenshots/Screen Shot 2019-05-31 at 2.06.23 PM.png">
 <img src="/screenshots/Screen Shot 2019-05-31 at 2.08.07 PM.png">
+<img src="/screenshots/Screen Shot 2019-05-31 at 2.08.10 PM.png">
 
 ##Authors
 ---
