@@ -13,7 +13,7 @@ class Battle extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) { 
-        if (props.exp >= 100) {
+        if (props.exp >= 200) {
                 props.levelUp();
                 // props.battleOn();
             }
