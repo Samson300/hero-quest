@@ -1,5 +1,5 @@
 const initialState = {
-    dungeonBossHP: 50,
+    dungeonBossHP: 350,
     dungeonBossAtk: 35,
     playerAttack: 10,
     monsterLevel: 1,
