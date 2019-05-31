@@ -12,10 +12,10 @@ const initialState = {
     isListening: true,
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
-    basePlayerHP: 6000,
+    basePlayerHP: 100,
     addedHP: 10,
-    maxPlayerHP: 6000,
-    playerAttack: 100,
+    maxPlayerHP: 100,
+    playerAttack: 25,
     playerLevel: 1,
     playerExp: 0,
     gold: 10,
