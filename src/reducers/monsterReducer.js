@@ -1,5 +1,5 @@
 const initialState = {
-    monsterHP: 200,
+    monsterHP: 125,
     monsterHPBase: 200,
 
     // monsterAttack is moved to playerReducer.js in order to damage player.
