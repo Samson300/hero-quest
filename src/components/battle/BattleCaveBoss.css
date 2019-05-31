@@ -1,0 +1,26 @@
+.BattleScreenCaveBoss {
+    width: 640px;
+    height: 640px;
+    background-image: url('../../styles/cave-boss-map.png');
+    background-position: 0px 0px;
+    outline: 5px solid white;
+}
+
+.PlayerHealth {
+    color: white;
+    margin-left: 100px;
+    margin-top: -300px;
+    margin-bottom: 300px;
+}
+
+.PlayerHealth2 {
+    color: white;
+    margin-left: 100px;
+    margin-top: -300px;
+    margin-bottom: 300px;
+}
+
+.CharacterStat {
+    color: white;
+    margin-left: 100px;
+}
