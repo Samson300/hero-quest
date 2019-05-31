@@ -15,7 +15,7 @@ const initialState = {
     basePlayerHP: 100,
     addedHP: 10,
     maxPlayerHP: 100,
-    playerAttack: 100000,
+    playerAttack: 25,
     playerLevel: 1,
     playerExp: 0,
     gold: 10,
@@ -92,6 +92,16 @@ const playerReducer = (state=initialState, action) => {
                 ...action.payload,
                 maxPlayerHP: state.basePlayerHP + state.addedHP
             }
+        case 'PLAYER_LOOTS_CHEST_GAIN_HP':
+            return {
+                ...state,
+                maxPlayerHP: state.maxPlayerHP + action.payload.maxPlayerHP
+        }
+        case 'PLAYER_LOOTS_CHEST_GAIN_ATTACK':
+            return {
+                ...state,
+                playerAttack: state.playerAttack + action.payload.playerAttack
+        }
         case "BATTLE_ON":
             return {
             ...state,
@@ -163,6 +173,11 @@ const playerReducer = (state=initialState, action) => {
                 return {
                 ...state,
                 inStore: action.payload.inStore
+            }
+        case "PLAYER_DIED_PENALTY":
+            return {
+                ...state,
+                ...action.payload
             }
         default:
             return state

@@ -86,13 +86,15 @@ const mapDispatchToProps = (dispatch) => {
             }})
         },
         // when the player dies they are sent back to town at this position
-        playerDied: (direction, basePlayerHP) => {
+        playerDied: (direction) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position: [224,448],
                 direction
             }});
-            dispatch({ type: 'HEAL_PLAYER', payload: {
-                maxPlayerHP: basePlayerHP
+            dispatch({ type: 'PLAYER_DIED_PENALTY', payload: {
+                maxPlayerHP: 100,
+                addedHP: 0,
+                playerAttack: 10
             }});
             dispatch({ type: 'BATTLE_STATUS', payload: {
                 inBattle: 'none',

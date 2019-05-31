@@ -239,6 +239,25 @@ export default function PlayerMovement(player) {
         });
     }
 
+    function dispatchPlayerGainedAttack(attackIncrease) {
+        console.log(attackIncrease);
+        store.dispatch({
+            type: 'PLAYER_LOOTS_CHEST_GAIN_ATTACK',
+            payload: {
+                playerAttack: attackIncrease
+            }
+        });
+    }
+
+    function dispatchPlayerGainedHP(HPIncrease) {
+        store.dispatch({
+            type: 'PLAYER_LOOTS_CHEST_GAIN_HP',
+            payload: {
+                maxPlayerHP: HPIncrease
+            }
+        });
+    }
+
 
 // This tests if the move is possible based on boundaries
 // if the move is valid, calls dispatch move to update the state
@@ -531,6 +550,31 @@ export default function PlayerMovement(player) {
         // Cave Boss Bridge 2
         if (observeBoundaries(oldPos, newPos) && observeCollision(oldPos, newPos) === 51) {
             dispatchMove(direction, newPos);
+        }
+        // chest collision 
+        if (observeBoundaries(oldPos, newPos) && observeCollision(oldPos, newPos) === 3) {
+            const number = Math.floor(Math.random() * 100); 
+            console.log(number)
+                if(number <= 20){
+                    dispatchPlayerGainedAttack(5);
+                } else if(number > 20 && number <= 40){
+                    dispatchPlayerGainedHP(5);
+                } else if (number > 40 && number <= 55) {
+                    dispatchPlayerGainedAttack(20);
+                } else if (number > 55 && number <= 56) {
+                    dispatchPlayerGainedHP(20);
+                } else if (number > 56  && number <= 60) {
+                    dispatchPlayerGainedAttack(-25);
+                } else if (number > 60 && number <= 70) {
+                    dispatchPlayerGainedAttack(-25);
+                } else if (number > 70 && number < 99) {
+                    dispatchPlayerGainedHP(-90);
+                } else if (number > 90 && number < 99) {
+                    dispatchPlayerGainedAttack(50);
+                } else if (number === 100) {
+                    dispatchPlayerGainedAttack(200);
+                    dispatchPlayerGainedHP(200)
+                }
         }
     }
 
