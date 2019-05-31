@@ -1,6 +1,6 @@
 import React from 'react';
 import store from '../../config/store';
-import '../battle/Battle.css';
+import '../battle/BattleDungeonBoss.css';
 
 
 class BattleDungeonBoss extends React.Component {
@@ -26,22 +26,26 @@ class BattleDungeonBoss extends React.Component {
     render() {
         return (
             <div style={{display: this.props.inBattleDungeonBoss, flexDirection: 'column'}}>
-                <div className="BattleScreen" ></div>
-                <div className="PlayerHealth">
-                    HP: {this.props.hp}
-                    <br />
-                    dungeonBossHP: {this.props.dungeonBossHP}
-                    <br />
-                    Exp: {this.props.exp}
-                    <br />
-                    Gold: {this.props.gold}
-                    <br />
-                    Level: {this.props.lvl}
-                </div>
-                <div style={{marginTop: '-85px', display: this.props.inBattleDungeonBoss}} >
-                    <button onClick={this.dungeonBattleFunctions}>ATTACK DUNGEON BOSS</button>
-                    {/* <button onClick={this.props.killedMonster}>WIN</button> */}
-                </div>
+                <div className="BattleScreenDungeonBoss" ></div>
+                    <div className="PlayerStat">
+                        <div className="PlayerHP">
+                            Player HP: {this.props.hp}
+                        </div>
+                            <div className="CharacterStat">
+                            Level: {this.props.lvl}
+                            <br />
+                            Exp: {this.props.exp}
+                            <br />
+                            Gold: {this.props.gold}
+                        </div>
+                    </div>
+                    <div className="DungeonBossHp">
+                        Dungeon Boss HP: {this.props.dungeonBossHP}
+                    </div>
+                    <div style={{marginTop: '-250px', marginLeft: '400px', display: this.props.inBattleDungeonBoss}} >
+                        <button className="DungeonBossAttack" onClick={this.dungeonBattleFunctions}>ATTACK DUNGEON BOSS</button>
+                        {/* <button onClick={this.props.killedMonster}>WIN</button> */}
+                    </div>
             </div>
         )
     }
