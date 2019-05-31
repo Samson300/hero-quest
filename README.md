@@ -50,7 +50,7 @@ Our first MVP iteration included:
   * Interactions with more objects
   
 ##ScreenShots
-[Github](screenshots/Screen Shot 2019-05-31 at 2.01.50 PM.png)
+[Github](https://github.com/Samson300/hero-quest/blob/master/screenshots/Screen%20Shot%202019-05-31%20at%202.01.50%20PM.png)
 
 
 ##Authors
