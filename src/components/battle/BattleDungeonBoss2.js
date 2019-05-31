@@ -30,6 +30,8 @@ class inBattleDungeonBossTwo extends React.Component {
                 <div className="PlayerStat">
                     <div className="PlayerHP">
                         Player HP: {this.props.hp}
+                        <br/>
+                        Player Atk: {this.props.playerAtk}
                     </div>
                         <div className="CharacterStat">
                         Level: {this.props.lvl}
@@ -41,6 +43,8 @@ class inBattleDungeonBossTwo extends React.Component {
                 </div>
                 <div className="DungeonBossHp">
                     Dungeon Boss 2 HP: {this.props.dungeonBossTwoHP}
+                    <br />
+                    Dungeon Boss 2 Atk: {this.props.dungeonBossTwoAtk}
                 </div>
                 <div style={{marginTop: '-250px', marginLeft: '400px', display: this.props.inBattleDungeonBossTWO}} >
                     <button className="DungeonBossAttack" onClick={this.dungeontwoBattleFunctions}>ATTACK DUNGEON TWO BOSS</button>
