@@ -89,7 +89,7 @@ const playerReducer = (state=initialState, action) => {
         case 'HEAL_PLAYER':
             return {
                 ...state,
-                ...action.payload,
+                // ...action.payload,
                 maxPlayerHP: state.basePlayerHP + state.addedHP
             }
         case 'PLAYER_LOOTS_CHEST_GAIN_HP':
@@ -167,7 +167,8 @@ const playerReducer = (state=initialState, action) => {
             return {
             ...state,
             maxPlayerHP: state.maxPlayerHP + action.payload.hp,
-            inventory: state.inventory.concat(action.payload.name)
+            inventory: state.inventory.concat(action.payload.name),
+            gold: state.gold - action.payload.gold
         }
         case "STORE_STATUS":
                 return {
