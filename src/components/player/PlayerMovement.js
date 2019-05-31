@@ -554,6 +554,7 @@ export default function PlayerMovement(player) {
         // chest collision 
         if (observeBoundaries(oldPos, newPos) && observeCollision(oldPos, newPos) === 3) {
             const number = Math.floor(Math.random() * 100); 
+            console.log(number)
                 if(number <= 20){
                     dispatchPlayerGainedAttack(5);
                 } else if(number > 20 && number <= 40){
