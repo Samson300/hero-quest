@@ -71,7 +71,7 @@ const playerReducer = (state=initialState, action) => {
                 // addedHP will be added by the hp from BattleContainer's action.payload.hp.
                 addedHP: state.addedHP + action.payload.hp,
                 // maxPlayerHP is the max HP after leveling up.
-                maxPlayerHP: state.basePlayerHP + state.addedHP,
+                maxPlayerHP: state.maxPlayerHP + state.addedHP,
                 playerExp: 0,
                 playerLevel: state.playerLevel + action.payload.lvl,
                 playerAttack: state.playerAttack + action.payload.playerAtk
