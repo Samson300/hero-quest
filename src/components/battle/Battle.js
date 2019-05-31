@@ -37,24 +37,27 @@ class Battle extends React.Component {
         return (
             <div style={{display: this.props.inBattle, flexDirection: 'column'}}>
                 <div className="BattleScreen" ></div>
-                <div className="PlayerHealth">
-                    HP: {this.props.hp}
-                    <br />
-                    MonsterHP: {this.props.monsterHP}
-                    <br />
-                    Exp: {this.props.exp}
-                    <br />
-                    Gold: {this.props.gold}
-                    <br />
-                    Level: {this.props.lvl}
-                </div>
-                <div style={{marginTop: '-85px', display: this.props.inBattle}} >
-                    <button onClick={this._battleFunctions}>ATTACK</button>
-                    {/* <button onClick={this.props.killedMonster}>WIN</button> */}
-                </div>
+                    <div className="PlayerStat">
+                        <div className="PlayerHP">
+                            Player HP: {this.props.hp}
+                        </div>
+                            <div className="CharacterStat">
+                            Level: {this.props.lvl}
+                            <br />
+                            Exp: {this.props.exp}
+                            <br />
+                            Gold: {this.props.gold}
+                        </div>
+                    </div>
+                    <div className="MonsterHp">
+                        Monster HP: {this.props.monsterHP}
+                    </div>
+                    <div style={{marginTop: '-250px', marginLeft: '400px', display: this.props.inBattle}} >
+                        <button className="MonsterAttack" onClick={this._battleFunctions}>ATTACK MONSTER</button>
+                        {/* <button onClick={this.props.killedMonster}>WIN</button> */}
+                    </div>
             </div>
         )
-        
     }
     _battleFunctions = () => {
         this.props.monsterAttack(this.props.monsterAtk);
