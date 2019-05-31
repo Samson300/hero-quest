@@ -15,7 +15,7 @@ const initialState = {
     basePlayerHP: 100,
     addedHP: 10,
     maxPlayerHP: 100,
-    playerAttack: 10,
+    playerAttack: 100000,
     playerLevel: 1,
     playerExp: 0,
     gold: 10,

@@ -13,7 +13,7 @@ function getTileSprite(type) {
         case 0:
             return 'tile'
         case 1:
-            return 'bigDoor'
+            return 'townFloor'
         case 2:
             return 'door'
         case 3:
@@ -120,7 +120,7 @@ function getTileSprite(type) {
         case 53:
             return 'townExitRight'
         case 54:
-            return 'townFloor'
+            return 'bigDoor'
         case 55:
             return 'townGrassTopLeftCorner'
         case 56:
