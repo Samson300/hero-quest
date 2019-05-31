@@ -90,7 +90,7 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...state,
                 ...action.payload,
-                maxPlayerHP: state.maxPlayerHP + state.addedHP
+                maxPlayerHP: state.basePlayerHP
             }
         case 'PLAYER_LOOTS_CHEST_GAIN_HP':
             return {
@@ -167,7 +167,7 @@ const playerReducer = (state=initialState, action) => {
             if (state.gold >= 5) {
             return {
             ...state,
-            maxPlayerHP: state.maxPlayerHP + action.payload.hp,
+            basePlayerHP: state.basePlayerHP + action.payload.hp,
             inventory: state.inventory.concat(action.payload.name),
             gold: state.gold - action.payload.gold
         } } else {
