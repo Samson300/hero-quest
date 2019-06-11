@@ -1,34 +1,37 @@
 import React from 'react';
 import axios from 'axios';
-
+import World from '../world/World';
+import qs from 'qs'
 
 class GameMenu extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            character: {},
-            messages: [],
-            text: ''
-        }
+        // this.state = {
+        //     character: {},
+        //     messages: [],
+        //     text: ''
+        // }
     }
 
-    async componentDidMount() {
-        response = axios.get("http://localhost4000/api");
-        this.setState({
-            character: response.data
-        }, () => {
-            console.log('done setting the state');
-        });
-    }
-    // static getDerivedStateFromProps() {
-
+    // async componentDidMount() {
+    //     response = axios.get("http://localhost4000/api");
+    //     this.setState({
+    //         character: response.data
+    //     }, () => {
+    //         console.log('done setting the state');
+    //     });
     // }
+
+
     render() {
         return (
-            <div className='GameMenu' style={{display: this.props.menuDisplay, flexDirection: 'column'}}>
+            <div className='GameMenu' style={{display: this.props.menuDisplay, position: 'relative',
+                    width: '640px',
+                    height: '640px',
+                    margin: '20px auto'}}>
                 <div className='GameMenuButtons'>
-                    <button onClick={this.props.newGame}>New Game</button>
+                    <button onClick={this.newGame}>New Game</button>
                     <button onClick={this.props.loadGame}>Load Game</button>
                 </div>
             </div>
@@ -36,7 +39,7 @@ class GameMenu extends React.Component {
     }
 
     newGame = () => {
-        this.props.startNewGame();
+        this.props.startNewGame('flex');
     }
 
     sendState = async () => {
