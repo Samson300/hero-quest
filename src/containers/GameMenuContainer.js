@@ -3,7 +3,7 @@ import GameMenu from '../components/gameMenu/GameMenu';
 
 const mapStateToProps = (state) => {
     return {
-        areWeListening: state.player.isListening,
+        gameWorldDisplay: state.world.gameWorldDisplay
     }
 }
 
@@ -12,6 +12,8 @@ const mapDispatchToProps = (dispatch) => {
         startNewGame: () => {
             dispatch({ type: 'START_NEW_GAME', payload: {
                 listenForKeys: true,
+                gameWorldDisplay: 'flex',
+                menuDisplay: 'none'
             }})
         }
     }

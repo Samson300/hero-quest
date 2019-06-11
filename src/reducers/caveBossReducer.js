@@ -32,7 +32,6 @@ const caveBossReducer = (state=initialState, action) => {
                 bossDisplay: 'none',
                 gold: state.gold + action.payload.gold
             }
-        // The player's attack will increase as the player levels up.
         case 'DISPLAY_CAVE_BOSS':
             return {
                 ...state,
@@ -51,6 +50,11 @@ const caveBossReducer = (state=initialState, action) => {
                 caveBossHP: state.caveBossHP + action.payload.caveBossHP,
                 caveBossAttack: state.caveBossAttack + action.payload.caveBossAttack,
                 caveBossLevel: state.caveBossLevel + action.payload.caveBossLevel
+            }
+        case "BATTLE_STATUS_CAVE_BOSS":
+                return {
+                    // ...state,
+                    ...action.payload
             }
         default:
             return state;

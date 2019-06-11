@@ -4,9 +4,7 @@ import { battleTiles, townTiles } from '../config/constants';
 
 const mapStateToProps = (state) => {
     return {
-        // hp will display maxPlayerHp
         hp: state.player.maxPlayerHP,
-        addedHP: state.player.addedHP,
         caveBossHP: state.caveBoss.caveBossHP,
         exp: state.player.playerExp,
         gold: state.player.gold,
@@ -14,11 +12,7 @@ const mapStateToProps = (state) => {
         playerAtk: state.player.playerAttack,
         caveBossAtk: state.caveBoss.caveBossAttack,
         inBattleCaveBoss: state.player.inBattleCaveBoss,
-        position: state.lastLocation.position,
         spriteLocation: state.lastLocation.spriteLocation,
-        direction: state.lastLocation.direction,
-        walkIndex: state.lastLocation.walkIndex,
-        monsterLevel: state.monster.monsterLevel,
         monsterHP: state.monster.monsterHP
     }
 }
@@ -69,9 +63,6 @@ const mapDispatchToProps = (dispatch) => {
         battleDoneLocation: (position) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position
-                // spriteLocation: state.lastLocation.spriteLocation,
-                // direction: state.lastLocation.direction,
-                // walkIndex: state.lastLocation.walkIndex
             }})
         },
         levelUpAllMonsters: () => {

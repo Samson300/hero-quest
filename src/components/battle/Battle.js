@@ -7,17 +7,12 @@ class Battle extends React.Component {
     constructor(props){
         super(props);
     }
-    
-
-    componentDidMount() {
-    }
 
     static getDerivedStateFromProps(props, state) { 
         if (props.exp >= 200) {
                 props.levelUp();
-                // props.battleOn();
             }
-        if (props.monsterHP <= 0) {
+        if (props.monsterHP <= 0 && props.hp > 0) {
             props.killedMonster();
             props.battleOff();
             
@@ -25,15 +20,13 @@ class Battle extends React.Component {
             props.battleDoneLocation(props.position);
         };
 
-        if (props.hp <= 0 && props.monsterHP > 0) {
+        if (props.hp <= 0 && props.monsterHP > 0 && props.inBattle === 'flex') {
             props.playerDied(props.position);
         }
 }
 
 
     render() {
-        const inBattle = store.getState().player.inBattle
-        console.log(inBattle);
         return (
             <div style={{display: this.props.inBattle, flexDirection: 'column'}}>
                 <div className="BattleScreen" ></div>
@@ -58,14 +51,16 @@ class Battle extends React.Component {
                     </div>
                     <div style={{marginTop: '-250px', marginLeft: '400px', display: this.props.inBattle}} >
                         <button className="MonsterAttack" onClick={this._battleFunctions}>ATTACK MONSTER</button>
-                        {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                     </div>
             </div>
         )
     }
     _battleFunctions = () => {
-        this.props.monsterAttack(this.props.monsterAtk);
         this.props.playerAttack(this.props.playerAtk);
+        if (this.props.monsterHP > this.props.playerAtk) {
+            console.log(this.props.monsterHP)
+        this.props.monsterAttack(this.props.monsterAtk);
+        }
     }
 }
 
