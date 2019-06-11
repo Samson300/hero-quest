@@ -86,8 +86,9 @@ const mapDispatchToProps = (dispatch) => {
                 inBattleDungeonBoss: 'none',
                 bossDisplay: 'none',
                 tiles: townTiles,
+                isListening: true
             }})
-        },
+        }
     }
 } 
 

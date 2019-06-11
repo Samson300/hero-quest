@@ -36,6 +36,14 @@ const mapReducer = (state=initialState, action) => {
             } else {
                 return state
             }
+        case "BATTLE_STATUS_DUNGEON_BOSS_2":
+            if(action.payload.tiles) {
+                return {
+                    tiles: action.payload.tiles
+                }
+            } else {
+                return state
+            }
         case "ADD_TILES":
             return {
                 ...action.payload
