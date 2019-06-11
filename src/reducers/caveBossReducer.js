@@ -53,7 +53,7 @@ const caveBossReducer = (state=initialState, action) => {
             }
         case "BATTLE_STATUS_CAVE_BOSS":
                 return {
-                    ...state,
+                    // ...state,
                     ...action.payload
             }
         default:

@@ -24,10 +24,6 @@ const dungeonBossReducer = (state=initialState, action) => {
                 bossDisplay: 'none',
                 gold: state.gold + action.payload.gold
             }
-        case 'BATTLE_STATUS':
-            return {
-                ...state,
-            }
         case 'DISPLAY_DUNGEON_BOSS':
             return {
                 ...state,
@@ -38,6 +34,11 @@ const dungeonBossReducer = (state=initialState, action) => {
                     ...state,
                     ...action.payload
                 }
+        case "BATTLE_STATUS_DUNGEON_BOSS":
+            return {
+                ...state,
+                ...action.payload
+            }
         case 'INCREASE_MONSTER_LEVEL':
                 return {
                     ...state,

@@ -24,7 +24,7 @@ class Battle extends React.Component {
             props.battleDoneLocation(props.position);
         };
 
-        if (props.hp <= 0 && props.monsterHP > 0) {
+        if (props.hp <= 0 && props.monsterHP > 0 && props.inBattle === 'flex') {
             props.playerDied(props.position);
         }
 }

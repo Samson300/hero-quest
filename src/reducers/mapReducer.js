@@ -28,10 +28,14 @@ const mapReducer = (state=initialState, action) => {
             return {
                 tiles: dungeonTiles2
             }
-        // case "BATTLE_STATUS_DUNGEON_BOSS_2":
-        //     return {
-        //         tiles: 
-        //     }
+        case "BATTLE_STATUS_DUNGEON_BOSS":
+            if(action.payload.tiles) {
+                return {
+                    tiles: action.payload.tiles
+                }
+            } else {
+                return state
+            }
         case "ADD_TILES":
             return {
                 ...action.payload

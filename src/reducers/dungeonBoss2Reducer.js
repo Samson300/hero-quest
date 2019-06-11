@@ -29,10 +29,6 @@ const dungeonBoss2Reducer = (state=initialState, action) => {
                 ...state,
                 ...action.payload
             }
-        case 'BATTLE_STATUS':
-                return {
-                    ...state,
-                }
         case 'DUNGEON_BOSS_2_BATTLE':
                 return {
                     ...state,

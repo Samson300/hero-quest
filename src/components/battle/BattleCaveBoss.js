@@ -23,8 +23,6 @@ class BattleCaveBoss extends React.Component {
 
 
     render() {
-        const inBattleCaveBoss = store.getState().player.inBattleCaveBoss
-        console.log(inBattleCaveBoss);
         return (
             <div style={{display: this.props.inBattleCaveBoss, flexDirection: 'column'}}>
                 <div className="BattleScreenCaveBoss" ></div>

@@ -74,13 +74,7 @@ const mapDispatchToProps = (dispatch) => {
                 dungeonBossAttack: 25
             }})
         },
-        killedMonster: () => {
-            dispatch({ type: 'BATTLE_END', payload: {
-                exp: 100,
-                gold: 10
-            }})
-        },
-        playerDied: (direction, basePlayerHP) => {
+        playerDiedToDungeonBoss: (direction, basePlayerHP) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position: [224,448],
                 direction
@@ -88,7 +82,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({ type: 'HEAL_PLAYER', payload: {
                 maxPlayerHP: basePlayerHP
             }});
-            dispatch({ type: 'BATTLE_STATUS', payload: {
+            dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
                 inBattleDungeonBoss: 'none',
                 bossDisplay: 'none',
                 tiles: townTiles,

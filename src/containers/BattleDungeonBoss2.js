@@ -75,13 +75,7 @@ const mapDispatchToProps = (dispatch) => {
                 dungeonBossTwoHP: 50,
                 dungeonBossTwoAttack: 25
             }})
-        },
-        killedMonster: () => {
-            dispatch({ type: 'BATTLE_END', payload: {
-                exp: 100,
-                gold: 10
-            }})
-        },
+        }
     }
 } 
 

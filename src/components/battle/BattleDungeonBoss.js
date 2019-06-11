@@ -14,9 +14,9 @@ class BattleDungeonBoss extends React.Component {
             props.battleDoneLocation(props.position);
             // Change Map to previous Map with current position
         };
-        if (props.hp <= 0 && props.dungeonBossHP > 0) {
-            props.battleOff();
-            props.playerDied(props.direction);
+        if (props.hp <= 0 && props.dungeonBossHP > 0 && props.inBattleDungeonBoss === 'flex') {
+            // props.battleOff();
+            props.playerDiedToDungeonBoss(props.direction);
         }
     }
 
