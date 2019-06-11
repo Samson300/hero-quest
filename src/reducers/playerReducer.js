@@ -13,7 +13,7 @@ const initialState = {
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
     basePlayerHP: 100,
-    addedHP: 10,
+    addedHP: 0,
     maxPlayerHP: 100,
     playerAttack: 25,
     playerLevel: 1,
@@ -110,7 +110,7 @@ const playerReducer = (state=initialState, action) => {
         case "BATTLE_STATUS":
             return {
             ...state,
-            ...action.payload,
+            // ...action.payload,
             inBattle: action.payload.inBattle,
             isListening: action.payload.isListening,
         }
@@ -183,7 +183,9 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...state,
                 ...action.payload,
-                basePlayerHP: 100
+                // basePlayerHP: 100
+                // basePlayerHP: state.basePlayerHP,
+
             }
         default:
             return state

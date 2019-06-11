@@ -17,7 +17,7 @@ class Battle extends React.Component {
                 props.levelUp();
                 // props.battleOn();
             }
-        if (props.monsterHP <= 0) {
+        if (props.monsterHP <= 0 && props.hp > 0) {
             props.killedMonster();
             props.battleOff();
             
@@ -27,6 +27,7 @@ class Battle extends React.Component {
 
         if (props.hp <= 0 && props.monsterHP > 0) {
             props.playerDied(props.position);
+            // props.battleOff();
         }
 }
 
@@ -64,7 +65,7 @@ class Battle extends React.Component {
     }
     _battleFunctions = () => {
         this.props.playerAttack(this.props.playerAtk);
-        if (this.props.monsterHP > 25) {
+        if (this.props.monsterHP > this.props.playerAtk) {
             console.log(this.props.monsterHP)
         this.props.monsterAttack(this.props.monsterAtk);
         }
