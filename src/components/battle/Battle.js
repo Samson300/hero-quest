@@ -33,7 +33,6 @@ class Battle extends React.Component {
 
     render() {
         const inBattle = store.getState().player.inBattle
-        console.log(inBattle);
         return (
             <div style={{display: this.props.inBattle, flexDirection: 'column'}}>
                 <div className="BattleScreen" ></div>
@@ -64,8 +63,11 @@ class Battle extends React.Component {
         )
     }
     _battleFunctions = () => {
-        this.props.monsterAttack(this.props.monsterAtk);
         this.props.playerAttack(this.props.playerAtk);
+        if (this.props.monsterHP > 25) {
+            console.log(this.props.monsterHP)
+        this.props.monsterAttack(this.props.monsterAtk);
+        }
     }
 }
 
