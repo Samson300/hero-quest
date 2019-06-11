@@ -1,5 +1,4 @@
 import React from 'react';
-import store from '../../config/store';
 import '../battle/BattleDungeonBoss.css';
 
 
@@ -16,7 +15,6 @@ class BattleDungeonBoss extends React.Component {
             // Change Map to previous Map with current position
         };
         if (props.hp <= 0 && props.dungeonBossHP > 0) {
-            // props.killedPlayer();
             props.battleOff();
             props.playerDied(props.direction);
         }
@@ -48,14 +46,13 @@ class BattleDungeonBoss extends React.Component {
                     </div>
                     <div style={{marginTop: '-250px', marginLeft: '400px', display: this.props.inBattleDungeonBoss}} >
                         <button className="DungeonBossAttack" onClick={this.dungeonBattleFunctions}>ATTACK DUNGEON BOSS</button>
-                        {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                     </div>
             </div>
         )
     }
     dungeonBattleFunctions = () => {
-        this.props.dungeonBossAttack(this.props.dungeonBossAtk);
         this.props.playerAttackDungeonBoss(this.props.playerAtk);
+        this.props.dungeonBossAttack(this.props.dungeonBossAtk);
     }
 
 }

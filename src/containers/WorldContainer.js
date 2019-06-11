@@ -8,7 +8,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addTiles: () => {
             dispatch({ type: 'ADD_TILES', payload: {
-                tiles: townTiles //updates maps state.tiles with townTiles
+                tiles: townTiles
             }})
             }
         }

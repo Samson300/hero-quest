@@ -16,7 +16,6 @@ class inBattleDungeonBossTwo extends React.Component {
         };
 
         if (props.hp <= 0 && props.dungeonBossTwoHP > 0) {
-            // props.killedPlayer();
             props.battleOff();
             props.playerDied(props.position);
         }
@@ -48,14 +47,13 @@ class inBattleDungeonBossTwo extends React.Component {
                 </div>
                 <div style={{marginTop: '-250px', marginLeft: '400px', display: this.props.inBattleDungeonBossTWO}} >
                     <button className="DungeonBossAttack" onClick={this.dungeontwoBattleFunctions}>ATTACK DUNGEON TWO BOSS</button>
-                    {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                 </div>
             </div>
         )
     }
     dungeontwoBattleFunctions = () => {
-        this.props.dungeonBossTwoAttack(this.props.dungeonBossTwoAtk);
         this.props.playerAttackDungeonBossTwo(this.props.playerAtk);
+        this.props.dungeonBossTwoAttack(this.props.dungeonBossTwoAtk);
     }
 
 }

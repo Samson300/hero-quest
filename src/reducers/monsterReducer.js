@@ -27,8 +27,7 @@ const monsterReducer = (state=initialState, action) => {
         case "BATTLE_STATUS":
             return {
                 ...state,
-                ...action.payload,
-            // displayMonster: action.payload.displayMonster
+                ...action.payload
         }
         case "INCREASE_MONSTER_LEVEL":
             return {

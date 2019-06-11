@@ -9,9 +9,6 @@ class BattleCaveBoss extends React.Component {
     }
     
     static getDerivedStateFromProps(props, state) {
-        // if (props.exp >= 100) {
-        //         props.levelUp();
-        //     }
         if (props.caveBossHP <= 0) {
             props.killedCaveBoss();
             props.battleOff();
@@ -20,8 +17,6 @@ class BattleCaveBoss extends React.Component {
             // Change Map to previous Map with current position
         };
         if (props.hp <= 0 && props.caveBossHP > 0) {
-            // props.killedPlayer();
-            props.battleOff();
             props.playerDied(props.direction);
         }
     }
@@ -54,7 +49,6 @@ class BattleCaveBoss extends React.Component {
                     </div>
                     <div style={{marginTop: '-250px', marginLeft: '400px', display: this.props.inBattleCaveBoss}} >
                         <button className="CaveBossAttack" onClick={this.caveBattleFunctions}>ATTACK CAVE BOSS</button>
-                        {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                     </div>
             </div>
         )

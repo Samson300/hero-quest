@@ -6,17 +6,6 @@ class ItemStore extends React.Component {
     constructor(props){
         super(props);
     }
-    
-
-    componentDidMount() {
-    }
-
-    static getDerivedStateFromProps(props, state) {
-        // if (props.inBattle === 'flex') {
-        //     props.battleOn();
-        // }
-    }
-
 
     render() {
         return (

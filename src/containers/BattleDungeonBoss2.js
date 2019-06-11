@@ -58,7 +58,6 @@ const mapDispatchToProps = (dispatch) => {
                 isListening: true
             }})
         },
-        // can we add
         battleDoneLocation: (position) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position

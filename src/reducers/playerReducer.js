@@ -18,7 +18,7 @@ const initialState = {
     playerAttack: 25,
     playerLevel: 1,
     playerExp: 0,
-    gold: 10,
+    gold: 500,
     inventory: [],
 }
 
@@ -51,19 +51,19 @@ const playerReducer = (state=initialState, action) => {
                 isListening: true
             }
         case 'BATTLE_END_DUNGEON_BOSS':
-                return {
-                    ...state,
-                    playerLevel: state.playerLevel + action.payload.level,
-                    gold: state.gold + action.payload.gold,
-                    isListening: true
-                }
-            case 'BATTLE_END_DUNGEON_BOSS_2':
-                    return {
-                        ...state,
-                        playerLevel: state.playerLevel + action.payload.level,
-                        gold: state.gold + action.payload.gold,
-                        isListening: true
-                    }
+            return {
+                ...state,
+                playerLevel: state.playerLevel + action.payload.level,
+                gold: state.gold + action.payload.gold,
+                isListening: true
+            }
+        case 'BATTLE_END_DUNGEON_BOSS_2':
+            return {
+                ...state,
+                playerLevel: state.playerLevel + action.payload.level,
+                gold: state.gold + action.payload.gold,
+                isListening: true
+            }
         case 'LEVEL_UP':
             return {
                 ...state,
@@ -104,13 +104,11 @@ const playerReducer = (state=initialState, action) => {
         case "BATTLE_ON":
             return {
             ...state,
-            // ...action.payload,
             inBattle: action.payload.inBattle
         }
         case "BATTLE_STATUS":
             return {
             ...state,
-            // ...action.payload,
             inBattle: action.payload.inBattle,
             isListening: action.payload.isListening,
         }
@@ -182,10 +180,7 @@ const playerReducer = (state=initialState, action) => {
         case "PLAYER_DIED_PENALTY":
             return {
                 ...state,
-                ...action.payload,
-                // basePlayerHP: 100
-                // basePlayerHP: state.basePlayerHP,
-
+                ...action.payload
             }
         default:
             return state

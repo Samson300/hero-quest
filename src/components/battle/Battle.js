@@ -15,7 +15,6 @@ class Battle extends React.Component {
     static getDerivedStateFromProps(props, state) { 
         if (props.exp >= 200) {
                 props.levelUp();
-                // props.battleOn();
             }
         if (props.monsterHP <= 0 && props.hp > 0) {
             props.killedMonster();
@@ -27,13 +26,11 @@ class Battle extends React.Component {
 
         if (props.hp <= 0 && props.monsterHP > 0) {
             props.playerDied(props.position);
-            // props.battleOff();
         }
 }
 
 
     render() {
-        const inBattle = store.getState().player.inBattle
         return (
             <div style={{display: this.props.inBattle, flexDirection: 'column'}}>
                 <div className="BattleScreen" ></div>
@@ -58,7 +55,6 @@ class Battle extends React.Component {
                     </div>
                     <div style={{marginTop: '-250px', marginLeft: '400px', display: this.props.inBattle}} >
                         <button className="MonsterAttack" onClick={this._battleFunctions}>ATTACK MONSTER</button>
-                        {/* <button onClick={this.props.killedMonster}>WIN</button> */}
                     </div>
             </div>
         )
