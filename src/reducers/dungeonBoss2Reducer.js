@@ -5,7 +5,6 @@ const initialState = {
     monsterLevel: 1,
     dungeonBossTwoLevel: 1,
     bossDisplay: 'none',
-    // backgroundPosition: 'left top',
     top: '200px',
     left: '200px',
     gold: 10

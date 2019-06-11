@@ -5,7 +5,6 @@ const initialState = {
     monsterLevel: 1,
     dungeonBossLevel: 1,
     bossDisplay: 'none',
-    // backgroundPosition: 'left top',
     top: 512,
     left: 480,
     gold: 10,
@@ -29,7 +28,6 @@ const dungeonBossReducer = (state=initialState, action) => {
             return {
                 ...state,
             }
-        // the player's attack will increase as player buys swords
         case 'DISPLAY_DUNGEON_BOSS':
             return {
                 ...state,
