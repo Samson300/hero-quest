@@ -7,10 +7,6 @@ class Battle extends React.Component {
     constructor(props){
         super(props);
     }
-    
-
-    componentDidMount() {
-    }
 
     static getDerivedStateFromProps(props, state) { 
         if (props.exp >= 200) {

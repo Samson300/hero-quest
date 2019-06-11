@@ -37,27 +37,26 @@ class GameMenu extends React.Component {
             </div>
         )
     }
-
     newGame = () => {
-        this.props.startNewGame('flex');
+        this.props.startNewGame();
     }
 
-    sendState = async () => {
-        console.log('GameMenu sendState got called')
-        await axios({
-            method: 'post',
-            url: '/api',
-            data: qs.stringify({
-                message: this.state.text
-            }),
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-            });
-            this.setState({
-                text: ''
-        })
-    } 
+    // sendState = async () => {
+    //     console.log('GameMenu sendState got called')
+    //     await axios({
+    //         method: 'post',
+    //         url: '/api',
+    //         data: qs.stringify({
+    //             message: this.state.text
+    //         }),
+    //         headers: {
+    //             'Content-Type': 'application/x-www-form-urlencoded'
+    //         }
+    //         });
+    //         this.setState({
+    //             text: ''
+    //     })
+    // } 
 }
 
 export default GameMenu;
