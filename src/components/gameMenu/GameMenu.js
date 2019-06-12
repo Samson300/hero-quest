@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import World from '../world/World';
 import qs from 'qs'
+import gameMenuBackground from '../../styles/backgroundImages/AH-Space copy.png'
+import './gameMenu.css'
 
 class GameMenu extends React.Component {
     constructor(props) {
@@ -30,10 +31,16 @@ class GameMenu extends React.Component {
 
     render() {
         return (
-            <div className='GameMenu' style={{display: this.props.menuDisplay, position: 'relative',
+            <div className='GameMenu' style={{
+                    display: 'flex', 
+                    position: 'relative',
+                    backgroundImage: `url('${gameMenuBackground}')`,
                     width: '640px',
                     height: '640px',
                     margin: '20px auto'}}>
+                <div className='TitleText'>
+                    <h1>Hero Quest</h1>
+                </div>
                 <div className='GameMenuButtons'>
                     <button onClick={this.newGame}>New Game</button>
                     <button onClick={this.props.loadGame}>Load Game</button>

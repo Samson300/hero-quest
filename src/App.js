@@ -6,8 +6,8 @@ import GameMenu from './containers/GameMenuContainer';
 function App() {
   return (
     <div>
-      <World />
       <GameMenu />
+      <World />
     </div>
   );
 }
