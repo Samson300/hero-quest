@@ -23,6 +23,10 @@ class GameMenu extends React.Component {
     //     });
     // }
 
+    // componentDidMount() {
+    //     this.props.startNewGame()
+    // }
+
 
     render() {
         return (

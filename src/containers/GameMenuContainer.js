@@ -19,6 +19,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 } 
 
-const makeGameMenuSmart = connect(mapStateToProps, mapDispatchToProps);
+const makeGameMenuSmart = connect(null, mapDispatchToProps);
 const smartGameMenu = makeGameMenuSmart(GameMenu);
 export default smartGameMenu;
