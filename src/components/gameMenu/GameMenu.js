@@ -32,7 +32,7 @@ class GameMenu extends React.Component {
     render() {
         return (
             <div className='GameMenu' style={{
-                    display: 'flex', 
+                    display: this.props.menuDisplay, 
                     position: 'relative',
                     backgroundImage: `url('${gameMenuBackground}')`,
                     width: '640px',

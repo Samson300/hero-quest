@@ -1,6 +1,5 @@
 const initialState = {
     menuDisplay: 'flex',
-
 }
 
 const gameMenuReducer = (state=initialState, action) => {
