@@ -1,13 +1,13 @@
 import React from 'react';
 import World from './containers/WorldContainer';
-import GameMenu from './components/gameMenu/GameMenu';
+import GameMenu from './containers/GameMenuContainer';
 
 
 function App() {
   return (
     <div>
-      <World />
       <GameMenu />
+      <World />
     </div>
   );
 }

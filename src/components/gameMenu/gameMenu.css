@@ -1,0 +1,21 @@
+h1 {
+    font-size: 45px;
+    color: white;
+}
+
+.TitleText {
+    margin-top: 130px;
+    height: 100px;
+    width: 250px;
+}
+
+.GameMenuButtons {
+    margin-top: 15px;
+}
+
+.GameMenu {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

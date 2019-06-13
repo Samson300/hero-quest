@@ -3,7 +3,7 @@ import GameMenu from '../components/gameMenu/GameMenu';
 
 const mapStateToProps = (state) => {
     return {
-        gameWorldDisplay: state.world.gameWorldDisplay
+        // menuDisplay: state.gameMenu.menuDisplay
     }
 }
 
