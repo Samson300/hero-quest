@@ -3,7 +3,7 @@ import GameMenu from '../components/gameMenu/GameMenu';
 
 const mapStateToProps = (state) => {
     return {
-        // menuDisplay: state.gameMenu.menuDisplay
+        menuDisplay: state.gameMenu.menuDisplay
     }
 }
 
@@ -19,6 +19,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 } 
 
-const makeGameMenuSmart = connect(mapStateToProps, mapDispatchToProps);
+const makeGameMenuSmart = connect(null, mapDispatchToProps);
 const smartGameMenu = makeGameMenuSmart(GameMenu);
 export default smartGameMenu;

@@ -8,7 +8,13 @@ const gameMenuReducer = (state=initialState, action) => {
             // change whatever needs to be changed to start a new game here, basically everthing goes to starting state
             // maybe something as simple as just ...state for everything else
             return {
-                menuDisplay: 'none'
+                ...state,
+                ...action.payload
             }
-    }
+        default:
+            return state;
+        }
+    
 }
+
+export default gameMenuReducer;
