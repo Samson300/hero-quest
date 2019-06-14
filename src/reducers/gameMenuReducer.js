@@ -4,11 +4,18 @@ const initialState = {
 
 const gameMenuReducer = (state=initialState, action) => {
     switch(action.type) {
-        case 'GAME_START_NEW':
-            // change whatever needs to be changed to start a new game here, basically everthing goes to starting state
-            // maybe something as simple as just ...state for everything else
+        case 'START_NEW_GAME':
             return {
                 menuDisplay: 'none'
             }
-    }
+        case 'USER_WANTS_LOGIN':
+            return {
+                menuDisplay: action.payload.menuDisplay
+            }
+        default:
+            return state;
+        }
+    
 }
+
+export default gameMenuReducer;

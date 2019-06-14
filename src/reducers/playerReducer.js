@@ -18,7 +18,7 @@ const initialState = {
     playerAttack: 25,
     playerLevel: 1,
     playerExp: 0,
-    gold: 500,
+    gold: 10,
     inventory: [],
 }
 

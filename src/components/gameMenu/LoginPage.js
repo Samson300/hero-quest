@@ -4,7 +4,7 @@ import qs from 'qs'
 import gameMenuBackground from '../../styles/backgroundImages/AH-Space copy.png'
 import './gameMenu.css'
 
-class GameMenu extends React.Component {
+class LoginPage extends React.Component {
     constructor(props) {
         super(props);
 
@@ -31,8 +31,8 @@ class GameMenu extends React.Component {
 
     render() {
         return (
-            <div className='GameMenu' style={{
-                    display: this.props.menuDisplay, 
+            <div className='LoginPage' style={{
+                    display: this.props.loginPageDisplay, 
                     position: 'relative',
                     backgroundImage: `url('${gameMenuBackground}')`,
                     width: '640px',
@@ -41,19 +41,28 @@ class GameMenu extends React.Component {
                 <div className='TitleText'>
                     <h1>Hero Quest</h1>
                 </div>
-                <div className='GameMenuButtons'>
-                    <button onClick={this.newGame}>New Game</button>
-                    <button onClick={this.loginPage}>User Login</button>
+                <div className='LoginScreenButtons'>
+                    {/* this will take the input fields info and test login, if successful goes to main gameMenu to load or start new */}
+                    <button onClick={this.userLogin}>Login</button>
+                    <button onClick={this.createUserPage}>Create Account</button>
                 </div>
             </div>
         )
     }
-    newGame = () => {
-        this.props.startNewGame();
+    // this will call functions needed to dispatch actions associated with logging in
+    // will make sure user is logging in (has correct username pw, user existss etc)
+    // pulls either all users saved games, or just one to start (most recent)
+    // loads up the gameMenu and turns off login page
+    // if user pressed newGame - newGame starts
+    // if user presses loadGame - data from the login is used to call (select gamedata from  users where id = id)
+    // or if its easier when login we store that data in variable and then on loadGame that data is just used
+    // to use the data we just dispatch action that updates state of everything we need (player stats, monster stats etc)
+    // 
+    userLogin = () => {
     }
+    // this will turn off the login page and turn on the create user page
+    createUserPage = () => {
 
-    loginPage = () => {
-        this.props.userLoginSubmitted();
     }
 
     // sendState = async () => {
@@ -74,4 +83,4 @@ class GameMenu extends React.Component {
     // } 
 }
 
-export default GameMenu;
+export default LoginPage;
