@@ -8,6 +8,10 @@ const gameMenuReducer = (state=initialState, action) => {
             return {
                 menuDisplay: 'none'
             }
+        case 'USER_WANTS_LOGIN':
+            return {
+                menuDisplay: action.payload.menuDisplay
+            }
         default:
             return state;
         }
