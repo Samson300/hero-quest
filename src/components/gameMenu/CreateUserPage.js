@@ -40,11 +40,14 @@ class CreateUserPage extends React.Component {
                     margin: '20px auto'}}>
                 <div className='TitleText'>
                     <h1>Hero Quest</h1>
+                    <h2>Please enter the information below to create an account and play now!</h2>
+                    <h2>Already have an account? Click the Login button to Log in with your account information</h2>
                 </div>
                 <div className='CreateUserPageButtons'>
                     {/* this will take the input fields info and test login, if successful goes to main gameMenu to load or start new */}
-                    <button onClick={this.createNewUser}>Login</button>
-                    <button onClick={this.toGameMenu}>Create Account</button>
+                    <button onClick={this.createNewUser}>Create Account</button>
+                    <button onClick={this.toLoginPage}>Login</button>
+                    <button onClick={this.toGameMenu}>Back To Start Menu</button>
                 </div>
             </div>
         )
@@ -53,6 +56,12 @@ class CreateUserPage extends React.Component {
     // this will create the user and add them to the DB
     // then if successfull will log them in and bring to menu
     createNewUser = () => {
+
+    }
+
+    // this will send user to the login page
+    // this will turn off the createUserPageDisplay and turn on the loginPageDisplay
+    toLoginPage = () => {
 
     }
     // this will just go back to gameMenu main page

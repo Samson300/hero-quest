@@ -7,26 +7,7 @@ import './gameMenu.css'
 class GameMenu extends React.Component {
     constructor(props) {
         super(props);
-
-        // this.state = {
-        //     character: {},
-        //     messages: [],
-        //     text: ''
-        // }
     }
-
-    // async componentDidMount() {
-    //     response = axios.get("http://localhost4000/api");
-    //     this.setState({
-    //         character: response.data
-    //     }, () => {
-    //         console.log('done setting the state');
-    //     });
-    // }
-
-    // componentDidMount() {
-    //     this.props.startNewGame()
-    // }
 
 
     render() {
@@ -48,6 +29,7 @@ class GameMenu extends React.Component {
             </div>
         )
     }
+    
     newGame = () => {
         this.props.startNewGame();
     }
@@ -55,23 +37,6 @@ class GameMenu extends React.Component {
     loginPage = () => {
         this.props.userLoginSubmitted();
     }
-
-    // sendState = async () => {
-    //     console.log('GameMenu sendState got called')
-    //     await axios({
-    //         method: 'post',
-    //         url: '/api',
-    //         data: qs.stringify({
-    //             message: this.state.text
-    //         }),
-    //         headers: {
-    //             'Content-Type': 'application/x-www-form-urlencoded'
-    //         }
-    //         });
-    //         this.setState({
-    //             text: ''
-    //     })
-    // } 
 }
 
 export default GameMenu;
