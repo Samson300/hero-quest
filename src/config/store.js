@@ -9,6 +9,7 @@ import dungeonBossTwoReducer from '../reducers/dungeonBoss2Reducer';
 import worldReducer from '../reducers/worldReducer';
 import gameMenuReducer from '../reducers/gameMenuReducer';
 import loginPageReducer from '../reducers/loginPageReducer';
+import createUserPageReducer from '../reducers/createUserPageReducer';
 
 const FREQUENCY = 2000;
 const LS_KEY = 'hero-quest';
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
     world: worldReducer,
     gameMenu: gameMenuReducer,
     loginPage: loginPageReducer,
+    createUserPage: createUserPageReducer
 });
 
 // const initialState = JSON.parse(localStorage.getItem(LS_KEY)) || {};
