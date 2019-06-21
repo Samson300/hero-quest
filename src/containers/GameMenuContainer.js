@@ -17,12 +17,16 @@ const mapDispatchToProps = (dispatch) => {
                 loginPageDisplay: 'none'
             }});
         },
-        userLoginSubmitted: () => {
-            dispatch({ type: 'USER_WANTS_LOGIN', payload: {
+        loadLoginPage: () => {
+            dispatch({ type: 'USER_WANTS_LOGIN_PAGE', payload: {
                 menuDisplay: 'none',
                 loginPageDisplay: 'flex'
             }})
+        },
+        loadUserLogin: () => {
+            dispatch({ type: 'USER_TO_LOGIN_PAGE'})
         }
+        
     }
 } 
 
