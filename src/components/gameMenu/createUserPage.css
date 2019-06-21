@@ -2,6 +2,10 @@ h1 {
     font-size: 45px;
     color: white;
 }
+h2 {
+    font-size: 30px;
+    color: whitesmoke;
+}
 
 .TitleText {
     margin-top: 130px;
@@ -9,11 +13,11 @@ h1 {
     width: 250px;
 }
 
-.GameMenuButtons {
+.createUserButtons {
     margin-top: 15px;
 }
 
-.GameMenu {
+.createUserPage {
     text-align: center;
     align-items: center;
     display: flex;
