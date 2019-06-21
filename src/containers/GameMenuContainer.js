@@ -22,7 +22,11 @@ const mapDispatchToProps = (dispatch) => {
                 menuDisplay: 'none',
                 loginPageDisplay: 'flex'
             }})
+        },
+        loadUserLogin: () => {
+            dispatch({ type: 'USER_TO_LOGIN_PAGE'})
         }
+        
     }
 } 
 

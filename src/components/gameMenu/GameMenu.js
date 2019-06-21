@@ -25,6 +25,7 @@ class GameMenu extends React.Component {
                 <div className='GameMenuButtons'>
                     <button onClick={this.newGame}>New Game</button>
                     <button onClick={this.loginPage}>User Login</button>
+                    <button onClick={this.createUserPage}></button>
                 </div>
             </div>
         )
@@ -35,7 +36,10 @@ class GameMenu extends React.Component {
     }
 
     loginPage = () => {
-        this.props.userLoginSubmitted();
+        this.props.loadLoginPage();
+    }
+    createUserPage = () => {
+        this.props.loadCreateUserPage();
     }
 }
 
