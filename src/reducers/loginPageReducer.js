@@ -4,7 +4,7 @@ const initialState = {
 
 const loginPageReducer = (state=initialState, action) => {
     switch(action.type) {
-        case 'USER_WANTS_LOGIN':
+        case 'USER_WANTS_LOGIN_PAGE':
             return {
                 loginPageDisplay: action.payload.loginPageDisplay
             }
