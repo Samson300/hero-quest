@@ -13,7 +13,7 @@ const initialState = {
     // basePlayerHP will be constant in order for the HP to increment
     // as the player levels.
     basePlayerHP: 100,
-    addedHP: 10,
+    addedHP: 0,
     maxPlayerHP: 100,
     playerAttack: 25,
     playerLevel: 1,
@@ -51,26 +51,26 @@ const playerReducer = (state=initialState, action) => {
                 isListening: true
             }
         case 'BATTLE_END_DUNGEON_BOSS':
-                return {
-                    ...state,
-                    playerLevel: state.playerLevel + action.payload.level,
-                    gold: state.gold + action.payload.gold,
-                    isListening: true
-                }
-            case 'BATTLE_END_DUNGEON_BOSS_2':
-                    return {
-                        ...state,
-                        playerLevel: state.playerLevel + action.payload.level,
-                        gold: state.gold + action.payload.gold,
-                        isListening: true
-                    }
+            return {
+                ...state,
+                playerLevel: state.playerLevel + action.payload.level,
+                gold: state.gold + action.payload.gold,
+                isListening: true
+            }
+        case 'BATTLE_END_DUNGEON_BOSS_2':
+            return {
+                ...state,
+                playerLevel: state.playerLevel + action.payload.level,
+                gold: state.gold + action.payload.gold,
+                isListening: true
+            }
         case 'LEVEL_UP':
             return {
                 ...state,
                 // addedHP will be added by the hp from BattleContainer's action.payload.hp.
                 addedHP: state.addedHP + action.payload.hp,
-                // maxPlayerHP is the max HP after leveling up.
-                basePlayerHP: state.basePlayerHP + state.addedHP,
+                // turn this on to allow 'healing' for playerHP on levelUp
+                // maxPlayerHP: state.basePlayerHP + state.addedHP,
                 playerExp: 0,
                 playerLevel: state.playerLevel + action.payload.lvl,
                 playerAttack: state.playerAttack + action.payload.playerAtk
@@ -80,8 +80,6 @@ const playerReducer = (state=initialState, action) => {
                 ...state,
                 // addedHP will be added by the hp from BattleContainer's action.payload.hp.
                 addedHP: state.addedHP + action.payload.hp,
-                // maxPlayerHP is the max HP after leveling up.
-                maxPlayerHP: state.maxPlayerHP + state.addedHP,
                 playerExp: 0,
                 playerLevel: state.playerLevel + action.payload.lvl
             }
@@ -89,7 +87,7 @@ const playerReducer = (state=initialState, action) => {
             return {
                 ...state,
                 ...action.payload,
-                maxPlayerHP: state.basePlayerHP
+                maxPlayerHP: state.basePlayerHP + state.addedHP
             }
         case 'PLAYER_LOOTS_CHEST_GAIN_HP':
             return {
@@ -104,13 +102,11 @@ const playerReducer = (state=initialState, action) => {
         case "BATTLE_ON":
             return {
             ...state,
-            // ...action.payload,
             inBattle: action.payload.inBattle
         }
         case "BATTLE_STATUS":
             return {
             ...state,
-            ...action.payload,
             inBattle: action.payload.inBattle,
             isListening: action.payload.isListening,
         }
@@ -182,8 +178,7 @@ const playerReducer = (state=initialState, action) => {
         case "PLAYER_DIED_PENALTY":
             return {
                 ...state,
-                ...action.payload,
-                basePlayerHP: 100
+                ...action.payload
             }
         default:
             return state

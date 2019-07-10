@@ -1,0 +1,25 @@
+h1 {
+    font-size: 45px;
+    color: white;
+}
+h2 {
+    font-size: 30px;
+    color: whitesmoke;
+}
+
+.TitleText {
+    margin-top: 130px;
+    height: 100px;
+    width: 250px;
+}
+
+.createUserButtons {
+    margin-top: 15px;
+}
+
+.createUserPage {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}

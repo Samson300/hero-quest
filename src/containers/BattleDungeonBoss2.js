@@ -58,7 +58,6 @@ const mapDispatchToProps = (dispatch) => {
                 isListening: true
             }})
         },
-        // can we add
         battleDoneLocation: (position) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position
@@ -77,12 +76,21 @@ const mapDispatchToProps = (dispatch) => {
                 dungeonBossTwoAttack: 25
             }})
         },
-        killedMonster: () => {
-            dispatch({ type: 'BATTLE_END', payload: {
-                exp: 100,
-                gold: 10
+        playerDiedToDungeonBossTwo: (direction, basePlayerHP) => {
+            dispatch({ type: 'MOVE_PLAYER', payload: {
+                position: [224,448],
+                direction
+            }});
+            dispatch({ type: 'HEAL_PLAYER', payload: {
+                maxPlayerHP: basePlayerHP
+            }});
+            dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS_2', payload: {
+                inBattleDungeonBossTwo: 'none',
+                bossDisplay: 'none',
+                tiles: townTiles,
+                isListening: true
             }})
-        },
+        }
     }
 } 
 

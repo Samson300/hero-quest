@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 import BattleDungeonBoss from '../components/battle/BattleDungeonBoss';
 import { battleTiles, townTiles, dungeonTiles } from '../config/constants';
-import store from '../config/store';
 
 const mapStateToProps = (state) => {
     return {
-        // hp will display maxPlayerHp
         hp: state.player.maxPlayerHP,
         addedHP: state.player.addedHP,
         dungeonBossHP: state.dungeonBoss.dungeonBossHP,
@@ -20,7 +18,6 @@ const mapStateToProps = (state) => {
         direction: state.lastLocation.direction,
         walkIndex: state.lastLocation.walkIndex,
         monsterLevel: state.monster.monsterLevel,
-        // bossDisplay: store.dungeonBoss.bossDisplay
     }
 }
 
@@ -55,7 +52,6 @@ const mapDispatchToProps = (dispatch) => {
         battleOff: () => {
             dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
                 inBattleDungeonBoss: 'none',
-                // bossDisplay: 'none',
                 tiles: dungeonTiles,
                 isListening: true
             }})
@@ -63,9 +59,6 @@ const mapDispatchToProps = (dispatch) => {
         battleDoneLocation: (position) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position
-                // spriteLocation: state.lastLocation.spriteLocation,
-                // direction: state.lastLocation.direction,
-                // walkIndex: state.lastLocation.walkIndex
             }})
         },
         levelUpAllMonsters: () => {
@@ -81,13 +74,7 @@ const mapDispatchToProps = (dispatch) => {
                 dungeonBossAttack: 25
             }})
         },
-        killedMonster: () => {
-            dispatch({ type: 'BATTLE_END', payload: {
-                exp: 100,
-                gold: 10
-            }})
-        },
-        playerDied: (direction, basePlayerHP) => {
+        playerDiedToDungeonBoss: (direction, basePlayerHP) => {
             dispatch({ type: 'MOVE_PLAYER', payload: {
                 position: [224,448],
                 direction
@@ -95,13 +82,13 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({ type: 'HEAL_PLAYER', payload: {
                 maxPlayerHP: basePlayerHP
             }});
-            dispatch({ type: 'BATTLE_STATUS', payload: {
+            dispatch({ type: 'BATTLE_STATUS_DUNGEON_BOSS', payload: {
                 inBattleDungeonBoss: 'none',
                 bossDisplay: 'none',
                 tiles: townTiles,
-                // isListening: true
+                isListening: true
             }})
-        },
+        }
     }
 } 
 

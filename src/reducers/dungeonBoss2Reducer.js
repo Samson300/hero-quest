@@ -5,7 +5,6 @@ const initialState = {
     monsterLevel: 1,
     dungeonBossTwoLevel: 1,
     bossDisplay: 'none',
-    // backgroundPosition: 'left top',
     top: '200px',
     left: '200px',
     gold: 10
@@ -30,15 +29,16 @@ const dungeonBoss2Reducer = (state=initialState, action) => {
                 ...state,
                 ...action.payload
             }
-        case 'BATTLE_STATUS':
-                return {
-                    ...state,
-                }
         case 'DUNGEON_BOSS_2_BATTLE':
                 return {
                     ...state,
                     ...action.payload
                 }
+        case "BATTLE_STATUS_DUNGEON_BOSS_2":
+            return {
+                ...state,
+                ...action.payload
+            }
         case 'INCREASE_MONSTER_LEVEL':
                 return {
                     ...state,

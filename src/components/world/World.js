@@ -25,6 +25,7 @@ class World extends React.Component {
         return (
             <div 
                 style={{
+                    display: this.props.gameWorldDisplay,
                     position: 'relative',
                     width: '640px',
                     height: '640px',
